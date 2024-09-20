@@ -1,85 +1,133 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+<div class="wrapper">
+  <div class="logoWrap">
+    <img class="logo" src="@/assets/portfolio-logo.png" />
+  </div>
+  <div class="bodyWrap">
+    <div class="leftBody">
+      <div class="tabGroup">
+        <ul class="tabNav">
+          <li @click="change('profile')" :class="{'active': isActive === 'profile'}">
+            Profile
+          </li>
+          <li @click="change('skill')" :class="{'active': isActive === 'skill'}">
+            Skill
+          </li>
+          <li @click="change('contact')" :class="{'active': isActive === 'contact'}">
+            Contact
+          </li>
+        </ul>
+        <div class="tabContent">
+          <div v-if="isActive === 'profile'"><ProfilePage /></div>
+          <div v-if="isActive === 'skill'">タブBの内容を表示</div>
+          <div v-if="isActive === 'contact'">タブCの内容を表示</div>
+        </div>
+      </div>
     </div>
-  </header>
-
-  <RouterView />
+    <div class="rightBody">
+      <div class="tabGroup">
+        <ul class="tabNav">
+          <li @click="select('web')" :class="{'active': isShow === 'web'}">
+            Web
+          </li>
+          <li @click="select('app')" :class="{'active': isShow === 'app'}">
+            App
+          </li>
+          <li @click="select('others')" :class="{'active': isShow === 'others'}">
+            Others
+          </li>
+        </ul>
+        <div class="tabContent">
+          <div v-if="isShow === 'web'">タブAの内容を表示</div>
+          <div v-if="isShow === 'app'">タブBの内容を表示</div>
+          <div v-if="isShow === 'others'">タブCの内容を表示</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<script>
+import ProfilePage from '@/components/ProfilePage';
+
+export default {
+  data() {
+    return {
+      isActive: 'profile',
+      isShow: 'web'
+    }
+  },
+  components: {
+    ProfilePage
+  },
+  methods: {
+    change: function(num) {
+      this.isActive = num
+    },
+    select: function(num) {
+      this.isShow = num
+    }
+  }
+}
+</script>
+
+<style>
+.wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.logoWrap {
+  position: absolute;
+  top: 40px;
+  left: 40px;
 }
 
 .logo {
-  display: block;
-  margin: 0 auto 2rem;
+  position: absolute;
+  width: 70px;
+  height: 70px;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
+.bodyWrap {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.leftBody {
+  border: 2px solid #31302E;
   text-align: center;
-  margin-top: 2rem;
+  background-color: #D6D6D6;
+  width: 50vw;
+  height: calc(100vh - 4px);
+  overflow-y: auto;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.rightBody {
+  border: 2px solid #31302E;
+  border-left: none;
+  text-align: center;
+  background-color: #BCAFA6;
+  width: 50vw;
+  height: calc(100vh - 4px);
+  overflow-y: auto;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.tabNav {
+  display: flex;
+  justify-content: space-between;
+  max-width: 50vw;
+  height: auto;
+  text-align: center;
+  padding: 40px 160px 0;
+  font-size: 18px;
+  font-weight: 600;
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.tabContent {
+  margin-top: 40px;
 }
 </style>
