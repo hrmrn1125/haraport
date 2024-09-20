@@ -29,15 +29,20 @@ export default {
 
 <style>
 .mainContents {
-  margin: 94px 20px 40px 80px;
+  margin: 104px 20px 40px 80px;
   padding-right: 60px;
   height: calc(100vh - 144px);
   overflow-y: scroll;
   scrollbar-width: thin;
 }
 
+h1 {
+  font-size: 40px;
+}
+
 h2 {
   text-align: left;
+  font-size: 26px;
 }
 
 .introPhotoWrap {
@@ -51,6 +56,6 @@ h2 {
 
 .textWrap {
   text-align: left;
-  margin: 30px auto 0;
+  margin: 28px auto 0;
 }
 </style>
