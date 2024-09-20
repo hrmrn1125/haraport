@@ -6,7 +6,7 @@
   <div class="bodyWrap">
     <div class="leftBody">
       <div class="tabGroup">
-        <ul class="tabNav">
+        <ul class="tabNavLeft">
           <li @click="change('profile')" :class="{'active': isActive === 'profile'}">
             Profile
           </li>
@@ -26,7 +26,7 @@
     </div>
     <div class="rightBody">
       <div class="tabGroup">
-        <ul class="tabNav">
+        <ul class="tabNavRight">
           <li @click="select('web')" :class="{'active': isShow === 'web'}">
             Web
           </li>
@@ -83,12 +83,14 @@ export default {
   position: absolute;
   top: 40px;
   left: 40px;
+  z-index: 100;
 }
 
 .logo {
   position: absolute;
   width: 70px;
   height: 70px;
+  z-index: 100;
 }
 
 .bodyWrap {
@@ -103,31 +105,43 @@ export default {
   background-color: #D6D6D6;
   width: 50vw;
   height: calc(100vh - 4px);
-  overflow-y: auto;
 }
 
 .rightBody {
   border: 2px solid #31302E;
   border-left: none;
   text-align: center;
-  background-color: #BCAFA6;
+  background-color: #BCB4AF;
   width: 50vw;
-  height: calc(100vh - 4px);
-  overflow-y: auto;
 }
 
-.tabNav {
+.tabNavLeft {
+  position: fixed;
   display: flex;
   justify-content: space-between;
-  max-width: 50vw;
+  width: calc(50vw - 324px);
   height: auto;
   text-align: center;
-  padding: 40px 160px 0;
+  padding: 40px 160px 20px;
   font-size: 18px;
   font-weight: 600;
+  top: 2px;
+  background-color: #D6D6D6;
+  z-index: 1;
 }
 
-.tabContent {
-  margin-top: 40px;
+.tabNavRight {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  width: calc(50vw - 324px);
+  height: auto;
+  text-align: center;
+  padding: 40px 160px 30px;
+  font-size: 18px;
+  font-weight: 600;
+  top: 2px;
+  background-color: #BCB4AF;
+  z-index: 1;
 }
 </style>
