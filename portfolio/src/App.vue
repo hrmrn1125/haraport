@@ -1,5 +1,5 @@
 <template>
-<div class="wrapper">
+<div class="wrapper" id="app">
   <div class="logoWrap">
     <img class="logo" src="@/assets/portfolio-logo.png" />
   </div>
