@@ -7,7 +7,7 @@
     <h2>Marina Hara(原 茉利奈)</h2>
     <div class="textWrap">
       <a>
-        原 茉利奈と申します。1996年3月31日、千葉県船橋市生まれ。東京都あきる野市在住。<br>
+        原 茉利奈と申します。1996年3月31日、千葉県船橋市生まれ。<br>
       </a>
     </div>
     <button class="GoBtn" @click="goTop"><span>一番上へ</span></button>
