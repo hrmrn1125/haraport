@@ -17,7 +17,7 @@
         <br><br>
         好きな食べ物はチヂミ。嫌いな食べ物はパクチー。<br>
         最近飼い始めた犬のぽむちゃん(チワワ×シーズー/国宝)に夢中です。<br>
-        載せている画像がiPhoneの雑切り取りで申し訳ありません...
+        載せている画像がiPhoneからの切り取りで申し訳ありません...！
       </a>
     </div>
     <div class="introPhotoWrap">
@@ -89,6 +89,7 @@ h2 {
   border-radius: 34px;
   border:  2.4px solid #31302E;
   text-align: center;
+  transition: all 0.4s;
 }
 
 .GoBtn span {
