@@ -19,8 +19,8 @@
         </ul>
         <div class="tabContent">
           <div v-if="isActive === 'profile'"><ProfilePage /></div>
-          <div v-if="isActive === 'skill'">タブBの内容を表示</div>
-          <div v-if="isActive === 'contact'">タブCの内容を表示</div>
+          <div v-if="isActive === 'skill'"><SkillPage /></div>
+          <div v-if="isActive === 'contact'"><ContactPage /></div>
         </div>
       </div>
     </div>
@@ -38,9 +38,9 @@
           </li>
         </ul>
         <div class="tabContent">
-          <div v-if="isShow === 'web'">タブAの内容を表示</div>
-          <div v-if="isShow === 'app'">タブBの内容を表示</div>
-          <div v-if="isShow === 'others'">タブCの内容を表示</div>
+          <div v-if="isShow === 'web'"><WebPage /></div>
+          <div v-if="isShow === 'app'"><AppPage /></div>
+          <div v-if="isShow === 'others'"><OthersPage /></div>
         </div>
       </div>
     </div>
@@ -50,6 +50,11 @@
 
 <script>
 import ProfilePage from '@/components/ProfilePage';
+import SkillPage from '@/components/SkillPage';
+import ContactPage from '@/components/ContactPage';
+import WebPage from '@/components/WebPage';
+import AppPage from '@/components/AppPage';
+import OthersPage from '@/components/OthersPage';
 
 export default {
   data() {
@@ -59,7 +64,12 @@ export default {
     }
   },
   components: {
-    ProfilePage
+    ProfilePage,
+    SkillPage,
+    ContactPage,
+    WebPage,
+    AppPage,
+    OthersPage
   },
   methods: {
     change: function(num) {
@@ -143,5 +153,17 @@ export default {
   top: 2px;
   background-color: #BCB4AF;
   z-index: 1;
+}
+
+.tabNavLeft li:hover {
+  opacity: 0.5;
+}
+
+.tabNavRight li:hover {
+  opacity: 0.5;
+}
+
+.active {
+  color: #DD7021;
 }
 </style>
