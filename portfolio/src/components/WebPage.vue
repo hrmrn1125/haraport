@@ -30,7 +30,7 @@ export default {
 
 <style>
 .workPhotoWrap {
-  margin: 60px auto 38px;
+  margin: 68px auto 24px;
   width: 100%;
   height: 250px;
 }

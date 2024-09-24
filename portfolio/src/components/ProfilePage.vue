@@ -77,6 +77,7 @@ h1:before {
 h2 {
   text-align: left;
   font-size: 24px;
+  margin-bottom: 16px;
 }
 
 .GoBtn {
@@ -105,7 +106,7 @@ h2 {
 }
 
 .introPhotoWrap {
-  margin: 60px auto 38px;
+  margin: 68px auto 24px;
   z-index: 1;
 }
 
