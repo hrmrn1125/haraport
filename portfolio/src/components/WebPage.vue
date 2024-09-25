@@ -9,7 +9,9 @@
           </div>
           <img class="workPhoto" src="../assets/works/caboreco2-1.png" />
         </div>
-        <WorkWeb1 v-show="web1" @delete-Web1="deleteWeb1" />
+        <transition name="fade">
+          <WorkWeb1 v-show="web1" @delete-Web1="deleteWeb1" />
+        </transition>
         <h2>カボニューレコードフェーズ2</h2>
         <div class="textWrap">
           <a>
@@ -31,6 +33,9 @@
           </div>
           <img class="workPhoto" src="../assets/works/caboreco1-1.png" />
         </div>
+        <transition name="fade">
+          <WorkWeb2 v-show="web2" @delete-Web2="deleteWeb2" />
+        </transition>
         <h2>カボニューレコードフェーズ1</h2>
         <div class="textWrap">
           <a>
@@ -52,6 +57,9 @@
           </div>
           <img class="workPhoto" src="../assets/works/Release-1.png" />
         </div>
+        <transition name="fade">
+          <WorkWeb3 v-show="web3" @delete-Web3="deleteWeb3" />
+        </transition>
         <h2>Release株式会社/コーポレートサイト</h2>
         <div class="textWrap">
           <a>
@@ -73,6 +81,9 @@
           </div>
           <img class="workPhoto" src="../assets/works/kaihou-1.png" />
         </div>
+        <transition name="fade">
+          <WorkWeb4 v-show="web4" @delete-Web4="deleteWeb4" />
+        </transition>
         <h2>カイホウ for SPOT/LP</h2>
         <div class="textWrap">
           <a>
@@ -94,6 +105,9 @@
           </div>
           <img class="workPhoto" src="../assets/works/dezamemoLP-1.png" />
         </div>
+        <transition name="fade">
+          <WorkWeb5 v-show="web5" @delete-Web5="deleteWeb5" />
+        </transition>
         <h2>デザメモLP</h2>
         <div class="textWrap">
           <a>
@@ -115,6 +129,9 @@
           </div>
           <img class="workPhoto" src="../assets/works/front-1.png" />
         </div>
+        <transition name="fade">
+          <WorkWeb6 v-show="web6" @delete-Web6="deleteWeb6" />
+        </transition>
         <h2>フロントエンドカリキュラム(着手中)</h2>
         <div class="textWrap">
           <a>
@@ -136,6 +153,9 @@
           </div>
           <img class="workPhoto" src="../assets/works/dezamemo-1.png" />
         </div>
+        <transition name="fade">
+          <WorkWeb7 v-show="web7" @delete-Web7="deleteWeb7" />
+        </transition>
         <h2>デザメモ/Webアプリ</h2>
         <div class="textWrap">
           <a>
@@ -157,6 +177,9 @@
           </div>
           <img class="workPhoto" src="../assets/works/convicom-1.png" />
         </div>
+        <transition name="fade">
+          <WorkWeb8 v-show="web8" @delete-Web8="deleteWeb8" />
+        </transition>
         <h2>社内ポータルWebアプリ(着手中)</h2>
         <div class="textWrap">
           <a>
@@ -178,6 +201,9 @@
           </div>
           <img class="workPhoto" src="../assets/works/kensetsu-1.png" />
         </div>
+        <transition name="fade">
+          <WorkWeb9 v-show="web9" @delete-Web9="deleteWeb9" />
+        </transition>
         <h2>建設会社調達サイト</h2>
         <div class="textWrap">
           <a>
@@ -199,6 +225,9 @@
           </div>
           <img class="workPhoto" src="../assets/works/bank-1.png" />
         </div>
+        <transition name="fade">
+          <WorkWeb10 v-show="web10" @delete-Web10="deleteWeb10" />
+        </transition>
         <h2>ネット銀行マイページ</h2>
         <div class="textWrap">
           <a>
@@ -220,15 +249,42 @@
 
 <script>
 import WorkWeb1 from '@/components/WorkWeb1';
+import WorkWeb2 from '@/components/WorkWeb2';
+import WorkWeb3 from '@/components/WorkWeb3';
+import WorkWeb4 from '@/components/WorkWeb4';
+import WorkWeb5 from '@/components/WorkWeb5';
+import WorkWeb6 from '@/components/WorkWeb6';
+import WorkWeb7 from '@/components/WorkWeb7';
+import WorkWeb8 from '@/components/WorkWeb8';
+import WorkWeb9 from '@/components/WorkWeb9';
+import WorkWeb10 from '@/components/WorkWeb10';
 
 export default {
   name: 'WebPage',
   components: {
-    WorkWeb1
+    WorkWeb1,
+    WorkWeb2,
+    WorkWeb3,
+    WorkWeb4,
+    WorkWeb5,
+    WorkWeb6,
+    WorkWeb7,
+    WorkWeb8,
+    WorkWeb9,
+    WorkWeb10
   },
   data() {
     return {
-      web1: false
+      web1: false,
+      web2: false,
+      web3: false,
+      web4: false,
+      web5: false,
+      web6: false,
+      web7: false,
+      web8: false,
+      web9: false,
+      web10: false
     }
   },
   methods: {
@@ -245,31 +301,58 @@ export default {
       this.web1 = false;
     },
     goToWeb2() {
-      this.$router.push('/web2')
+      this.web2 = true;
+    },
+    deleteWeb2() {
+      this.web2 = false;
     },
     goToWeb3() {
-      this.$router.push('/web3')
+      this.web3 = true;
+    },
+    deleteWeb3() {
+      this.web3 = false;
     },
     goToWeb4() {
-      this.$router.push('/web4')
+      this.web4 = true;
+    },
+    deleteWeb4() {
+      this.web4 = false;
     },
     goToWeb5() {
-      this.$router.push('/web5')
+      this.web5 = true;
+    },
+    deleteWeb5() {
+      this.web5 = false;
     },
     goToWeb6() {
-      this.$router.push('/web6')
+      this.web6 = true;
+    },
+    deleteWeb6() {
+      this.web6 = false;
     },
     goToWeb7() {
-      this.$router.push('/web7')
+      this.web7 = true;
+    },
+    deleteWeb7() {
+      this.web7 = false;
     },
     goToWeb8() {
-      this.$router.push('/web8')
+      this.web8 = true;
+    },
+    deleteWeb8() {
+      this.web8 = false;
     },
     goToWeb9() {
-      this.$router.push('/web9')
+      this.web9 = true;
+    },
+    deleteWeb9() {
+      this.web9 = false;
     },
     goToWeb10() {
-      this.$router.push('/web10')
+      this.web10 = true;
+    },
+    deleteWeb10() {
+      this.web10 = false;
     }
   }
 }
@@ -284,6 +367,26 @@ h3 {
   font-size: 16px;
   margin: 8px 0 0 0;
   padding: 0;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.componentFade-enter-to,
+.componentFade-leave {
+  opacity: 1;
 }
 
 .workPhotoWrap {
