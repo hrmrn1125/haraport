@@ -7,7 +7,7 @@
           <div class="linkDetail">
             <span>Detail</span>
           </div>
-          <img class="workPhoto" src="../assets/works/caboreco1-1.png" />
+          <img class="workPhoto" src="../assets/works/caboreco2-1.png" />
         </div>
         <h2>カボニューレコードフェーズ2</h2>
         <div class="textWrap">

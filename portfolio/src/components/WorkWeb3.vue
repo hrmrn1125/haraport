@@ -20,7 +20,7 @@
         最近飼い始めた犬のぽむちゃん(チワズー)に夢中です。
       </a>
     </div>
-    <button class="GoBtn" @click="goTop"><span>一番上へ</span></button>
+    <button class="GoBtn" @click="backToWeb3"><span>一番上へ</span></button>
   </div>
 </div>
 </template>
@@ -29,11 +29,8 @@
 export default {
   name: 'WorkWeb3',
   methods: {
-    goTop: function() {
-      document.getElementById('profile-top').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+    backToWeb3() {
+      this.$router.push('/')
     }
   }
 }
