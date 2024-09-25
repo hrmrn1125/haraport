@@ -94,14 +94,14 @@ export default {
   position: absolute;
   top: 40px;
   left: 40px;
-  z-index: 100;
+  z-index: 3;
 }
 
 .logo {
   position: absolute;
   width: 70px;
   height: 70px;
-  z-index: 100;
+  z-index: 3;
 }
 
 .bodyWrap {

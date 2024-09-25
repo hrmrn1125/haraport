@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import TopPage from './components/TopPage.vue'
-import WorkWeb1 from './components/WorkWeb1.vue'
+import WebPage from './components/WebPage.vue'
 import WorkWeb2 from './components/WorkWeb2.vue'
 import WorkWeb3 from './components/WorkWeb3.vue'
 import WorkWeb4 from './components/WorkWeb4.vue'
@@ -18,9 +18,10 @@ const routes = [
     component: TopPage
   },
   {
-    path: '/web1',
-    name: 'WorkWeb1',
-    component: WorkWeb1
+    path: '/',
+    name: 'WebPage',
+    component: WebPage,
+    props: true
   },
   {
     path: '/web2',

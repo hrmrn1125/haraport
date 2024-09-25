@@ -9,6 +9,7 @@
           </div>
           <img class="workPhoto" src="../assets/works/caboreco2-1.png" />
         </div>
+        <WorkWeb1 v-show="web1" @delete-Web1="deleteWeb1" />
         <h2>カボニューレコードフェーズ2</h2>
         <div class="textWrap">
           <a>
@@ -218,8 +219,18 @@
 </template>
 
 <script>
+import WorkWeb1 from '@/components/WorkWeb1';
+
 export default {
   name: 'WebPage',
+  components: {
+    WorkWeb1
+  },
+  data() {
+    return {
+      web1: false
+    }
+  },
   methods: {
     goTop: function() {
       document.getElementById('work-top').scrollIntoView({
@@ -228,7 +239,10 @@ export default {
       });
     },
     goToWeb1() {
-      this.$router.push('/web1')
+      this.web1 = true;
+    },
+    deleteWeb1() {
+      this.web1 = false;
     },
     goToWeb2() {
       this.$router.push('/web2')
