@@ -7,7 +7,7 @@
           <div class="linkDetail">
             <span>Detail</span>
           </div>
-          <img class="workPhoto" src="../assets/works/caboreco-1.png" />
+          <img class="workPhoto" src="../assets/works/caboreco1-1.png" />
         </div>
         <h2>カボニューレコードフェーズ2</h2>
         <div class="textWrap">
@@ -19,7 +19,7 @@
             <h3>【使用言語・ツール】</h3>
             HTML/CSS/JavaScript/Vue.js/VS Code/Slack/Teams/Git Bash/TortoiseGit/Illustrator/Photoshop/XD/After Effects/Media Encoder/Amazon WorkSpaces/Google Analytics4<br>
             <h3>【ターゲット・テイスト】</h3>
-            幅広い年齢層に親しみやすく、キャラクターを活かして
+            幅広い年齢層に親しみやすく、キャラクターを活かして。
           </a>
         </div>
       </li>
@@ -28,7 +28,7 @@
           <div class="linkDetail">
             <span>Detail</span>
           </div>
-          <img class="workPhoto" src="../assets/works/caboreco-1.png" />
+          <img class="workPhoto" src="../assets/works/caboreco1-1.png" />
         </div>
         <h2>カボニューレコードフェーズ1</h2>
         <div class="textWrap">
@@ -40,12 +40,54 @@
             <h3>【使用言語・ツール】</h3>
             HTML/CSS/JavaScript/Vue.js/VS Code/Slack/Teams/Git Bash/TortoiseGit/Illustrator/Photoshop/XD/After Effects/Media Encoder/Amazon WorkSpaces/Google Analytics4<br>
             <h3>【ターゲット・テイスト】</h3>
-            若者向けにアプリ感強めのモダンな感じで
+            若者向けにアプリ感強めのモダンなテイストで。
           </a>
         </div>
       </li>
       <li>
         <div class="workPhotoWrap" @click="goToWeb3">
+          <div class="linkDetail">
+            <span>Detail</span>
+          </div>
+          <img class="workPhoto" src="../assets/works/Release-1.png" />
+        </div>
+        <h2>Release株式会社/コーポレートサイト</h2>
+        <div class="textWrap">
+          <a>
+            <h3>【担当範囲】</h3>
+            フルデザイン/フルライティング・校正<br>
+            <h3>【制作期間(時間)】</h3>
+            2024/5(1週間程度/業務時間外に随時着手)<br>
+            <h3>【使用言語・ツール】</h3>
+            Illustrator/Photoshop/XD/Figma<br>
+            <h3>【ターゲット・テイスト】</h3>
+            シンプルでコーディングしやすく、きちんとした印象もあるものを目指して。
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="workPhotoWrap" @click="goToWeb4">
+          <div class="linkDetail">
+            <span>Detail</span>
+          </div>
+          <img class="workPhoto" src="../assets/works/kaihou-1.png" />
+        </div>
+        <h2>カイホウ for SPOT/LP</h2>
+        <div class="textWrap">
+          <a>
+            <h3>【担当範囲】</h3>
+            フルデザイン/フルライティング・校正<br>
+            <h3>【制作期間(時間)】</h3>
+            2024/5(1週間程度/業務時間外に随時着手)<br>
+            <h3>【使用言語・ツール】</h3>
+            Illustrator/Photoshop/XD/Figma<br>
+            <h3>【ターゲット・テイスト】</h3>
+            シンプルでコーディングしやすく、きちんとした印象もあるものを目指して。
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="workPhotoWrap" @click="goToWeb5">
           <div class="linkDetail">
             <span>Detail</span>
           </div>
@@ -61,33 +103,12 @@
             <h3>【使用言語・ツール】</h3>
             HTML/CSS/JavaScript/Vue.js/Git Hub/Illustrator/Photoshop/XD/Google Analytics4<br>
             <h3>【ターゲット・テイスト】</h3>
-            デザイン初学者の若者向けに、親しみやすさと世界観を大事に
+            デザイン初学者の若者向けに、親しみやすさと世界観を大事に。
           </a>
         </div>
       </li>
       <li>
-        <div class="workPhotoWrap" @click="goToWeb4">
-          <div class="linkDetail">
-            <span>Detail</span>
-          </div>
-          <img class="workPhoto" src="../assets/works/dezamemo-1.png" />
-        </div>
-        <h2>デザメモWebアプリ</h2>
-        <div class="textWrap">
-          <a>
-            <h3>【担当範囲】</h3>
-            企画構想・要件定義/フルデザイン/フルコーディング・開発/フルライティング・校正<br>
-            <h3>【制作期間(時間)】</h3>
-            2024/4〜2024/8(業務時間外に随時着手)<br>
-            <h3>【使用言語・ツール】</h3>
-            HTML/CSS/JavaScript/Vue.js/Firebase/Illustrator/Photoshop/XD<br>
-            <h3>【ターゲット・テイスト】</h3>
-            デザイン初学者の若者向けに、親しみやすさと分かりやすさを大事に
-          </a>
-        </div>
-      </li>
-      <li>
-        <div class="workPhotoWrap" @click="goToWeb5">
+        <div class="workPhotoWrap" @click="goToWeb6">
           <div class="linkDetail">
             <span>Detail</span>
           </div>
@@ -103,12 +124,33 @@
             <h3>【使用言語・ツール】</h3>
             HTML/CSS/JavaScript/Vue.js/Illustrator/Photoshop/XD<br>
             <h3>【ターゲット・テイスト】</h3>
-            フロントエンド初学者の社員向けに、見やすさと分かりやすさを大事に
+            フロントエンド初学者の社員向けに、見やすさと分かりやすさを大事に。
           </a>
         </div>
       </li>
       <li>
-        <div class="workPhotoWrap" @click="goToWeb6">
+        <div class="workPhotoWrap" @click="goToWeb7">
+          <div class="linkDetail">
+            <span>Detail</span>
+          </div>
+          <img class="workPhoto" src="../assets/works/dezamemo-1.png" />
+        </div>
+        <h2>デザメモ/Webアプリ</h2>
+        <div class="textWrap">
+          <a>
+            <h3>【担当範囲】</h3>
+            企画構想・要件定義/フルデザイン/フルコーディング・開発/フルライティング・校正<br>
+            <h3>【制作期間(時間)】</h3>
+            2024/4〜2024/8(業務時間外に随時着手)<br>
+            <h3>【使用言語・ツール】</h3>
+            HTML/CSS/JavaScript/Vue.js/Firebase/Illustrator/Photoshop/XD<br>
+            <h3>【ターゲット・テイスト】</h3>
+            デザイン初学者の若者向けに、親しみやすさと分かりやすさを大事に。
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="workPhotoWrap" @click="goToWeb8">
           <div class="linkDetail">
             <span>Detail</span>
           </div>
@@ -124,7 +166,49 @@
             <h3>【使用言語・ツール】</h3>
             HTML/CSS/JavaScript/Vue.js/Firebase/Illustrator/Photoshop/XD/Backlog<br>
             <h3>【ターゲット・テイスト】</h3>
-            社員のお知らせ閲覧率UPやコミュニケーション増加、各種ツールの一元管理を主な目的として
+            社員のお知らせ閲覧率UPやコミュニケーション増加、各種ツールの一元管理を主な目的として。
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="workPhotoWrap" @click="goToWeb9">
+          <div class="linkDetail">
+            <span>Detail</span>
+          </div>
+          <img class="workPhoto" src="../assets/works/kensetsu-1.png" />
+        </div>
+        <h2>建設会社調達サイト</h2>
+        <div class="textWrap">
+          <a>
+            <h3>【担当範囲】</h3>
+            フルデザイン<br>
+            <h3>【制作期間(時間)】</h3>
+            2023/9<br>
+            <h3>【使用言語・ツール】</h3>
+            Illustrator/Photoshop/XD<br>
+            <h3>【ターゲット・テイスト】</h3>
+            法人向け。ページ内容等詳細を開示できないため、こちらは独自にデザイン微修正したもの。
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="workPhotoWrap" @click="goToWeb10">
+          <div class="linkDetail">
+            <span>Detail</span>
+          </div>
+          <img class="workPhoto" src="../assets/works/bank-1.png" />
+        </div>
+        <h2>ネット銀行マイページ</h2>
+        <div class="textWrap">
+          <a>
+            <h3>【担当範囲】</h3>
+            一部デザイン/一部コーディング・開発<br>
+            <h3>【制作期間(時間)】</h3>
+            2022/2〜2022/7<br>
+            <h3>【使用言語・ツール】</h3>
+            HTML/CSS/JavaScript/Vue.js/Illustrator/Photoshop/XD/Backlog<br>
+            <h3>【ターゲット・テイスト】</h3>
+            個人向け。ページ内容等詳細を開示できないため、こちらは同等の機能を独自にデザイン微改変・コーディングしたもの。CSS等あてきれていないがトップページの機能は網羅。
           </a>
         </div>
       </li>
@@ -160,6 +244,18 @@ export default {
     },
     goToWeb6() {
       this.$router.push('/web6')
+    },
+    goToWeb7() {
+      this.$router.push('/web7')
+    },
+    goToWeb8() {
+      this.$router.push('/web8')
+    },
+    goToWeb9() {
+      this.$router.push('/web9')
+    },
+    goToWeb10() {
+      this.$router.push('/web10')
     }
   }
 }

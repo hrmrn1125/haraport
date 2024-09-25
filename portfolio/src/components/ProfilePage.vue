@@ -48,6 +48,7 @@ export default {
   height: calc(100vh - 144px);
   overflow-y: scroll;
   scrollbar-width: thin;
+  overflow-x: hidden;
 }
 
 h1 {

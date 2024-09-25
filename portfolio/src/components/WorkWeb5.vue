@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: 'WorkWeb5',
+  name: 'WorkWeb8',
   methods: {
     goTop: function() {
       document.getElementById('profile-top').scrollIntoView({
