@@ -18,7 +18,7 @@
             <h3>【担当範囲】</h3>
             フルデザイン/コーダーへの指示出し・コードレビュー/一部コーディング・開発/一部ライティング・校正<br>
             <h3>【制作期間(時間)】</h3>
-            2024/2〜2024/10<br>
+            2024/2-2024/10<br>
             <h3>【使用言語・ツール】</h3>
             HTML/CSS/JavaScript/Vue.js/VS Code/Slack/Teams/Git Bash/TortoiseGit/Illustrator/Photoshop/XD/After Effects/Media Encoder/Amazon WorkSpaces/Google Analytics4<br>
             <h3>【ターゲット・テイスト】</h3>
@@ -42,7 +42,7 @@
             <h3>【担当範囲】</h3>
             フルデザイン/コーダーへの指示出し・コードレビュー/一部コーディング・開発/一部ライティング・校正<br>
             <h3>【制作期間(時間)】</h3>
-            2022/8〜2024/1<br>
+            2022/8-2024/1<br>
             <h3>【使用言語・ツール】</h3>
             HTML/CSS/JavaScript/Vue.js/VS Code/Slack/Teams/Git Bash/TortoiseGit/Illustrator/Photoshop/XD/After Effects/Media Encoder/Amazon WorkSpaces/Google Analytics4<br>
             <h3>【ターゲット・テイスト】</h3>
@@ -108,13 +108,13 @@
         <transition name="fade">
           <WorkWeb5 v-show="web5" @delete-Web5="deleteWeb5" />
         </transition>
-        <h2>デザメモLP</h2>
+        <h2>デザメモ/LP</h2>
         <div class="textWrap">
           <a>
             <h3>【担当範囲】</h3>
             企画構想・要件定義/フルデザイン/フルコーディング・開発/フルライティング・校正<br>
             <h3>【制作期間(時間)】</h3>
-            2024/6〜2024/9(業務時間外に随時着手)<br>
+            2024/6-2024/9(業務時間外に随時着手)<br>
             <h3>【使用言語・ツール】</h3>
             HTML/CSS/JavaScript/Vue.js/Git Hub/Illustrator/Photoshop/XD/Google Analytics4<br>
             <h3>【ターゲット・テイスト】</h3>
@@ -138,7 +138,7 @@
             <h3>【担当範囲】</h3>
             企画構想・要件定義/フルデザイン/フルコーディング・開発/フルライティング・校正<br>
             <h3>【制作期間(時間)】</h3>
-            2024/4〜2024/10(業務時間外に随時着手)<br>
+            2024/4-2024/10(業務時間外に随時着手)<br>
             <h3>【使用言語・ツール】</h3>
             HTML/CSS/JavaScript/Vue.js/Illustrator/Photoshop/XD<br>
             <h3>【ターゲット・テイスト】</h3>
@@ -162,7 +162,7 @@
             <h3>【担当範囲】</h3>
             企画構想・要件定義/フルデザイン/フルコーディング・開発/フルライティング・校正<br>
             <h3>【制作期間(時間)】</h3>
-            2024/4〜2024/8(業務時間外に随時着手)<br>
+            2024/4-2024/8(業務時間外に随時着手)<br>
             <h3>【使用言語・ツール】</h3>
             HTML/CSS/JavaScript/Vue.js/Firebase/Illustrator/Photoshop/XD<br>
             <h3>【ターゲット・テイスト】</h3>
@@ -186,7 +186,7 @@
             <h3>【担当範囲】</h3>
             企画構想・要件定義/フルデザイン/フルコーディング・開発/フルライティング・校正<br>
             <h3>【制作期間(時間)】</h3>
-            2024/2〜2024/10(業務時間外に随時着手)<br>
+            2024/2-2024/10(業務時間外に随時着手)<br>
             <h3>【使用言語・ツール】</h3>
             HTML/CSS/JavaScript/Vue.js/Firebase/Illustrator/Photoshop/XD/Backlog<br>
             <h3>【ターゲット・テイスト】</h3>
@@ -223,10 +223,58 @@
           <div class="linkDetail">
             <span>Detail</span>
           </div>
-          <img class="workPhoto" src="../assets/works/bank-1.png" />
+          <img class="workPhoto" src="../assets/works/convi-1.png" />
         </div>
         <transition name="fade">
           <WorkWeb10 v-show="web10" @delete-Web10="deleteWeb10" />
+        </transition>
+        <h2>株式会社CONVICTION/コーポレートサイト</h2>
+        <div class="textWrap">
+          <a>
+            <h3>【担当範囲】</h3>
+            デザイン監修<br>
+            <h3>【制作期間(時間)】</h3>
+            2023/8-2023/11<br>
+            <h3>【使用言語・ツール】</h3>
+            XD<br>
+            <h3>【ターゲット・テイスト】</h3>
+            若者向け、Web・IT業界未経験でも取っつきやすいように。これまでのイメージカラーは踏襲。
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="workPhotoWrap" @click="goToWeb11">
+          <div class="linkDetail">
+            <span>Detail</span>
+          </div>
+          <img class="workPhoto" src="../assets/works/ePro-1.png" />
+        </div>
+        <transition name="fade">
+          <WorkWeb11 v-show="web11" @delete-Web11="deleteWeb11" />
+        </transition>
+        <h2>ePro/LP</h2>
+        <div class="textWrap">
+          <a>
+            <h3>【担当範囲】</h3>
+            フルデザイン/フルライティング・校正<br>
+            <h3>【制作期間(時間)】</h3>
+            2023/5<br>
+            <h3>【使用言語・ツール】</h3>
+            Illustrator/Photoshop/XD<br>
+            <h3>【ターゲット・テイスト】</h3>
+            若者向け、Web・IT業界未経験でも取っつきやすいように。現在はカリキュラム再編に伴い取り下げ・ペンディング。
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="workPhotoWrap" @click="goToWeb12">
+          <div class="linkDetail">
+            <span>Detail</span>
+          </div>
+          <img class="workPhoto" src="../assets/works/bank-1.png" />
+        </div>
+        <transition name="fade">
+          <WorkWeb12 v-show="web12" @delete-Web12="deleteWeb12" />
         </transition>
         <h2>ネット銀行マイページ</h2>
         <div class="textWrap">
@@ -234,7 +282,7 @@
             <h3>【担当範囲】</h3>
             一部デザイン/一部コーディング・開発<br>
             <h3>【制作期間(時間)】</h3>
-            2022/2〜2022/7<br>
+            2022/2-2022/7<br>
             <h3>【使用言語・ツール】</h3>
             HTML/CSS/JavaScript/Vue.js/Illustrator/Photoshop/XD/Backlog<br>
             <h3>【ターゲット・テイスト】</h3>
@@ -258,6 +306,8 @@ import WorkWeb7 from '@/components/WorkWeb7';
 import WorkWeb8 from '@/components/WorkWeb8';
 import WorkWeb9 from '@/components/WorkWeb9';
 import WorkWeb10 from '@/components/WorkWeb10';
+import WorkWeb11 from '@/components/WorkWeb11';
+import WorkWeb12 from '@/components/WorkWeb12';
 
 export default {
   name: 'WebPage',
@@ -271,7 +321,9 @@ export default {
     WorkWeb7,
     WorkWeb8,
     WorkWeb9,
-    WorkWeb10
+    WorkWeb10,
+    WorkWeb11,
+    WorkWeb12
   },
   data() {
     return {
@@ -284,7 +336,9 @@ export default {
       web7: false,
       web8: false,
       web9: false,
-      web10: false
+      web10: false,
+      web11: false,
+      web12: false
     }
   },
   methods: {
@@ -353,6 +407,18 @@ export default {
     },
     deleteWeb10() {
       this.web10 = false;
+    },
+    goToWeb11() {
+      this.web11 = true;
+    },
+    deleteWeb11() {
+      this.web11 = false;
+    },
+    goToWeb12() {
+      this.web12 = true;
+    },
+    deleteWeb12() {
+      this.web12 = false;
     }
   }
 }
