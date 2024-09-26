@@ -180,7 +180,7 @@
         <transition name="fade">
           <WorkWeb8 v-show="web8" @delete-Web8="deleteWeb8" />
         </transition>
-        <h2>社内ポータルWebアプリ(着手中)</h2>
+        <h2>社内ポータル/Webアプリ(着手中)</h2>
         <div class="textWrap">
           <a>
             <h3>【担当範囲】</h3>
