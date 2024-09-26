@@ -79,6 +79,7 @@ h2 {
   text-align: left;
   font-size: 24px;
   margin-bottom: 16px;
+  word-break: break-all;
 }
 
 .GoBtn {
@@ -121,5 +122,25 @@ h2 {
 .textWrap {
   text-align: left;
   margin: 26px auto 0;
+}
+
+@media screen and (min-width:750px) and (max-width:879px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  h1:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    width: 34vw;
+    height: 130px;
+    top: 4px;
+    left: -68px;
+    background-image: url(../assets/img/deco-plane.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
 }
 </style>

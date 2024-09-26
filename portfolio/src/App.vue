@@ -1,6 +1,5 @@
 <template>
   <TopPage />
-  <router-view />
 </template>
 
 <script>
