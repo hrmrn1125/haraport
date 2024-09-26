@@ -93,14 +93,14 @@ h1.modalTitle:before {
 .workModal {
   width: 100vw;
   height: 100vh;
-  z-index: 4;
+  z-index: 5;
   position: fixed;
   top: 0;
   left: 0;
 }
 
 .backShadow {
-  z-index: 5;
+  z-index: 6;
   height: 100vh;
   width: 100vw;
   backdrop-filter: grayscale(60%) blur(8px);
@@ -113,7 +113,7 @@ h1.modalTitle:before {
 
 .workDetail {
   position: relative;
-  z-index: 6;
+  z-index: 7;
   width: calc(100% - 344px);
   height: calc(100vh - 120px);
   text-align: left;
@@ -165,5 +165,23 @@ h1.modalTitle:before {
   object-position: 50% 0;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+@media screen and (max-width:749px) {
+  .workDetail {
+    position: relative;
+    z-index: 7;
+    width: calc(100% - 44px);
+    height: calc(100vh - 104px);
+    text-align: left;
+    margin: 52px 6px 52px 22px;
+    padding: 0 16px 0 0;
+  }
+
+  .closeBtnWrap {
+    top: 20px;
+    right: 14px;
+    margin-top: 0;
+  }
 }
 </style>

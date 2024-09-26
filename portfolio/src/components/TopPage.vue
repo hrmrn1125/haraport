@@ -220,12 +220,14 @@ export default {
   z-index: 1;
 }
 
-.tabNavLeft li:hover {
-  opacity: 0.5;
-}
+@media (hover: hover) {
+  .tabNavLeft li:hover {
+    opacity: 0.5;
+  }
 
-.tabNavRight li:hover {
-  opacity: 0.5;
+  .tabNavRight li:hover {
+    opacity: 0.5;
+  }
 }
 
 .subMenu.active {
@@ -257,6 +259,10 @@ export default {
 }
 
 @media screen and (max-width:749px) {
+  a {
+    font-size: 14px;
+  }
+
   .bodyWrap {
     display: none;
   }
@@ -277,7 +283,7 @@ export default {
     background-color: #FFFFFF;
     border-radius: 34px;
     border: 2.4px solid #31302E;
-    z-index: 7;
+    z-index: 4;
   }
 
   .mainMenuWrap {
@@ -331,22 +337,14 @@ export default {
 
   .tabNavLeft {
     width: calc(100vw - 152px);
-    padding: 80px 74px 20px;
-    font-size: 18px;
-    font-weight: 600;
-    top: 2px;
-    background-color: #D6D6D6;
-    z-index: 1;
+    padding: 76px 74px 20px;
+    font-size: 16px;
   }
 
   .tabNavRight {
     width: calc(100vw - 152px);
-    padding: 80px 74px 20px;
-    font-size: 18px;
-    font-weight: 600;
-    top: 2px;
-    background-color: #BCB4AF;
-    z-index: 1;
+    padding: 76px 74px 20px;
+    font-size: 16px;
   }
 }
 </style>

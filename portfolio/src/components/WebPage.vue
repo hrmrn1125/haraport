@@ -494,8 +494,10 @@ h3 {
   background-repeat: no-repeat;
 }
 
-.linkDetail:hover {
-  opacity: 1;
+@media (hover: hover) {
+  .linkDetail:hover {
+    opacity: 1;
+  }
 }
 
 .workPhoto {

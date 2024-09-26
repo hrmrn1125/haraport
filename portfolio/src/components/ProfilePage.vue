@@ -99,13 +99,15 @@ h2 {
   font-weight: 600;
 }
 
-.GoBtn:hover {
-  background-color: #31302E;
-  color: #FFFFFF;
-}
+@media (hover: hover) {
+  .GoBtn:hover {
+    background-color: #31302E;
+    color: #FFFFFF;
+  }
 
-.GoBtn span:hover {
-  color: #FFFFFF;
+  .GoBtn span:hover {
+    color: #FFFFFF;
+  }
 }
 
 .introPhotoWrap {
@@ -130,16 +132,48 @@ h2 {
   }
 
   h1:before {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    width: 34vw;
     height: 130px;
     top: 4px;
     left: -68px;
-    background-image: url(../assets/img/deco-plane.png);
-    background-size: contain;
-    background-repeat: no-repeat;
+  }
+}
+
+@media screen and (max-width:749px) {
+  .mainContents {
+    margin: 100px 6px 40px 24px;
+    padding-right: 20px;
+    height: calc(100vh - 144px);
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h1:before {
+    width: 55vw;
+    height: 110px;
+    top: 10px;
+    left: -52px;
+  }
+
+  .GoBtn {
+    width: 240px;
+    height: 40px;
+    margin: 30px auto 0;
+    background-color: #31302E;
+  }
+
+  .GoBtn span {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .introPhotoWrap {
+    margin: 50px auto 24px;
     z-index: 1;
   }
 }
