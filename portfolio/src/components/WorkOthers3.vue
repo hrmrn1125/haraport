@@ -10,7 +10,7 @@
     </div>
     <div class="modalTextTop">
       <a>
-        企画/デザイン<br>
+        デザイン/ライティング<br>
       </a>
     </div>
     <div class="modalText">

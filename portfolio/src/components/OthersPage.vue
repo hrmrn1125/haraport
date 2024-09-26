@@ -75,26 +75,26 @@
         </div>
       </li>
       <li>
-        <div class="workPhotoWrap" @click="goToOthers4">
+        <div class="appPhotoWrap" @click="goToOthers4">
           <div class="linkDetail">
             <span>Detail</span>
           </div>
-          <img class="workPhoto" src="../assets/works/kaihou-1.png" />
+          <img class="workPhoto" src="../assets/works/sis-1.png" />
         </div>
         <transition name="fade">
           <WorkOthers4 v-show="others4" @delete-Others4="deleteOthers4" />
         </transition>
-        <h2>カイホウ for SPOT/LP</h2>
+        <h2>So i Source広告用画像・SNS投稿</h2>
         <div class="textWrap">
           <a>
             <h3>【担当範囲】</h3>
             フルデザイン/フルライティング・校正<br>
             <h3>【制作期間】</h3>
-            2024/5(1週間程度/業務時間外に随時着手)<br>
+            2022/8ー2023/5<br>
             <h3>【使用言語・ツール】</h3>
-            Illustrator/Photoshop/XD/Figma<br>
+            Illustrator/Photoshop/XD<br>
             <h3>【ターゲット・テイスト】</h3>
-            シンプルでコーディングしやすく、きちんとした印象もあるものを目指して。
+            デザイン・プログラミング未経験の若者向け。ゆるっと・ポップなテイスト。
           </a>
         </div>
       </li>
@@ -103,22 +103,70 @@
           <div class="linkDetail">
             <span>Detail</span>
           </div>
-          <img class="workPhoto" src="../assets/works/dezamemoLP-1.png" />
+          <img class="workPhoto" src="../assets/works/responsive-site-PC.png" />
         </div>
         <transition name="fade">
           <WorkOthers5 v-show="others5" @delete-Others5="deleteOthers5" />
         </transition>
-        <h2>デザメモ/LP</h2>
+        <h2>社内カリキュラム用デザイン</h2>
         <div class="textWrap">
           <a>
             <h3>【担当範囲】</h3>
-            企画構想・要件定義/フルデザイン/フルコーディング・開発/フルライティング・校正<br>
+            フルデザイン/フルライティング・校正<br>
             <h3>【制作期間】</h3>
-            2024/6ー2024/9(業務時間外に随時着手)<br>
+            1画面1、2時間程度<br>
             <h3>【使用言語・ツール】</h3>
-            HTML/CSS/JavaScript/Vue.js/Git Hub/Illustrator/Photoshop/XD/Google Analytics4<br>
+            Illustrator/Photoshop/XD<br>
             <h3>【ターゲット・テイスト】</h3>
-            デザイン初学者の若者向けに、親しみやすさと世界観を大事に。
+            社員がカリキュラムでコーディング練習をする際の見本を制作。シンプルで構造が理解しやすいもの。
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="appPhotoWrap" @click="goToOthers6">
+          <div class="linkDetail">
+            <span>Detail</span>
+          </div>
+          <img class="workPhoto" src="../assets/works/eigyo-1.png" />
+        </div>
+        <transition name="fade">
+          <WorkOthers6 v-show="others6" @delete-Others6="deleteOthers6" />
+        </transition>
+        <h2>営業・社内資料</h2>
+        <div class="textWrap">
+          <a>
+            <h3>【担当範囲】</h3>
+            フルデザイン/フルライティング・校正<br>
+            <h3>【制作期間】</h3>
+            1枚30分程度<br>
+            <h3>【使用言語・ツール】</h3>
+            Illustrator/Photoshop/XD<br>
+            <h3>【ターゲット・テイスト】</h3>
+            営業用の資料や、社内イベントで使うスライドを制作。会社のイメージが「楽しさあはありつつ基本落ち着いている」というイメージなので、その雰囲気を踏襲。
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="appPhotoWrap" @click="goToOthers7">
+          <div class="linkDetail">
+            <span>Detail</span>
+          </div>
+          <img class="workPhoto" src="../assets/works/banner-bank.png" />
+        </div>
+        <transition name="fade">
+          <WorkOthers7 v-show="others7" @delete-Others7="deleteOthers7" />
+        </transition>
+        <h2>ネット銀行のバナー</h2>
+        <div class="textWrap">
+          <a>
+            <h3>【担当範囲】</h3>
+            フルデザイン<br>
+            <h3>【制作期間】</h3>
+            確認等含め1日間<br>
+            <h3>【使用言語・ツール】</h3>
+            Illustrator/Photoshop/XD<br>
+            <h3>【ターゲット・テイスト】</h3>
+            実際のものは掲載できないので、同等の独自制作物を掲載。見やすさを追求。
           </a>
         </div>
       </li>
@@ -133,6 +181,8 @@ import WorkOthers2 from '@/components/WorkOthers2';
 import WorkOthers3 from '@/components/WorkOthers3';
 import WorkOthers4 from '@/components/WorkOthers4';
 import WorkOthers5 from '@/components/WorkOthers5';
+import WorkOthers6 from '@/components/WorkOthers6';
+import WorkOthers7 from '@/components/WorkOthers7';
 
 export default {
   name: 'WebPage',
@@ -141,7 +191,9 @@ export default {
     WorkOthers2,
     WorkOthers3,
     WorkOthers4,
-    WorkOthers5
+    WorkOthers5,
+    WorkOthers6,
+    WorkOthers7
   },
   data() {
     return {
@@ -150,6 +202,8 @@ export default {
       others3: false,
       others4: false,
       others5: false,
+      others6: false,
+      others7: false
     }
   },
   methods: {
@@ -188,6 +242,18 @@ export default {
     },
     deleteOthers5() {
       this.others5 = false;
+    },
+    goToOthers6() {
+      this.others6 = true;
+    },
+    deleteOthers6() {
+      this.others6 = false;
+    },
+    goToOthers7() {
+      this.others7 = true;
+    },
+    deleteOthers7() {
+      this.others7 = false;
     }
   }
 }
