@@ -353,13 +353,13 @@ body.fixed {
 
   .tabNavLeft {
     width: calc(100vw - 152px);
-    padding: 76px 74px 20px;
+    padding: 78px 74px 20px;
     font-size: 16px;
   }
 
   .tabNavRight {
     width: calc(100vw - 152px);
-    padding: 76px 74px 20px;
+    padding: 78px 74px 20px;
     font-size: 16px;
   }
 }

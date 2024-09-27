@@ -175,17 +175,22 @@ h1.modalTitle:before {
   .workDetail {
     position: relative;
     z-index: 7;
-    width: calc(100% - 48px);
+    width: calc(100% - 64px);
     height: calc(100vh - 120px);
     text-align: left;
-    margin: 60px 6px 60px 24px;
-    padding: 0 18px 0 0;
+    margin: 60px 6px 60px 32px;
+    padding: 0 26px 0 0;
   }
 
   .closeBtnWrap {
-    top: 28px;
-    right: 20px;
+    top: 32px;
+    right: 24px;
     margin-top: 0;
+    z-index: 8;
+  }
+
+  .closeBtn {
+    z-index: 8;
   }
 
   h1.modalTitle {
@@ -194,6 +199,10 @@ h1.modalTitle:before {
   }
 
   .modalTextTop {
+    margin-left: 4px;
+  }
+
+  .modalText {
     margin-left: 4px;
   }
 }

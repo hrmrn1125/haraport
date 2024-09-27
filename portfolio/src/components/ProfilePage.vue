@@ -140,7 +140,7 @@ h2 {
 
 @media screen and (max-width:749px) {
   .mainContents {
-    margin: 100px 6px 40px 24px;
+    margin: 108px 6px 40px 24px;
     padding-right: 20px;
     height: calc(100vh - 144px);
     overflow-y: scroll;
