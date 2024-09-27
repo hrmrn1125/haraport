@@ -148,6 +148,7 @@ body.fixed {
   position: relative;
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
 }
 
 .mainTab {
@@ -184,6 +185,7 @@ body.fixed {
   background-color: #D6D6D6;
   width: 50vw;
   height: calc(100vh - 4px);
+  overflow-x: hidden;
 }
 
 .rightBody {
@@ -192,6 +194,7 @@ body.fixed {
   text-align: center;
   background-color: #BCB4AF;
   width: 50vw;
+  overflow-x: hidden;
 }
 
 .tabNavLeft {
@@ -207,6 +210,7 @@ body.fixed {
   top: 2px;
   background-color: #D6D6D6;
   z-index: 1;
+  overflow-x: hidden;
 }
 
 .tabNavRight {
@@ -222,6 +226,7 @@ body.fixed {
   top: 2px;
   background-color: #BCB4AF;
   z-index: 1;
+  overflow-x: hidden;
 }
 
 @media (hover: hover) {
@@ -287,6 +292,7 @@ body.fixed {
     display: block;
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden;
   }
 
   .mainTab {
