@@ -183,9 +183,8 @@ h1.modalTitle:before {
   }
 
   .closeBtnWrap {
-    position: relative;
-    top: 32px;
-    right: 24px;
+    top: 60px;
+    right: 32px;
     margin-top: 0;
     z-index: 8;
   }
