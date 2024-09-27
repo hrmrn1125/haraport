@@ -183,5 +183,14 @@ h1.modalTitle:before {
     right: 14px;
     margin-top: 0;
   }
+
+  h1.modalTitle {
+    font-size: 24px;
+    margin-left: 0;
+  }
+
+  .modalTextTop {
+    margin-left: 4px;
+  }
 }
 </style>

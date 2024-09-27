@@ -350,75 +350,99 @@ export default {
     },
     goToWeb1() {
       this.web1 = true;
+      document.body.classList.add('fixed');
     },
     deleteWeb1() {
       this.web1 = false;
+      document.body.classList.remove('fixed');
     },
     goToWeb2() {
       this.web2 = true;
+      document.body.classList.add('fixed');
     },
     deleteWeb2() {
       this.web2 = false;
+      document.body.classList.remove('fixed');
     },
     goToWeb3() {
       this.web3 = true;
+      document.body.classList.add('fixed');
     },
     deleteWeb3() {
       this.web3 = false;
+      document.body.classList.remove('fixed');
     },
     goToWeb4() {
       this.web4 = true;
+      document.body.classList.add('fixed');
     },
     deleteWeb4() {
       this.web4 = false;
+      document.body.classList.remove('fixed');
     },
     goToWeb5() {
       this.web5 = true;
+      document.body.classList.add('fixed');
     },
     deleteWeb5() {
       this.web5 = false;
+      document.body.classList.remove('fixed');
     },
     goToWeb6() {
       this.web6 = true;
+      document.body.classList.add('fixed');
     },
     deleteWeb6() {
       this.web6 = false;
+      document.body.classList.remove('fixed');
     },
     goToWeb7() {
       this.web7 = true;
+      document.body.classList.add('fixed');
     },
     deleteWeb7() {
       this.web7 = false;
+      document.body.classList.remove('fixed');
     },
     goToWeb8() {
       this.web8 = true;
+      document.body.classList.add('fixed');
     },
     deleteWeb8() {
       this.web8 = false;
+      document.body.classList.remove('fixed');
     },
     goToWeb9() {
       this.web9 = true;
+      document.body.classList.add('fixed');
     },
     deleteWeb9() {
       this.web9 = false;
+      document.body.classList.remove('fixed');
     },
     goToWeb10() {
       this.web10 = true;
+      document.body.classList.add('fixed');
     },
     deleteWeb10() {
       this.web10 = false;
+      document.body.classList.remove('fixed');
     },
     goToWeb11() {
       this.web11 = true;
+      document.body.classList.add('fixed');
     },
     deleteWeb11() {
       this.web11 = false;
+      document.body.classList.remove('fixed');
     },
     goToWeb12() {
       this.web12 = true;
+      document.body.classList.add('fixed');
     },
     deleteWeb12() {
       this.web12 = false;
+      document.body.classList.remove('fixed');
     }
   }
 }

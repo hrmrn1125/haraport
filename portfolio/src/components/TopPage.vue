@@ -140,6 +140,10 @@ export default {
 </script>
 
 <style>
+body.fixed {
+  overflow: hidden;
+}
+
 .wrapper {
   position: relative;
   width: 100vw;
