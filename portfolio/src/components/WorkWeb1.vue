@@ -176,14 +176,14 @@ h1.modalTitle:before {
     position: relative;
     z-index: 7;
     width: calc(100% - 64px);
-    height: calc(100vh - 120px);
+    height: calc(100vh - 82px);
     text-align: left;
-    margin: 60px 6px 60px 32px;
+    margin: 32px 6px 50px 32px;
     padding: 0 26px 0 0;
   }
 
   .closeBtnWrap {
-    top: 60px;
+    top: 32px;
     right: 32px;
     margin-top: 0;
     z-index: 8;
@@ -194,8 +194,10 @@ h1.modalTitle:before {
   }
 
   h1.modalTitle {
+    width: 94%;
     font-size: 24px;
     margin-left: 0;
+    padding-top: 24px;
   }
 
   .modalTextTop {

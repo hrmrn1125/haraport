@@ -192,7 +192,7 @@ body.fixed {
   border: 2.4px solid #31302E;
   border-left: none;
   text-align: center;
-  background-color: #BCB4AF;
+  background-color: #C6BDB8;
   width: 50vw;
   overflow-x: hidden;
 }
@@ -224,7 +224,7 @@ body.fixed {
   font-size: 18px;
   font-weight: 600;
   top: 2px;
-  background-color: #BCB4AF;
+  background-color: #C6BDB8;
   z-index: 1;
   overflow-x: hidden;
 }

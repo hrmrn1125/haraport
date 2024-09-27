@@ -3,7 +3,7 @@
   <div class="backShadow" @click.self="backApp1()"></div>
   <div class="workDetail">
     <div class="flexBox">
-      <h1 class="modalTitle" id="appDetail-top1">価値観アプリ</h1>
+      <h1 class="modalTitle" id="appDetail-top1">価値観アプリ(着手中)</h1>
       <div class="closeBtnWrap" @click="backApp1()">
         <img class="closeBtn" src="../assets/img/close-white.png" />
       </div>
