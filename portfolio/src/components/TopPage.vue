@@ -263,6 +263,14 @@ body.fixed {
 }
 
 @media screen and (max-width:749px) {
+  h1 {
+    font-weight: 600;
+  }
+
+  h2 {
+    font-weight: 400;
+  }
+
   a {
     font-size: 14px;
   }
