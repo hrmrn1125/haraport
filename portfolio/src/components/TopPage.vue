@@ -268,7 +268,11 @@ body.fixed {
   }
 
   h2 {
-    font-weight: 400;
+    font-weight: 500;
+  }
+
+  h3 {
+    font-weight: 500;
   }
 
   a {

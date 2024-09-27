@@ -168,19 +168,23 @@ h1.modalTitle:before {
 }
 
 @media screen and (max-width:749px) {
+  .mobNone {
+    display: none;
+  }
+
   .workDetail {
     position: relative;
     z-index: 7;
-    width: calc(100% - 44px);
-    height: calc(100vh - 104px);
+    width: calc(100% - 48px);
+    height: calc(100vh - 120px);
     text-align: left;
-    margin: 52px 6px 52px 22px;
-    padding: 0 16px 0 0;
+    margin: 60px 6px 60px 24px;
+    padding: 0 18px 0 0;
   }
 
   .closeBtnWrap {
-    top: 20px;
-    right: 14px;
+    top: 28px;
+    right: 20px;
     margin-top: 0;
   }
 
