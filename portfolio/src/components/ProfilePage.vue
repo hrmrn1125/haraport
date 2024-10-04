@@ -99,15 +99,13 @@ h2 {
   font-weight: 600;
 }
 
-@media (hover: hover) {
-  .GoBtn:hover {
-    background-color: #31302E;
-    color: #FFFFFF;
-  }
+.GoBtn:hover {
+  background-color: #31302E;
+  color: #FFFFFF;
+}
 
-  .GoBtn span:hover {
-    color: #FFFFFF;
-  }
+.GoBtn span:hover {
+  color: #FFFFFF;
 }
 
 .introPhotoWrap {

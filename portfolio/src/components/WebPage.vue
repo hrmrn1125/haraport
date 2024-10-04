@@ -518,10 +518,8 @@ h3 {
   background-repeat: no-repeat;
 }
 
-@media (hover: hover) {
-  .linkDetail:hover {
-    opacity: 1;
-  }
+.linkDetail:hover {
+  opacity: 1;
 }
 
 .workPhoto {

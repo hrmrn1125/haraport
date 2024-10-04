@@ -229,14 +229,12 @@ body.fixed {
   overflow-x: hidden;
 }
 
-@media (hover: hover) {
-  .tabNavLeft li:hover {
-    opacity: 0.5;
-  }
+.tabNavLeft li:hover {
+  opacity: 0.5;
+}
 
-  .tabNavRight li:hover {
-    opacity: 0.5;
-  }
+.tabNavRight li:hover {
+  opacity: 0.5;
 }
 
 .subMenu.active {
