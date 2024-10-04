@@ -1,6 +1,6 @@
 <template>
   <div class="mainContents">
-    <h1 id="profile-top">Skill</h1>
+    <h1 id="skill-top">Skill</h1>
     <ul>
       <li>
         <div class="introPhotoWrap">
@@ -109,7 +109,7 @@ export default {
   name: 'SkillPage',
   methods: {
     goTop: function() {
-      document.getElementById('profile-top').scrollIntoView({
+      document.getElementById('skill-top').scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
@@ -117,7 +117,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>
