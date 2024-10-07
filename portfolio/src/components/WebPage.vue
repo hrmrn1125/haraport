@@ -1,6 +1,6 @@
 <template>
   <div class="mainContents">
-    <h1 class="decoPen" id="work-top">Web</h1>
+    <h1 class="decoPen" id="web-top">Web</h1>
     <ul>
       <li>
         <div class="workPhotoWrap" @click="goToWeb1">
@@ -343,7 +343,7 @@ export default {
   },
   methods: {
     goTop: function() {
-      document.getElementById('work-top').scrollIntoView({
+      document.getElementById('web-top').scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
