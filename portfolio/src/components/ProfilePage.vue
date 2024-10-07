@@ -34,7 +34,7 @@ export default {
     goTop: function() {
       document.getElementById('profile-top').scrollIntoView({
         behavior: 'smooth',
-        block: 'start'
+        block: 'start',
       });
     }
   }

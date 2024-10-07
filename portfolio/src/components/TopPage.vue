@@ -157,8 +157,8 @@ body.fixed {
 
 .logoWrap {
   position: absolute;
-  top: 40px;
-  left: 40px;
+  top: 36px;
+  left: 36px;
   z-index: 3;
 }
 
@@ -184,7 +184,6 @@ body.fixed {
   text-align: center;
   background-color: #D6D6D6;
   width: 50vw;
-  height: calc(100vh - 4px);
   overflow-x: hidden;
 }
 
