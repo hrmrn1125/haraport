@@ -23,6 +23,7 @@
     <div class="introPhotoWrap">
       <img class="introPhoto" src="../assets/img/pom-2.png" />
     </div>
+    <button class="GoBtn mb-only" @click="goTop"><span>一番上へ</span></button>
   </div>
 </template>
 
@@ -41,6 +42,10 @@ export default {
 </script>
 
 <style>
+.mb-only {
+  display: none;
+}
+
 .mainContents {
   margin: 104px 25px 40px 90px;
   padding-right: 65px;
@@ -136,6 +141,10 @@ h2 {
 }
 
 @media screen and (max-width:749px) {
+  .mb-only {
+    display: block;
+  }
+
   .mainContents {
     margin: 108px 6px 40px 24px;
     padding-right: 20px;

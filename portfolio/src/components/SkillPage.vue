@@ -100,6 +100,7 @@
       </li>
     </ul>
     <img class="introPhoto" src="../assets/img/pom-3.png" />
+    <button class="GoBtn mb-only" @click="goTop"><span>一番上へ</span></button>
   </div>
 </template>
 
