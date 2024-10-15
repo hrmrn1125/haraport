@@ -23,7 +23,6 @@
     <div class="introPhotoWrap">
       <img class="introPhoto" src="../assets/img/pom-2.png" />
     </div>
-    <button class="GoBtn" @click="goTop"><span>一番上へ</span></button>
   </div>
 </template>
 
