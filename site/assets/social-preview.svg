@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#e9edf0"/>
+  <g fill="#233d54" font-family="Helvetica Neue,Arial,sans-serif" font-size="15" letter-spacing="2.2">
+    <text x="52" y="49">PORTFOLIO</text>
+    <text x="1148" y="49" text-anchor="end" font-size="13">WEB / UI / UX / CONVERSATION</text>
+  </g>
+  <g fill="none" stroke="#97a8b2" stroke-width="1.15">
+    <ellipse cx="944" cy="327" rx="141" ry="206" transform="rotate(-30 944 327)"/>
+    <ellipse cx="944" cy="327" rx="141" ry="206" transform="rotate(48 944 327)"/>
+  </g>
+  <circle cx="1000" cy="251" r="111" fill="#b96d4e"/>
+  <g fill="#233d54" font-family="Georgia,Times New Roman,serif" font-size="190" letter-spacing="-12">
+    <text x="48" y="274">Marina</text>
+    <text x="250" y="437" font-style="italic">Hara<tspan fill="#b96d4e">.</tspan></text>
+  </g>
+  <g fill="#7a8c96" font-family="Georgia,Times New Roman,serif" transform="translate(888 515) rotate(-10)">
+    <text font-size="26">a little</text>
+    <text y="34" font-size="32" font-style="italic">playfulness.</text>
+  </g>
+  <path d="M-42 549 C-24 499 20 503 50 558 L94 636" fill="none" stroke="#718995" stroke-width="1.1"/>
+  <text x="52" y="586" fill="#61717b" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" letter-spacing="1.4">MARINA HARA</text>
+</svg>
