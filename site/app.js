@@ -35,7 +35,7 @@ dialog.addEventListener('close',()=>{document.body.style.overflow='';});dialog.a
 function openCx(){const w=works.find(item=>item.id==='cx');if(!w)return;appendWorkHeader({...w,title:'AIチャットボットのシナリオ設計・開発'});show();}
 document.querySelector('#cx-open').addEventListener('click',openCx);
 document.querySelector('#copy-email').addEventListener('click',async()=>{const status=document.querySelector('#copy-status');try{await navigator.clipboard.writeText('hm.hzm331@gmail.com');status.textContent='コピーしたよ';}catch{status.textContent='コピーできなかったため、メールアドレスを選択してコピーしてください。';}});
-Promise.all(['works.json','work-details.json'].map(path=>fetch(path+'?v=7').then(r=>{if(!r.ok)throw Error('作品データの読み込みに失敗');return r.json();}))).then(([data,details])=>{
+Promise.all(['works.json','work-details.json'].map(path=>fetch(path+'?v=10').then(r=>{if(!r.ok)throw Error('作品データの読み込みに失敗');return r.json();}))).then(([data,details])=>{
 works=data.map(w=>({...w,...revised[w.id],...details[w.id]}));
 works.push({id:'cx',title:'AIチャットボットの会話設計',category:'CX',images:[],role:'会話・UI設計 / 開発 / テスト / 運用保守 / 標準化・効率化',dimensions:{},startedAt:'2024-12',period:'2024.12 — 現在',...details.cx});
 works.sort((a,b)=>(b.startedAt||'').localeCompare(a.startedAt||''));render();
