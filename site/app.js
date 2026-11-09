@@ -1,28 +1,46 @@
 'use strict';
 const grid=document.querySelector('#work-grid'),dialog=document.querySelector('#detail'),content=document.querySelector('#detail-content');
 let works=[],filter='All',expanded=false;
-const revised={
-web1:{title:'カボニューレコード / フェーズ2',body:'カーボンニュートラルに貢献する活動を記録するWebアプリ。サービス開始前から参画し、デザイナー1名体制でフルデザインを担当しました。\n\nユーザー分析を踏まえ、キャラクターと世界観を重視する方向へ見直し。幅広いユーザーが「自分にできることから始められる」体験を目指し、デザイン・機能の案出しや進め方の整理を行いました。'},
-web7:{title:'デザメモ / 教育Webアプリ',body:'社内外向けにデザインカリキュラムをパッケージ化したWebアプリです。\n\n初学者に伝わるよう、学んだ知識と実務経験を言語化。キャラクターやメモを意識した表現で、親しみやすく学べる世界観を組み立てました。異なる内容を持つ50ページ以上のコンテンツを制作しました。\n\n担当：企画構想・要件定義、デザイン、コーディング・開発、ライティング・校正。\n期間：2024年4月〜9月。\n使用技術：Vue.js、Firebase、HTML、CSS、JavaScriptなど。\n\n※ 一部デザインを掲載しています。'},
-web12:{body:'ネット銀行のマイページ開発に参画。銀行から提示されたデザイン案を基に、Vue.jsでの実装とUI改善を担当しました。\n\n見出しの装飾が画面ごとに異なる点など、意図を確認しながら修正できる箇所を提案。画面イメージや質問をExcelにまとめて共有し、機能を設計書に整理しました。\n\nAPIの完成を待つ間に進められる実装を先行するなど、チームの進行を見据えた進め方を意識しました。\n\n※ 実案件の画面は非公開です。掲載画像は、同等の機能を独自にデザイン改変・実装した再現制作です。'},
-web6:{title:'フロントエンドカリキュラム',body:'フロントエンド初学者の社員に向けたカリキュラムを作成し、社内教育を担当しました。カリキュラムの外販にも携わっています。\n\n見やすさとわかりやすさを重視し、「読めばわかる資料」を目指して内容を整理しました。\n\n担当：企画構想・要件定義、カリキュラム作成、社員教育、ライティング・校正。\n時期：2024年4月〜（SES在籍時）。\n\n※ 掲載素材・制作状況は2024年時点のものです。'},
-web8:{title:'社内ポータル / Webアプリ',body:'社内向けの情報をまとめるWebアプリの企画・デザイン・開発に着手しました。社員が必要な情報にアクセスできるよう、情報のまとまりと導線を検討しました。\n\n※ 掲載は2024年時点の制作途中のデザインです。現在稼働中のサービスを示すものではありません。'},
-app1:{title:'価値観アプリ / UIデザイン',body:'思考の整理と、それを癒すイメージを軸に、シンボルマークや背景のグラデーションを制作しました。\n\n※ 掲載は2024年時点の制作途中のデザインです。'}
-};
+const revised={web1:{title:'カボニューレコード / フェーズ2'},web7:{title:'デザメモ / 教育Webアプリ'},web6:{title:'フロントエンドカリキュラム'},web8:{title:'社内ポータル / Webアプリ'},app1:{title:'価値観アプリ / UIデザイン'}};
 function el(tag,text,className){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;}
 function render(){const selected=works.filter(w=>filter==='All'||w.category===filter);const shown=expanded?selected:selected.slice(0,6);grid.replaceChildren();for(const w of shown){const b=el('button',undefined,'work-card');b.type='button';b.setAttribute('aria-label',w.title+'の詳細を見る');const box=el('div',undefined,'work-image');if(w.id==='cx'){box.classList.add('cx-thumb');box.append(el('span','Conversation','cx-word'));for(const cl of ['bubble','bubble outline']){const bubble=el('div',undefined,cl);bubble.setAttribute('aria-hidden','true');for(let n=0;n<3;n++)bubble.append(el('i'));box.append(bubble);}box.append(el('span','AI / SCENARIO DESIGN','cx-foot'));}if(w.images[0]){const img=el('img');img.src='assets/'+w.images[0];img.alt=w.title+'の制作画面';img.loading='lazy';box.append(img);}const meta=el('div',undefined,'card-meta');meta.append(el('span',(w.category==='CX'?'Conversation':w.category)+(w.startedAt?' / '+w.startedAt.replace('-','.') : '')),el('span','↗'));b.append(box,meta,el('h3',w.title));b.addEventListener('click',()=>openWork(w));grid.append(b);}document.querySelector('#show-more').hidden=expanded||selected.length<=6;document.querySelector('#work-count').textContent=`${selected.length}件中${shown.length}件を表示`}
 function show(){dialog.showModal();document.body.style.overflow='hidden';content.scrollTop=0;}
 function appendParagraphs(parent,text){for(const block of text.split(/\n\s*\n/)){const t=block.replace(/\s*\n\s*/g,'').trim();if(t)parent.append(el('p',t,'detail-paragraph'));}}
-function openWork(w){if(w.id==='cx'){openCx();return;}const heading=el('h2',w.title);heading.id='detail-title';content.replaceChildren(el('span',w.category,'eyebrow'),heading,el('p',w.role,'sub'));if(w.period)content.append(el('p','制作期間：'+w.period+(w.id==='cx'?'現在':''),'sub'));appendParagraphs(content,w.body);appendWorkDetails(w);const gallery=el('div',undefined,'gallery');for(const [i,name]of w.images.entries()){const dim=w.dimensions[name];const figure=el('figure');figure.style.setProperty('--native-width',dim.width+'px');if(dim.width>800||dim.width/dim.height>1.35)figure.classList.add('wide');const link=el('a');link.href='assets/full/'+name;link.target='_blank';link.rel='noopener noreferrer';link.setAttribute('aria-label',w.title+' 制作画面 '+(i+1)+'を元のサイズで開く');const img=el('img');img.src=link.href;img.alt=w.title+' 制作画面 '+(i+1);img.width=dim.width;img.height=dim.height;img.loading='lazy';link.append(img);figure.append(link,el('figcaption','制作画面 '+(i+1)+' / タップで元のサイズを表示'));gallery.append(figure);}content.append(gallery);show();}
+function appendWorkHeader(w){
+const heading=Object.assign(el('h2',w.title),{id:'detail-title'});
+content.replaceChildren(el('span',w.category==='CX'?'CX / CONVERSATION DESIGN':w.category,'eyebrow'),heading,el('p',w.intro,'work-intro'));
+const facts=el('dl',undefined,'work-facts');
+for(const [label,value] of [['制作期間',w.period],['担当',w.role],['事業・制作規模',w.scope]]){
+if(value){const row=el('div');row.append(el('dt',label),el('dd',value));facts.append(row);}}
+content.append(facts);
+for(const section of w.sections||[])appendSection(content,section);
+}
+function openWork(w){
+if(w.id==='cx'){openCx();return;}
+appendWorkHeader(w);
+const gallery=el('div',undefined,'gallery');
+for(const [i,name]of w.images.entries()){
+const dim=w.dimensions[name],figure=el('figure');figure.style.setProperty('--native-width',dim.width+'px');
+if(dim.width>800||dim.width/dim.height>1.35)figure.classList.add('wide');
+const link=el('a');link.href='assets/full/'+name;link.target='_blank';link.rel='noopener noreferrer';link.setAttribute('aria-label',w.title+' 制作画面 '+(i+1)+'を元のサイズで開く');
+const img=el('img');img.src=link.href;img.alt=w.title+' 制作画面 '+(i+1);img.width=dim.width;img.height=dim.height;img.loading='lazy';
+link.append(img);figure.append(link,el('figcaption','制作画面 '+(i+1)+' / タップで元のサイズを表示'));gallery.append(figure);
+}
+if(w.images.length)content.append(el('h3','制作画面','gallery-heading'),gallery);
+show();
+}
 for(const b of document.querySelectorAll('[data-filter]'))b.addEventListener('click',()=>{filter=b.dataset.filter;expanded=false;for(const x of document.querySelectorAll('[data-filter]'))x.setAttribute('aria-pressed',String(x===b));render();});
 document.querySelector('#show-more').addEventListener('click',()=>{expanded=true;render();});
 dialog.addEventListener('close',()=>{document.body.style.overflow='';});dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
-function openCx(){content.replaceChildren(el('span','CX / CONVERSATION DESIGN','eyebrow'),Object.assign(el('h2','AIチャットボットのシナリオ設計・開発'),{id:'detail-title'}),el('p','2024年12月〜現在 / Figma・FigJam・ChatGPT・社内独自ツール','sub'));
-appendParagraphs(content,'コールセンターの受付業務を担うAIチャットボットのプロジェクトに参画。業務の理解からシナリオ・UI設計、開発、テスト、運用保守・改善提案まで担当しています。\n\n営業・エンジニア・PM・デザイナー・QA・CSが各1名のチームで連携しながら、プロジェクトを進めています。');
-for(const [title,text]of [['シナリオ・UI設計','PDF・Excelの業務マニュアルを読み解き、業務フローを会話へ落とし込みます。通常の回答に加え、エラー・聞き直し・有人転送の条件を設計。FigJamでノードを管理し、Figmaで会話UIを作成しています。'],['開発・LLM活用・TTS調整','社内独自ツールを用いてチャットボットを開発。LLMを活用したシナリオ作成の効率化と、音声応答のTTSの読み・抑揚の調整も行っています。'],['テスト・運用保守・改善提案','到達できないノード、番号の重複や欠落、分岐のループ、聞き直し上限などを検証。チームで連携し、リリース後の運用保守や改善提案まで取り組んでいます。'],['メンバー育成','部下約2名の育成も担当。日々の業務を通じた指導やサポートを行っています。'],['個人開発 / フロー自動生成プラグイン','ChatGPTが出力したフローJSONから、FigJam上に付箋とコネクタを自動生成するプラグインを自作。番号ルールの自動適用と、到達できないノードの警告機能を実装しました。']]){const d=el('details');d.append(el('summary',title),el('p',text));d.open=true;content.append(d);}content.append(el('p','※ 守秘のため、実際の画面やシナリオ本文は掲載していません。担当業務と進め方を紹介しています。','sub'));show();}
+function openCx(){const w=works.find(item=>item.id==='cx');if(!w)return;appendWorkHeader({...w,title:'AIチャットボットのシナリオ設計・開発'});show();}
 document.querySelector('#cx-open').addEventListener('click',openCx);
 document.querySelector('#copy-email').addEventListener('click',async()=>{const status=document.querySelector('#copy-status');try{await navigator.clipboard.writeText('hm.hzm331@gmail.com');status.textContent='コピーしたよ';}catch{status.textContent='コピーできなかったため、メールアドレスを選択してコピーしてください。';}});
-fetch('works.json?v=5').then(r=>{if(!r.ok)throw Error('作品データの読み込みに失敗');return r.json()}).then(data=>{works=data.map(w=>({...w,...revised[w.id]}));works.push({id:'cx',title:'AIチャットボットの会話設計',category:'CX',images:[],role:'会話設計 / 会話UI / LLM活用',body:'',dimensions:{},startedAt:'2024-12',period:'2024.12 — 現在'});works.sort((a,b)=>(b.startedAt||'').localeCompare(a.startedAt||''));render();}).catch(()=>{grid.append(el('p','作品を読み込めませんでした。ページを再読み込みしてください。'));document.querySelector('#show-more').hidden=true;});
+Promise.all(['works.json','work-details.json'].map(path=>fetch(path+'?v=7').then(r=>{if(!r.ok)throw Error('作品データの読み込みに失敗');return r.json();}))).then(([data,details])=>{
+works=data.map(w=>({...w,...revised[w.id],...details[w.id]}));
+works.push({id:'cx',title:'AIチャットボットの会話設計',category:'CX',images:[],role:'会話・UI設計 / 開発 / テスト / 運用保守 / 標準化・効率化',dimensions:{},startedAt:'2024-12',period:'2024.12 — 現在',...details.cx});
+works.sort((a,b)=>(b.startedAt||'').localeCompare(a.startedAt||''));render();
+}).catch(()=>{grid.append(el('p','作品を読み込めませんでした。ページを再読み込みしてください。'));document.querySelector('#show-more').hidden=true;});
+
 
 const careerDetails={
 sales:{title:'人材営業',label:'CAREER / 2018.04 — 2021.07',intro:'パーソルキャリア株式会社で、法人向け人材紹介（RA）とスカウトメール配信（HA）を担当しました。',sections:[
@@ -39,10 +57,3 @@ function appendSection(parent,data){const section=el('section',undefined,'modal-
 for(const b of document.querySelectorAll('[data-career]'))b.addEventListener('click',()=>{const d=careerDetails[b.dataset.career];const title=Object.assign(el('h2',d.title),{id:'detail-title'});content.replaceChildren(el('span',d.label,'eyebrow'),title,el('p',d.intro));for(const section of d.sections)appendSection(content,section);show();});
 document.querySelector('#about-more').addEventListener('click',()=>{content.replaceChildren(el('span','ABOUT / SKILLS & QUALIFICATIONS','eyebrow'),Object.assign(el('h2','スキル・資格'),{id:'detail-title'}));const list=el('dl',undefined,'profile-list');for(const [label,text]of [['会話・コンテンツ設計','チャットボットシナリオ設計、会話UI設計、LLM活用、TTS調整、ライティング・校正、教育資料・カリキュラム作成'],['デザイン','Figma / FigJam / Illustrator / Photoshop / XD / After Effects / CapCut'],['開発','HTML / CSS / JavaScript / jQuery / Vue.js / Firebase / Git / Backlog / Google Analytics 4'],['学歴','明治大学 文学部 文学科 日本文学専攻 卒業（2018年3月）'],['資格','中学校・高等学校教諭一種免許（国語）、普通自動車第一種運転免許（いずれも2018年3月）。東京商工会議所 カラーコーディネーター検定 アドバンスクラス（2024年7月）']])list.append(el('dt',label),el('dd',text));content.append(list);show();});
 
-function appendWorkDetails(w){
-if(w.id==='web1'||w.id==='web2'){
-appendSection(content,{title:'担当範囲・プロジェクト体制',bullets:['クライアントへのヒアリング、要件・機能・デザインの提案（ワイヤーフレーム〜カンプ）。','コーダーへの指示出し、一部コーディング・開発、ライティング・文字校正。','週1回の会議を主催し、クライアントやPMと仕様・デザインについて意見交換。'],body:'プロジェクト全体では要件定義・開発・運用保守を担当。PM・PM補佐・SE・コーダー・デザイナーによる9名のチームで、デザイナーは1名でした。',note:'体制・会議・サービス規模は、2024年10月時点の職務経歴書に基づくプロジェクト全体の情報です。'});
-appendSection(content,{title:'実績と取り組み',fact:'サービス全体の利用者数：約40万人 / 新規登録：1日平均60〜70人（2024年10月時点）',body:'仕様変更の多いアジャイル開発に対応しながら、見た目のテイストだけでなく、ペルソナとサービスの目的に立ち返って提案することを重視しました。',note:'利用者数はサービスの規模を示すもので、自身の施策単独による獲得数ではありません。'});
-}
-if(w.id==='web12')appendSection(content,{title:'担当フェーズ・開発体制',bullets:['詳細設計・UI設計、プログラムコーディング、単体テスト、運用保守・メンテナンス。','HTML・CSS・JavaScript・Vue.jsを使用。GitLab・JIRAでチームと連携。'],body:'PM1名・SE5名の6名体制で開発しました。'});
-}
