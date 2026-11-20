@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#181817">
 <meta name="description" content="原茉利奈のUI・UX、Webデザイン、AIチャットボットの実績を、3Dの書店で閲覧できるポートフォリオ。">
-<title>余白書店｜原 茉利奈のポートフォリオ</title>
+<title>原書店｜原 茉利奈のポートフォリオ</title>
 <style>
 :root{--paper:#f4f0e8;--ink:#1d1e1b;--muted:#61645e;--line:rgba(255,255,255,.12);--accent:#b66145;--dark:#111311;--panel:rgba(17,19,17,.62);}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;background:#151514;color:var(--paper)}a,button{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:2px solid #fff;outline-offset:4px}
@@ -111,6 +111,43 @@
 @media(max-width:380px){.page{padding:20px 10px 16px}.flip-face{padding:20px 10px 16px}.shelf-label{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.flip-sheet{transition:none}.book-ready .book-cover-leaf{animation:coverOpen .01ms forwards}}
 
+
+/* Gallery navigation / 2026-11-20 */
+.brand{text-align:left;align-items:center}.brand-mark{flex-shrink:0;display:grid;place-items:center}
+.brand-text{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+.brand-text strong,.brand-text span{text-align:left}
+.intro h1{font-size:clamp(35px,6.3vw,70px)}
+.shelf-menu{grid-template-columns:1fr;max-width:740px;left:50%;right:auto;width:calc(100% - 32px);transform:translate(-50%,16px);gap:10px}
+.shelf-menu.show{transform:translate(-50%,0)}
+.shelf-kicker{font-size:10px;letter-spacing:.18em;color:#f0dfd2;text-shadow:0 1px 8px #0009}
+.shelf-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.shelf-category{border:1px solid #fff3;background:#111b;color:#fff;min-height:41px;padding:10px 5px;border-radius:5px;font-size:12px;letter-spacing:.03em}
+.shelf-category.active{background:#ede3d4;color:#332d27;border-color:#ede3d4}
+.shelf-group{padding:12px 18px}.spine-row{justify-content:flex-start}
+@media(max-width:860px){
+ .shelf-menu{left:50%;right:auto;width:calc(100% - 24px);bottom:max(12px,env(safe-area-inset-bottom));gap:7px}
+ .shelf-kicker{display:none}.shelf-strip{gap:5px}.shelf-category{font-size:11px;min-height:36px}
+ .shelf-group{padding:10px 14px}
+ .intro h1{font-size:clamp(38px,8.7vw,59px);line-height:1.45}
+ .book-spread{display:block;overflow:hidden;min-height:0}
+ .book-spread:before{left:auto;right:7%;width:14px;z-index:3;display:block}
+ .page{height:min(73dvh,680px);min-height:0;padding:clamp(23px,7vw,42px) clamp(22px,7vw,42px);overflow:hidden}
+ .page-left{width:93%;position:relative;z-index:1;box-shadow:inset -8px 0 16px #6d4f3324}
+ .page-right{position:absolute;top:0;bottom:0;right:0;width:8%;padding:0;z-index:0;opacity:.9}
+ .page-right .page-inner{visibility:hidden}
+ .paper-title{font-size:clamp(24px,6.4vw,38px)}
+ .paper-heading{font-size:clamp(20px,5.7vw,28px)}
+ .paper-lead,.paper-paragraph,.paper-list{font-size:clamp(12px,3.1vw,15px);line-height:1.98}
+ .facts{grid-template-columns:70px 1fr;gap:8px 12px;font-size:clamp(11px,2.9vw,14px)}
+ .facts dt{margin:0}
+ .paper-eyebrow{font-size:10px}.preview{max-height:260px}
+ .flip-sheet.forward{left:0;right:auto;width:93%;transform-origin:left center}
+ .flip-sheet.backward{left:0;right:auto;width:93%;transform-origin:right center}
+ .flip-face{padding:clamp(23px,7vw,42px) clamp(22px,7vw,42px)}
+ .book-cover-leaf{left:0;right:auto;width:93%;transform-origin:left center}
+ .book-controls{margin-top:14px}
+}
+
 </style>
 </head>
 <body>
@@ -118,28 +155,30 @@
 <div id="film"></div>
 <header class="site-header">
   <button class="brand" id="homeBrand" aria-label="入口に戻る">
-    <span class="brand-mark">余</span>
-    <span class="brand-text"><strong>余白書店</strong><span>MARINA HARA · 3D PORTFOLIO</span></span>
+    <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8v24M20 11C14 7 8 8 5 10v20c5-2 10-1 15 3 5-4 10-5 15-3V10c-6-2-11-1-15 1Z"/><path d="M9 15c3-1 5 0 7 1M24 16c3-2 5-2 7-1M9 21c3-1 5 0 7 1M24 22c3-2 5-2 7-1"/></svg></span>
+    <span class="brand-text"><strong>原書店</strong><span>MARINA HARA · PORTFOLIO</span></span>
   </button>
   <a class="header-link" href="https://hrmrn1125.github.io/haraport/" target="_blank" rel="noopener">元のポートフォリオ ↗</a>
 </header>
 <section class="intro" id="intro">
   <div class="intro-inner">
-    <h1>作品を、<br>ひらく。</h1>
-    <p>実績と経歴を収めた、3Dの書店。</p>
-    <button class="enter-btn" id="enter">書店に入る</button>
+    <h1>触れて、読んで、<br>確かめて。</h1>
+    <p>実績と経歴のすべてを収蔵。</p>
+    <button class="enter-btn" id="enter">入店する</button>
   </div>
 </section>
-<aside class="shelf-menu" id="shelfMenu" aria-label="本棚一覧">
-  <section class="shelf-group">
-    <div class="shelf-label">実績の棚</div>
-    <div class="spine-row" id="workShelf"></div>
+<aside class="shelf-menu" id="shelfMenu" aria-label="ジャンル別の本棚">
+  <div class="shelf-kicker">ARCHIVE COLLECTION · ジャンルから選ぶ</div>
+  <div class="shelf-strip" id="shelfCategories">
+    <button class="shelf-category active" data-category="web">Webの棚</button>
+    <button class="shelf-category" data-category="app">Appの棚</button>
+    <button class="shelf-category" data-category="cx">CXの棚</button>
+    <button class="shelf-category" data-category="career">経歴の棚</button>
+  </div>
+  <section class="shelf-group" aria-label="選択中の棚">
+    <div class="shelf-label" id="shelfTitle">Webの棚</div>
+    <div class="spine-row" id="activeShelf"></div>
   </section>
-  <section class="shelf-group">
-    <div class="shelf-label">経歴の棚</div>
-    <div class="spine-row" id="careerShelf"></div>
-  </section>
-  
 </aside>
 <div class="statusline" aria-hidden="true"><strong id="chapterNumber">00</strong><div id="chapterTitle">ENTRANCE<span>入口 / はじめに</span></div></div>
 <div id="detail" aria-hidden="true">
@@ -150,7 +189,7 @@
     <section class="page page-left"><div class="page-inner" id="pageLeft"></div></section>
     <section class="page page-right"><div class="page-inner" id="pageRight"></div></section>
     <div class="flip-sheet" id="flipSheet" aria-hidden="true"><div class="flip-face flip-front" id="flipFront"></div><div class="flip-face flip-back" id="flipBack"></div></div>
-    <div class="book-cover-leaf" aria-hidden="true"><span>余白書店<small>MARINA HARA · COLLECTION</small></span></div>
+    <div class="book-cover-leaf" aria-hidden="true"><span>原書店<small>MARINA HARA · COLLECTION</small></span></div>
    </article>
    <nav class="book-controls" aria-label="本のページをめくる">
     <button id="prevPage" aria-label="前のページへ">←</button>
@@ -169,8 +208,8 @@ const gl = canvas.getContext('webgl', {alpha:false, antialias:true, powerPrefere
 const $ = id => document.getElementById(id);
 const intro = $('intro'), shelfMenu = $('shelfMenu'), detail = $('detail');
 const items = [{"id": "work-cx", "type": "work", "title": "AIチャットボットの会話設計・開発", "spine": "チャットボット", "en": "CONVERSATION", "category": "CX / AI", "period": "2024.12 —", "role": "CXデザイン / シナリオ設計 / UI設計 / 開発 / テスト / 運用改善", "scope": "営業・PM・エンジニア・デザイナー・QA・CSと連携", "color": "#a85c47", "side": 1, "z": 3.6, "desc": "AIチャットボットのCXデザイナーとして、シナリオ・UI設計から開発、テスト、運用改善まで担当。利用者が迷わず案内を進められることと、公開後の品質改善を重視しています。", "tags": ["CX DESIGN", "AI CHATBOT", "SCENARIO", "UI DESIGN"], "image": "", "link": "https://hrmrn1125.github.io/haraport/", "sections": [{"title": "担当範囲", "body": "PDF・Excelのマニュアル読解、業務フロー整理、シナリオと会話UIの設計。要件定義・仕様調整、テスト観点の整理、公開後の改善まで一貫して担当。"}, {"title": "大切にしていること", "bullets": ["利用者が迷わず次の行動に進める会話構造にする。", "開発・運用のしやすさも考え、実装者とズレない仕様に落とし込む。", "公開後のログや問い合わせ状況を見て改善を回す。"]}, {"title": "補足", "body": "コールセンター代替のチャットボット制作にも携わり、業務フローの整理と会話体験の設計を強みとしています。"}]}, {"id": "work-web1", "type": "work", "title": "カボニューレコード｜フェーズ2", "spine": "カボニュー2", "en": "RE-DESIGN", "category": "WEB / UI", "period": "2024.02 — 2024.10", "role": "デザイン / コードレビュー / コーディング / 開発 / ライティング", "scope": "一般利用者向けWebアプリ / 9名体制・デザイナー1名", "color": "#60776d", "side": 1, "z": 1.9, "desc": "エコ活動記録Webアプリのリニューアル。ユーザー分析を踏まえ、コンセプトとキャラクターの見せ方を見直したフェーズ。", "tags": ["WEB APP", "UI DESIGN", "CODE REVIEW"], "image": "https://hrmrn1125.github.io/haraport/assets/caboreco2-1.jpg", "link": "https://hrmrn1125.github.io/haraport/", "sections": [{"title": "背景・ねらい", "body": "「エコを知り、環境貢献行動を増やす」から、「自分にできることから始め、十分にエコ活動ができていないという罪悪感を軽減する」へと、より広い層に届くコンセプトへ転換。"}, {"title": "担当範囲", "bullets": ["ヒアリング、要件・機能・デザイン提案、ワイヤー〜カンプ制作。", "サービス全体のデザイン、コードレビュー、一部コーディング・開発、ライティング。", "仕様やデザインのすり合わせ、UI定例の主催。"]}, {"title": "成果・取り組み", "body": "キャラクターと親しみやすさを軸とした表現へ刷新。見た目だけでなく、利用者が無理なく行動を始められる体験へつなげた。"}]}, {"id": "work-web2", "type": "work", "title": "カボニューレコード｜フェーズ1", "spine": "カボニュー1", "en": "SERVICE UI", "category": "WEB / UI", "period": "2022.08 — 2024.01", "role": "デザイン / コードレビュー / コーディング / 開発 / ライティング", "scope": "一般利用者向けWebアプリ / 9名体制・デザイナー1名", "color": "#c39a6c", "side": 1, "z": 0.2, "desc": "エコ活動を記録するWebアプリの立ち上げ・初期デザイン。サービス開始前からデザイナー1名体制で参画。", "tags": ["SERVICE DESIGN", "WEB APP", "UI"], "image": "https://hrmrn1125.github.io/haraport/assets/caboreco1-1.jpg", "link": "https://hrmrn1125.github.io/haraport/", "sections": [{"title": "ねらい", "body": "環境貢献活動を知り、日常の行動を記録できるサービスを制作。アプリらしいシンプルなUIで情報や機能を分かりやすく見せることを目指した。"}, {"title": "担当範囲", "bullets": ["サービス全体のデザイン、ワイヤーフレーム〜カンプ、デザイン・機能の提案。", "ヒアリング、UI定例の主催、コーダーへの指示・コードレビュー。", "一部コーディング・開発、ライティング・校正、運用保守。"]}, {"title": "成果・学び", "body": "立ち上げ前からサービス全体デザインを担当。アジャイル開発での進め方、チーム開発、利用動向を踏まえたUI検討を経験。"}]}, {"id": "work-web5", "type": "work", "title": "デザメモ｜LP", "spine": "デザメモLP", "en": "LANDING PAGE", "category": "WEB / UI", "period": "2024.06 — 2024.09", "role": "企画 / デザイン / コーディング / 開発 / ライティング", "scope": "社内外向け教育サービス / 若いデザイン初学者向けLP", "color": "#b89b83", "side": 1, "z": -1.5, "desc": "デザイン学習サービス「デザメモ」を紹介するLP。企画からデザイン・実装・文章制作まで担当。", "tags": ["LP", "PLANNING", "FRONT-END"], "image": "https://hrmrn1125.github.io/haraport/assets/dezamemoLP-1.jpg", "link": "https://hrmrn1125.github.io/haraport/", "sections": [{"title": "ねらい", "body": "若い初学者が親しみを感じ、サービスを理解して購入を検討できるページを目指した。上から読み進める順序に沿って、興味・理解・購入の後押しにつながるストーリーを設計。"}, {"title": "意識したこと", "bullets": ["黄色をベースに、メモや付箋をイメージしたポップな世界観を構築。", "利用者が重視する情報から読み始め、最後に購入を後押しする順で配置。", "LPとカリキュラム本体の世界観を揃えた。"]}, {"title": "成果・反応", "body": "公開後、社内の若手社員からデザインに対する好意的な反応を複数得た。"}]}, {"id": "work-web3", "type": "work", "title": "Release株式会社｜企業サイト", "spine": "企業サイト", "en": "CORPORATE", "category": "WEB / UI", "period": "2024.05", "role": "デザイン / ライティング", "scope": "介護DX事業者の企業サイト / 採用・企業理解・問い合わせ", "color": "#5b6775", "side": 1, "z": -3.2, "desc": "介護現場のDXサービス「カイホウ」を運営するRelease株式会社のコーポレートサイト。採用開始に向けて、デザインとライティングを担当。", "tags": ["CORPORATE SITE", "WRITING", "VISUAL DESIGN"], "image": "https://hrmrn1125.github.io/haraport/assets/Release-1.jpg", "link": "https://hrmrn1125.github.io/haraport/", "sections": [{"title": "背景・ねらい", "body": "採用活動時の企業への印象を整えたいという依頼が出発点。企業理念を簡潔に伝えつつ、問い合わせの機会も確保する構成を目指した。"}, {"title": "意識したこと", "bullets": ["素材やコンテンツ量が限られていても見応えが出るよう、構成と配置を検討。", "企業理念が伝わることと問い合わせ導線を両立。", "単調なページにならないよう見せ方に変化をつけた。"]}, {"title": "制作内容・成果", "body": "採用に向けた企業サイトのデザインと原稿を制作。企業の考え方と問い合わせ先を提示するサイトにまとめた。"}]}, {"id": "work-app2", "type": "work", "title": "FlowTimer｜Androidアプリ", "spine": "FlowTimer", "en": "APPLICATION", "category": "APP", "period": "2023.03 — 2023.11", "role": "企画 / デザイン", "scope": "Androidアプリ / 2名の個人開発", "color": "#647e89", "side": 1, "z": -4.9, "desc": "集中する時間と達成感を支えるAndroidタイマーアプリ。バックエンド担当の同僚と2名で個人開発。", "tags": ["ANDROID", "APP UI", "PERSONAL"], "image": "https://hrmrn1125.github.io/haraport/assets/timer-app-1.jpg", "link": "https://hrmrn1125.github.io/haraport/", "sections": [{"title": "ねらい", "body": "シンプルな操作と、使い続ける楽しみがあるアプリを目指した。"}, {"title": "意識したこと", "bullets": ["音のオン・オフや時間設定を直感的に操作できること。", "青と白を中心に、すっきりした印象とニューモーフィズムを採用。", "作業を終えるたびに達成感が得られる楽しみの要素を検討。"]}, {"title": "成果・公開後の改善", "body": "公開後にスタンプ機能を追加し、自己管理を支える機能として形にした。"}]}, {"id": "career-sales", "type": "career", "title": "人材営業", "spine": "人材営業", "en": "SALES", "category": "CAREER", "period": "2018.04 — 2021.07", "role": "法人営業 / スカウトメール配信 / 求人提案", "scope": "人材紹介サービス", "color": "#826c7f", "side": -1, "z": 2.9, "desc": "キャリアの出発点。法人営業として求人提案やスカウト配信を担当し、相手のニーズを言語化する力を培った。", "tags": ["SALES", "COMMUNICATION", "PROPOSAL"], "image": "", "link": "https://hrmrn1125.github.io/haraport/", "sections": [{"title": "担当業務", "body": "法人営業、スカウトメール配信、求人提案。採用したい企業と仕事を探す人の間に立ち、情報整理と提案を行った。"}, {"title": "この経験が今につながる点", "bullets": ["相手の課題を聞き取り、言語化して整理する力。", "伝え方を相手に合わせて調整する姿勢。", "曖昧な要望から、必要な情報を引き出すコミュニケーション。"]}]}, {"id": "career-web", "type": "career", "title": "Webデザイン・開発", "spine": "Web制作", "en": "WEB DESIGN", "category": "CAREER", "period": "2021.08 — 2024.11", "role": "Webデザイン / コーディング / 開発 / ライティング", "scope": "Webアプリ・LP・企業サイト・教材など", "color": "#8c6d63", "side": -1, "z": 0.8, "desc": "デザインだけでなく、コーディングや開発、ライティングまで横断して担当。複数の実案件を通じて、画面設計と実装の両方を経験。", "tags": ["WEB DESIGN", "FRONT-END", "WRITING"], "image": "", "link": "https://hrmrn1125.github.io/haraport/", "sections": [{"title": "経験した制作物", "body": "Webアプリ、LP、企業サイト、広告バナー、教材画面、社内資料など。"}, {"title": "強み", "bullets": ["企画から画面に落とし込むまでを一気通貫で考えられる。", "実装を理解したうえでUIを設計できる。", "コンテンツや文言の整理も含めて、体験全体を整えられる。"]}, {"title": "補足", "body": "デザイナー1名体制での案件や、仕様変更が多いチーム開発にも対応してきた。"}]}, {"id": "career-cx", "type": "career", "title": "AIチャットボットのCX設計", "spine": "CX設計", "en": "CX DESIGN", "category": "CAREER", "period": "2024.12 — 現在", "role": "CXデザイン / AIボットシナリオ設計", "scope": "AIチャットボット・コールセンター代替", "color": "#6b7668", "side": -1, "z": -1.3, "desc": "現在の主軸。ユーザーの問い合わせ体験と業務フローの両方を見ながら、会話設計と画面体験を作っている。", "tags": ["CX", "AI", "SCENARIO"], "image": "", "link": "https://hrmrn1125.github.io/haraport/", "sections": [{"title": "担当範囲", "body": "業務フロー整理、会話シナリオ設計、UI設計、仕様調整、開発・テスト・運用改善。"}, {"title": "活かしている力", "bullets": ["複雑な業務をユーザー目線の体験に置き換える。", "営業・開発・運用のあいだで意図がズレないよう整理する。", "公開後の課題をもとに改善ループを回す。"]}, {"title": "登壇実績", "body": "AI×コンタクトセンターAcademia 2026秋「自然な会話」だけでは、ボイスボットは成功しない。"}]}];
-const workItems = items.filter(item => item.type === 'work');
-const careerItems = items.filter(item => item.type === 'career');
+const categories={web:items.filter(item=>item.type==='work'&&item.category==='WEB / UI'),app:items.filter(item=>item.type==='work'&&item.category==='APP'),cx:items.filter(item=>item.type==='work'&&item.category==='CX / AI'),career:items.filter(item=>item.type==='career')};
+let category='web',entranceTimer=0;
 let state = 'entrance', selected = 0, detailTimer = 0;
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let motion = !reduced;
@@ -179,12 +218,22 @@ let start = 0, duration = 1, animating = false, mouseX = 0, mouseY = 0, width = 
 function go(next, ms){Object.assign(from, cam); Object.assign(to, next); start = performance.now(); duration = motion ? ms : 1; animating = true;}
 function updateStatus(code, title, sub){$('chapterNumber').textContent = code; $('chapterTitle').innerHTML = title + '<span>' + sub + '</span>';}
 function setBodyState(next){state = next; document.body.dataset.state = next;}
-function enter(){setBodyState('aisle'); intro.classList.add('hide'); shelfMenu.classList.add('show'); updateStatus('01','THE SHELVES','実績の棚 / 経歴の棚'); go({x:0,y:1.72,z:5.1,tx:0,ty:1.45,tz:-3.6}, 2200);}
-function reset(){clearTimeout(detailTimer); closeDetail(); setBodyState('entrance'); intro.classList.remove('hide'); shelfMenu.classList.remove('show'); clearActive(); updateStatus('00','ENTRANCE','入口 / はじめに'); go({x:0,y:2.55,z:13.6,tx:0,ty:1.25,tz:-8.2}, 1600);}
+function enter(){clearTimeout(entranceTimer);setBodyState('walk');intro.classList.add('hide');shelfMenu.classList.remove('show');updateStatus('01','THE GALLERY','書店を歩く');go({x:0,y:1.72,z:4.7,tx:0,ty:1.50,tz:-4.8},3200);entranceTimer=setTimeout(()=>{if(state==='walk'){setBodyState('aisle');shelfMenu.classList.add('show');switchShelf(category,true);}},motion?2700:50);}
+function reset(){clearTimeout(detailTimer);clearTimeout(entranceTimer);closeDetail();setBodyState('entrance');intro.classList.remove('hide');shelfMenu.classList.remove('show');clearActive();updateStatus('00','ENTRANCE','入口 / はじめに');go({x:0,y:2.55,z:13.6,tx:0,ty:1.25,tz:-8.2},1600);}
 function clearActive(){document.querySelectorAll('.spine').forEach(el => el.classList.remove('active'));}
 function activateSpine(id){clearActive(); const target = document.querySelector('[data-id="' + id + '"]'); if(target) target.classList.add('active');}
-function selectItem(index){if(state === 'entrance') enter(); selected = index; const item = items[index]; activateSpine(item.id); closeDetail(true); updateStatus(String(index + 2).padStart(2,'0'), item.en, item.title); const x = item.side * 2.52; go({x:x * .32, y:1.64, z:item.z + 1.34, tx:x, ty:1.52, tz:item.z - .1}, 1250); clearTimeout(detailTimer); detailTimer = setTimeout(() => showDetail(index), motion ? 760 : 30);}
+function selectItem(index){if(state==='entrance')enter();clearTimeout(entranceTimer);selected=index;const item=items[index];setBodyState('focus');activateSpine(item.id);closeDetail(true);updateStatus(String(index+2).padStart(2,'0'),item.en,item.title);const x=item.side*2.52;go({x:x*.32,y:1.64,z:item.z+1.34,tx:x,ty:1.52,tz:item.z-.1},1350);clearTimeout(detailTimer);detailTimer=setTimeout(()=>showDetail(index),motion?1100:30);}
 
+function switchShelf(name,skipCamera=false){
+ category=name;clearTimeout(detailTimer);closeDetail(true);clearActive();
+ document.querySelectorAll('.shelf-category').forEach(b=>{const active=b.dataset.category===name;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
+ const title={web:'Webの棚',app:'Appの棚',cx:'CXの棚',career:'経歴の棚'}[name];
+ $('shelfTitle').textContent=title;
+ renderShelf('activeShelf',categories[name]);
+ updateStatus('01','THE SHELVES',title);
+ if(!skipCamera){setBodyState('aisle');let view={web:{x:.5,y:1.65,z:3.4,tx:2.8,ty:1.5,tz:.2},app:{x:.45,y:1.65,z:1.5,tx:2.9,ty:1.5,tz:-4.8},cx:{x:0,y:1.65,z:4.5,tx:2.8,ty:1.5,tz:3.6},career:{x:-.45,y:1.65,z:3.5,tx:-2.8,ty:1.5,tz:.5}}[name];go(view,1550);}
+}
+document.querySelectorAll('.shelf-category').forEach(button=>button.addEventListener('click',()=>switchShelf(button.dataset.category)));
 let spreads=[], currentSpread=0, turning=false, flipFinishTimer=0;
 function el(tag,cls,txt){const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=txt;return n;}
 function pageShell(){return el('div','paper-content');}
@@ -223,33 +272,34 @@ function makePages(item){
  if(pages.length%2){const blank=pageShell();blank.append(el('p','paper-eyebrow','MARINA HARA'));blank.append(el('div','paper-endmark','余'));pages.push(blank);}
  return pages;
 }
+function isSmallReader(){return window.matchMedia('(max-width:860px)').matches;}
+function allPages(){return spreads.flat();}
+function countPages(){return isSmallReader()?allPages().length:spreads.length;}
 function renderSpread(index){
- const p=spreads[index];if(!p)return;
- $('pageLeft').replaceChildren(p[0].cloneNode(true));
- $('pageRight').replaceChildren(p[1].cloneNode(true));
- $('pageLabel').textContent=String(index*2+1).padStart(2,'0')+' — '+String(index*2+2).padStart(2,'0')+' / '+String(spreads.length*2).padStart(2,'0');
- $('prevPage').disabled=index===0;
- $('nextPage').disabled=index>=spreads.length-1;
+ const mobile=isSmallReader();
+ if(mobile){const pages=allPages(),page=pages[index];if(!page)return;
+ $('pageLeft').replaceChildren(page.cloneNode(true));
+ $('pageRight').replaceChildren(pages[index+1]?pages[index+1].cloneNode(true):document.createElement('div'));
+ $('pageLabel').textContent=String(index+1).padStart(2,'0')+' / '+String(pages.length).padStart(2,'0');
+ }else{const pair=spreads[index];if(!pair)return;
+ $('pageLeft').replaceChildren(pair[0].cloneNode(true));
+ $('pageRight').replaceChildren(pair[1].cloneNode(true));
+ $('pageLabel').textContent=String(index*2+1).padStart(2,'0')+' — '+String(index*2+2).padStart(2,'0')+' / '+String(spreads.length*2).padStart(2,'0');}
+ $('prevPage').disabled=index===0;$('nextPage').disabled=index>=countPages()-1;
  $('pageLeft').scrollTop=0;$('pageRight').scrollTop=0;
 }
 function turnPage(direction){
  if(turning||!detail.classList.contains('show'))return;
  const target=currentSpread+direction;
- if(target<0||target>=spreads.length)return;
+ if(target<0||target>=countPages())return;
  const sheet=$('flipSheet'),front=$('flipFront'),back=$('flipBack');
- const current=spreads[currentSpread],next=spreads[target];
- turning=true;
- sheet.className='flip-sheet '+(direction>0?'forward':'backward');
- front.replaceChildren(current[direction>0?1:0].cloneNode(true));
- back.replaceChildren(next[direction>0?0:1].cloneNode(true));
- currentSpread=target;
- renderSpread(target);
- sheet.offsetWidth;
+ const mobile=isSmallReader(),pages=allPages();
+ turning=true;sheet.className='flip-sheet '+(direction>0?'forward':'backward');
+ if(mobile){front.replaceChildren(pages[currentSpread].cloneNode(true));back.replaceChildren(pages[target].cloneNode(true));}
+ else{const current=spreads[currentSpread],next=spreads[target];front.replaceChildren(current[direction>0?1:0].cloneNode(true));back.replaceChildren(next[direction>0?0:1].cloneNode(true));}
+ currentSpread=target;renderSpread(target);sheet.offsetWidth;
  requestAnimationFrame(()=>sheet.classList.add('turning'));
- clearTimeout(flipFinishTimer);
- flipFinishTimer=setTimeout(()=>{
-  sheet.className='flip-sheet';front.replaceChildren();back.replaceChildren();turning=false;
- },motion?780:30);
+ clearTimeout(flipFinishTimer);flipFinishTimer=setTimeout(()=>{sheet.className='flip-sheet';front.replaceChildren();back.replaceChildren();turning=false;},motion?780:30);
 }
 function showDetail(index){
  const item=items[index];
@@ -283,7 +333,7 @@ function renderShelf(listId,data){
   root.append(button);
  });
 }
-renderShelf('workShelf', workItems); renderShelf('careerShelf', careerItems);
+renderShelf('activeShelf',categories.web);
 $('enter').addEventListener('click', enter);
 $('homeBrand').addEventListener('click', reset);
 $('closeDetail').addEventListener('click', () => closeDetail());
@@ -301,7 +351,7 @@ window.addEventListener('keydown',e=>{
  if(e.key==='ArrowLeft'||e.key==='ArrowUp')selectItem((selected+items.length-1)%items.length);
 });
 window.addEventListener('pointermove', e => { mouseX = (e.clientX / innerWidth - .5) * 2; mouseY = (e.clientY / innerHeight - .5) * 2; });
-let wheelLock = 0; window.addEventListener('wheel', e => { if(detail.classList.contains('show')||Math.abs(e.deltaY) < 20) return; const now = Date.now(); if(now - wheelLock < 900) return; wheelLock = now; if(state === 'entrance' && e.deltaY > 0){ enter(); return; } if(state !== 'entrance'){ selectItem((selected + (e.deltaY > 0 ? 1 : items.length - 1)) % items.length); } }, {passive:true});
+let wheelLock = 0; window.addEventListener('wheel', e => { if(detail.classList.contains('show')||Math.abs(e.deltaY) < 20) return; const now = Date.now(); if(now - wheelLock < 900) return; wheelLock = now; if(state==='entrance'&&e.deltaY>0){enter();return;}if(state==='aisle'){const keys=['web','app','cx','career'];switchShelf(keys[(keys.indexOf(category)+(e.deltaY>0?1:keys.length-1))%keys.length]);} }, {passive:true});
 let dragStart = null; canvas.addEventListener('pointerdown', e => { dragStart = [e.clientX, e.clientY]; }); canvas.addEventListener('pointerup', e => { if(!dragStart) return; const dx = e.clientX - dragStart[0], dy = e.clientY - dragStart[1]; dragStart = null; if(state === 'entrance' && Math.abs(dx) + Math.abs(dy) > 40){ enter(); return; } if(state !== 'entrance' && Math.abs(dx) > 60){ selectItem((selected + (dx < 0 ? 1 : items.length - 1)) % items.length); } });
 if(!gl){ $('hint').textContent = '3Dが使えない環境です。棚から作品を選んで閲覧してください。'; enter(); return; }
 const pos = [], norm = [], color = [];
@@ -323,7 +373,7 @@ for(const side of [-1,1]){ const sx = side*3.3; let id = 0; for(let shelf=0;shel
 items.forEach(item => { const sx = item.side*3.3; addBox(sx-item.side*.48,1.48,item.z,.115,.72,.41,item.color); addBox(sx-item.side*.565,1.48,item.z,.022,.56,.28,'#d9ccbb'); });
 for(const side of [-1,1]){ for(const z of [-8,-4,0,4]){ addBox(side*4.12,1.85,z,.07,3.28,.035,'#d6c9b6'); addBox(side*4.10,.20,z,1.4,.035,1.32,'#615d57'); } for(let z=-10; z<=7; z+=2.1){ addBox(side*4.48,3.82,z,.10,.16,.85,'#e7dbbc'); } }
 addBox(0,-.005,-8.15,1.6,.045,1.6,'#ccc5b8'); addBox(0,.44,-8.15,1.08,.92,1.08,'#d8d2c7'); addSphere(0,1.25,-8.12,.46,'#c1a789',24,18); addSphere(.23,1.52,-8.06,.18,'#efe3d1',18,12);
-addBox(0,2.35,9.8,12,.2,.25,'#47413b'); addBox(-4.5,2.35,9.0,3.0,4.7,.25,'#2a2826'); addBox(4.5,2.35,9.0,3.0,4.7,.25,'#2a2826'); addBox(0,4.55,9.0,6.1,.25,.25,'#2a2826'); addBox(0,2.2,9.0,.26,4.4,.25,'#2a2826');
+// The black cross-shaped doorway has been removed; the view opens naturally into the gallery.
 function shader(type, source){ const sh = gl.createShader(type); gl.shaderSource(sh, source); gl.compileShader(sh); if(!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw Error(gl.getShaderInfoLog(sh)); return sh; }
 const vs = 'attribute vec3 aPosition;attribute vec3 aNormal;attribute vec3 aColor;uniform mat4 uView;uniform mat4 uProjection;varying vec3 vColor;varying vec3 vNormal;varying float vDepth;void main(){vec4 view=uView*vec4(aPosition,1.0);gl_Position=uProjection*view;vColor=aColor;vNormal=aNormal;vDepth=-view.z;}';
 const fs = 'precision mediump float;varying vec3 vColor;varying vec3 vNormal;varying float vDepth;uniform vec3 uFog;void main(){vec3 n=normalize(vNormal);vec3 l=normalize(vec3(-0.38,0.88,0.48));float diffuse=max(dot(n,l),0.0);float lum=.52+.46*diffuse;float ceiling=max(0.,dot(n,vec3(0.,1.,0.)))*.12;float side=max(0.,dot(n,normalize(vec3(.72,.4,-.45))))*.12;vec3 c=vColor*(lum+ceiling+side);float fog=clamp((vDepth-6.0)/26.0,0.,.67);c=mix(c,uFog,fog);gl_FragColor=vec4(pow(c,vec3(.92)),1.0);}';
