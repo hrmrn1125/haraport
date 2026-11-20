@@ -156,6 +156,18 @@
  .book-controls{margin-top:14px}
 }
 
+
+/* Book edition: no separate portfolio links; uncluttered original artwork. */
+.book-controls{width:100%;max-width:460px;margin:18px auto 0;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:18px}
+.book-controls button{flex:0 0 54px;width:54px;height:54px;padding:0;border-radius:999px;display:grid;place-items:center;line-height:1;aspect-ratio:1}
+.book-controls button svg{display:block;width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.book-controls span{flex:1 1 auto;min-width:82px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.book-image,.book-image a{background:transparent!important;box-shadow:none!important;border-radius:0!important}
+.book-image:before,.book-image:after,.book-image a:before,.book-image a:after{display:none!important;content:none!important}
+.book-image img{background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;object-fit:contain}
+.book-image figcaption{margin-top:6px}
+@media(max-width:860px){.book-controls{max-width:310px;margin-top:14px}.book-controls button{flex-basis:50px;width:50px;height:50px}.book-image img{max-height:52dvh}}
+
 </style>
 </head>
 <body>
@@ -166,7 +178,6 @@
     <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8.5C12.7 6 8.5 5.6 3.5 7v17c5-1.4 9.2-1 12.5 1.5 3.3-2.5 7.5-2.9 12.5-1.5V7c-5-1.4-9.2-1-12.5 1.5v17"/><path d="M7 12c2.2-.3 4.1 0 5.5.7m7 0c1.4-.7 3.3-1 5.5-.7M7 17c2.2-.3 4.1 0 5.5.7m7 0c1.4-.7 3.3-1 5.5-.7"/></svg></span>
     <span class="brand-text"><strong>原書店</strong><span>MARINA HARA · PORTFOLIO</span></span>
   </button>
-  <a class="header-link" href="https://hrmrn1125.github.io/haraport/" target="_blank" rel="noopener">元のポートフォリオ ↗</a>
 </header>
 <section class="intro" id="intro">
   <div class="intro-inner">
@@ -201,9 +212,9 @@
     <div class="book-cover-leaf" aria-hidden="true"><span>原書店<small>MARINA HARA · COLLECTION</small></span></div>
    </article>
    <nav class="book-controls" aria-label="本のページをめくる">
-    <button id="prevPage" aria-label="前のページへ">←</button>
+    <button id="prevPage" type="button" aria-label="前のページへ"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5m6-6-6 6 6 6"/></svg></button>
     <span id="pageLabel" aria-live="polite">01 — 02</span>
-    <button id="nextPage" aria-label="次のページへ">→</button>
+    <button id="nextPage" type="button" aria-label="次のページへ"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
    </nav>
   </div>
  </div>
@@ -282,29 +293,49 @@ function makePages(item){
  }
  for(const [index,src] of (item.images||[]).entries()){
   const page=pageShell();
-  const title=item.id==='career-profile'?'プロフィール写真':'制作画面 '+(index+1)+' / '+item.images.length;
+  const title=item.id==='career-profile'?'プロフィール写真':item.images.length>1?'制作画面 '+(index+1)+' / '+item.images.length:'制作画面';
   page.append(el('h3','paper-heading',title));
   const figure=el('figure','book-image');
-  const link=externalLink(src,'');
+  const link=externalLink(src,'');link.classList.add('image-viewer');
   const image=el('img');
   image.src=src;image.alt=item.title+' '+title;image.loading='lazy';
+  if(item.id==='work-web6'){image.dataset.crop='front';link.dataset.crop='front';}
+  if(item.id==='work-web12'){image.dataset.crop='bank';link.dataset.crop='bank';}
   link.append(image);
-  figure.append(link,el('figcaption','','画像を開いて原寸で見る'));
+  figure.append(link,el('figcaption','','画像をタップして拡大'));
   page.append(figure);
   pages.push(page);
  }
- const end=pageShell();
- end.append(el('p','paper-eyebrow','ARCHIVE / MORE'));
- end.append(el('h3','paper-heading','さらに詳しく'));
- end.append(externalLink(item.link,'元のポートフォリオを見る'));
- end.append(el('div','paper-foot','END OF VOLUME'));
- pages.push(end);
+
  if(pages.length%2){const blank=pageShell();blank.append(el('p','paper-eyebrow','MARINA HARA'));blank.append(el('div','paper-endmark','余'));pages.push(blank);}
  return pages;
 }
 function isSmallReader(){return window.matchMedia('(max-width:860px)').matches;}
 function allPages(){return spreads.flat();}
 function countPages(){return isSmallReader()?allPages().length:spreads.length;}
+function cropPresentedImages(){
+  document.querySelectorAll('.page img[data-crop],.flip-face img[data-crop]').forEach(im=>{
+    if(im.dataset.cropped==='yes')return;
+    const process=()=>{
+      if(!im.naturalWidth||!im.naturalHeight)return;
+      const w=im.naturalWidth,h=im.naturalHeight;
+      const kind=im.dataset.crop;
+      // Exclude the unfinished left navigation on the curriculum screenshot.
+      const left=kind==='front'?Math.round(w*.26):Math.round(w*.09);
+      const top=kind==='bank'?Math.round(h*.03):0;
+      const sw=kind==='front'?w-left:Math.round(w*.82);
+      const sh=kind==='bank'?Math.round(h*.80):h;
+      if(sw<10||sh<10)return;
+      const scale=Math.min(1,2400/Math.max(sw,sh));
+      const can=document.createElement('canvas');can.width=Math.max(1,Math.round(sw*scale));can.height=Math.max(1,Math.round(sh*scale));
+      const ctx=can.getContext('2d');if(!ctx)return;
+      ctx.fillStyle='#ffffff';ctx.fillRect(0,0,can.width,can.height);
+      ctx.drawImage(im,left,top,sw,sh,0,0,can.width,can.height);
+      try{const url=can.toDataURL('image/jpeg',.92);const anchor=im.closest('a');if(anchor)anchor.href=url;im.dataset.cropped='yes';im.src=url;}catch(e){/* Same-origin artwork is expected; leave original if blocked. */}
+    };
+    if(im.complete&&im.naturalWidth)process();else im.addEventListener('load',process,{once:true});
+  });
+}
 function renderSpread(index){
  const mobile=isSmallReader();
  if(mobile){const pages=allPages(),page=pages[index];if(!page)return;
@@ -317,6 +348,7 @@ function renderSpread(index){
  $('pageLabel').textContent=String(index*2+1).padStart(2,'0')+' — '+String(index*2+2).padStart(2,'0')+' / '+String(spreads.length*2).padStart(2,'0');}
  $('prevPage').disabled=index===0;$('nextPage').disabled=index>=countPages()-1;
  $('pageLeft').scrollTop=0;$('pageRight').scrollTop=0;
+ cropPresentedImages();
 }
 function turnPage(direction){
  if(turning||!detail.classList.contains('show'))return;
