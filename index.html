@@ -168,6 +168,8 @@
 .book-image figcaption{margin-top:6px}
 @media(max-width:860px){.book-controls{max-width:310px;margin-top:14px}.book-controls button{flex-basis:50px;width:50px;height:50px}.book-image img{max-height:52dvh}}
 
+
+@media(max-width:860px){.shelf-category{font-size:clamp(9px,2.2vw,11px);letter-spacing:-.025em;line-height:1.35;padding:5px 1px;min-height:48px}}
 </style>
 </head>
 <body>
@@ -192,7 +194,7 @@
     <button class="shelf-category active" data-category="web">Webの棚</button>
     <button class="shelf-category" data-category="app">Appの棚</button>
     <button class="shelf-category" data-category="cx">CXの棚</button>
-    <button class="shelf-category" data-category="graphic">グラフィック</button>
+    <button class="shelf-category" data-category="graphic">グラフィックの棚</button>
     <button class="shelf-category" data-category="career">経歴の棚</button>
   </div>
   <section class="shelf-group" aria-label="選択中の棚">
@@ -307,11 +309,10 @@ function makePages(item){
   pages.push(page);
  }
 
- if(pages.length%2){const blank=pageShell();blank.append(el('p','paper-eyebrow','MARINA HARA'));blank.append(el('div','paper-endmark','余'));pages.push(blank);}
- return pages;
+  return pages;
 }
 function isSmallReader(){return window.matchMedia('(max-width:860px)').matches;}
-function allPages(){return spreads.flat();}
+function allPages(){return spreads.flat().filter(page=>!page.dataset.facingBlank);}
 function countPages(){return isSmallReader()?allPages().length:spreads.length;}
 function cropPresentedImages(){
   document.querySelectorAll('.page img[data-crop],.flip-face img[data-crop]').forEach(im=>{
@@ -321,7 +322,7 @@ function cropPresentedImages(){
       const w=im.naturalWidth,h=im.naturalHeight;
       const kind=im.dataset.crop;
       // Exclude the unfinished left navigation on the curriculum screenshot.
-      const left=kind==='front'?Math.round(w*.26):Math.round(w*.09);
+      const left=kind==='front'?Math.min(180,Math.round(w*.20)):Math.round(w*.09);
       const top=kind==='bank'?Math.round(h*.08):0;
       const sw=kind==='front'?w-left:Math.round(w*.82);
       const sh=kind==='bank'?Math.round(h*.72):h;
@@ -366,7 +367,7 @@ function turnPage(direction){
 function showDetail(index){
  const item=items[index];
  const pages=makePages(item);spreads=[];
- for(let i=0;i<pages.length;i+=2)spreads.push([pages[i],pages[i+1]]);
+ for(let i=0;i<pages.length;i+=2){const facing=pages[i+1]||pageShell();if(!pages[i+1])facing.dataset.facingBlank='true';spreads.push([pages[i],facing]);}
  currentSpread=0;turning=false;clearTimeout(flipFinishTimer);
  $('flipSheet').className='flip-sheet';
  renderSpread(0);
