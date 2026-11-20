@@ -170,6 +170,30 @@
 
 
 @media(max-width:860px){.shelf-category{font-size:clamp(9px,2.2vw,11px);letter-spacing:-.025em;line-height:1.35;padding:5px 1px;min-height:48px}}
+
+/* 2026-11-20: Center the heading block while keeping its text flush left. */
+.intro-inner{width:max-content;max-width:100%;margin-inline:auto;text-align:center}
+.intro h1{text-align:left;max-width:100%}
+/* A quiet ice-gray presentation mat behind artwork, without altering the artwork itself. */
+.book-image a.image-viewer{
+ display:flex!important;align-items:center;justify-content:center;
+ box-sizing:border-box;min-height:150px;width:100%;
+ padding:clamp(16px,3vw,34px);
+ background:#e9edf0!important;
+ border:0!important;border-radius:0!important;box-shadow:none!important;
+}
+.book-image a.image-viewer img{
+ display:block!important;width:auto;height:auto;max-width:100%;
+ max-height:min(43dvh,420px);object-fit:contain;
+ margin:0 auto!important;background:transparent!important;
+}
+@media(max-width:860px){
+ .intro-inner{width:max-content;max-width:100%;margin-inline:auto;text-align:center}
+ .intro h1{text-align:left}
+ .book-image a.image-viewer{padding:clamp(13px,4vw,22px);min-height:140px}
+ .book-image a.image-viewer img{max-height:45dvh}
+}
+
 </style>
 </head>
 <body>
