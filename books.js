@@ -2,7 +2,7 @@ const items = [
   {
     "id": "work-cx",
     "type": "work",
-    "shelf": "cx",
+    "shelf": "app",
     "title": "AIチャットボットの会話設計・開発",
     "spine": "チャットボット",
     "en": "CONVERSATION",
