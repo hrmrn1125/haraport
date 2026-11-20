@@ -12,7 +12,6 @@ const items = [
     "scope": "常時5〜7案件／営業・エンジニア・PM・デザイナー・QA・CS各1名の体制",
     "color": "#a85c47",
     "desc": "AIチャットボットのCXデザイナーとして、シナリオ・UI設計から開発、テスト、運用改善まで担当。利用者が迷わず案内を進められることと、公開後の品質改善を重視しています。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "ねらい",
@@ -104,7 +103,6 @@ const items = [
     "scope": "バックエンド担当と2名の個人開発",
     "color": "#60776d",
     "desc": "質問への回答から大切にしている価値観を整理し、悩みの解決策を考えるWebアプリの個人開発です。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "ねらい",
@@ -149,7 +147,6 @@ const items = [
     "scope": "社内外向け教育サービス／若いデザイン初学者向けLP",
     "color": "#b89b83",
     "desc": "デザイン学習サービス『デザメモ』を紹介するLP。企画からデザイン・実装・文章制作まで担当しました。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "ねらい",
@@ -193,7 +190,6 @@ const items = [
     "scope": "介護DX事業者の企業サイト／採用・企業理解・問い合わせ",
     "color": "#5b6775",
     "desc": "介護現場のDXサービス『カイホウ』を運営するRelease株式会社のコーポレートサイト。採用開始に向けて、デザインとライティングを担当しました。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "背景・ねらい",
@@ -237,7 +233,6 @@ const items = [
     "scope": "介護DX領域の新サービス／タクシードライバー向けLP",
     "color": "#65738a",
     "desc": "福祉事業所と収入を増やしたいタクシードライバーをつなぐ、新サービス『カイホウ for SPOT』のLPです。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "ねらい",
@@ -281,7 +276,6 @@ const items = [
     "scope": "採用広告／ピックアップページ用画像・バナー",
     "color": "#786544",
     "desc": "dodaのピックアップページに掲載する縦長画像とバナーを制作。採用に向けた訴求の整理からデザイン・文章制作まで担当しました。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "ねらい",
@@ -326,7 +320,6 @@ const items = [
     "scope": "フロントエンド初学者向け教材",
     "color": "#826c7f",
     "desc": "社内で使うフロントエンド教材を、社内外向けの学習サービスとしてパッケージ化するための制作です。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "背景・ねらい",
@@ -367,7 +360,6 @@ const items = [
     "scope": "デザイン初学者向け教育Webアプリ／異なる内容を持つ50ページ以上",
     "color": "#60776d",
     "desc": "社内外向けのデザインカリキュラムをパッケージ化した教育Webアプリ『デザメモ』です。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "ねらい",
@@ -412,7 +404,6 @@ const items = [
     "scope": "社内外向け教育サービス／広告画像・SNS・デザイン体験会",
     "color": "#8c6d63",
     "desc": "デザイン学習サービス『デザメモ』の広告画像・バナー制作と、X・Instagramでの広告運用に携わりました。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "ねらい",
@@ -457,7 +448,6 @@ const items = [
     "scope": "一般利用者向けWebアプリ／9名体制・デザイナー1名",
     "color": "#60776d",
     "desc": "エコ活動記録Webアプリのリニューアル。ユーザー分析を踏まえ、コンセプトとキャラクターの見せ方を見直したフェーズです。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "背景・ねらい",
@@ -512,7 +502,6 @@ const items = [
     "scope": "自社社員向けイントラネット／2024年時点で一部機能を実装",
     "color": "#a85c47",
     "desc": "社員が必要なツールや情報へアクセスするための社内ポータルWebアプリです。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "背景・ねらい",
@@ -556,7 +545,6 @@ const items = [
     "scope": "建設会社・協力会社向けの調達サイト",
     "color": "#786544",
     "desc": "建設会社の調達サイトを、情報の見やすさと協力会社との連携を意識してリニューアルした案件です。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "背景・ねらい",
@@ -597,7 +585,6 @@ const items = [
     "scope": "自社企業サイト／若手採用と顧客への信頼感を両立",
     "color": "#65738a",
     "desc": "株式会社CONVICTIONのコーポレートサイト刷新で、デザイン監修と一部パーツ制作を担当しました。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "背景・ねらい",
@@ -641,7 +628,6 @@ const items = [
     "scope": "学習カリキュラム販売LP／デザイン完成後に方針変更で取り下げ",
     "color": "#8c6d63",
     "desc": "社内のフロントエンド・バックエンド・デザイン教材を外販するプロジェクトに伴い制作したLPです。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "ねらい",
@@ -687,7 +673,6 @@ const items = [
     "scope": "Androidアプリ／2名の個人開発・公開後の機能追加",
     "color": "#647e89",
     "desc": "集中する時間と達成感を支えるAndroidタイマーアプリ。バックエンド担当の同僚と2名で個人開発しました。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "ねらい",
@@ -733,7 +718,6 @@ const items = [
     "scope": "一般利用者向けWebアプリ／9名体制・デザイナー1名",
     "color": "#c39a6c",
     "desc": "エコ活動を記録するWebアプリの立ち上げ・初期デザイン。サービス開始前からデザイナー1名体制で参画しました。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "ねらい",
@@ -788,7 +772,6 @@ const items = [
     "scope": "約40万人規模のサービスに関連する画像／主にログイン済み利用者向け",
     "color": "#65738a",
     "desc": "カボニューレコード内で利用するバナーや画像。サービスの世界観と、情報がすぐ伝わることを重視した制作です。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "背景・ねらい",
@@ -833,7 +816,6 @@ const items = [
     "scope": "学習カリキュラムの販促／旧Twitter・Instagram向け投稿",
     "color": "#826c7f",
     "desc": "『デザメモ』の前身であるデザイン・フロントエンド教材『So i Source』の販促用画像・SNS投稿です。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "ねらい",
@@ -887,7 +869,6 @@ const items = [
     "scope": "ネット銀行の顧客向けマイページ／PM1名・SE5名の6名体制",
     "color": "#826c7f",
     "desc": "ネット銀行マイページの開発案件。既存のデザイン・構成を基に、新しいデータやページ、ボタンを追加する実装とUIの検討を担当しました。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "ねらい",
@@ -934,7 +915,6 @@ const items = [
     "scope": "ネット銀行案件に付随するバナー制作",
     "color": "#786544",
     "desc": "ネット銀行Webアプリの開発案件に参画するなかで、バナーデザインも担当しました。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "ねらい",
@@ -972,7 +952,6 @@ const items = [
     "scope": "社内教育用教材／フロントエンド初学者の実装課題",
     "color": "#60776d",
     "desc": "社内のフロントエンドカリキュラムで、コーディング課題として使う見本デザインを制作しました。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "ねらい",
@@ -1013,7 +992,6 @@ const items = [
     "scope": "営業資料・社内イベント資料・イベント用Tシャツ",
     "color": "#a85c47",
     "desc": "営業活動や社内イベントで使用する資料、イベント用Tシャツなど、社内外のコミュニケーションに関わる制作です。",
-    "link": "https://hrmrn1125.github.io/haraport/#works",
     "sections": [
       {
         "title": "ねらい",
