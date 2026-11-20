@@ -1039,7 +1039,6 @@ const items = [
       "COMMUNICATION",
       "PROPOSAL"
     ],
-    "link": "https://hrmrn1125.github.io/haraport/#career",
     "sections": [
       {
         "title": "法人向け人材紹介 / RA",
@@ -1083,7 +1082,6 @@ const items = [
       "FRONT-END",
       "WRITING"
     ],
-    "link": "https://hrmrn1125.github.io/haraport/#career",
     "sections": [
       {
         "title": "サステナブル関連Webアプリ",
@@ -1154,7 +1152,6 @@ const items = [
       "AI",
       "SCENARIO"
     ],
-    "link": "https://hrmrn1125.github.io/haraport/#career",
     "sections": [
       {
         "title": "担当範囲",
@@ -1188,7 +1185,6 @@ const items = [
     "category": "ABOUT",
     "color": "#65738a",
     "desc": "人材営業、Webデザイン・開発を経て、現在はAIチャットボットの会話設計をしています。",
-    "link": "https://hrmrn1125.github.io/haraport/#about",
     "sections": [
       {
         "title": "わたしのこと",
