@@ -322,9 +322,9 @@ function cropPresentedImages(){
       const kind=im.dataset.crop;
       // Exclude the unfinished left navigation on the curriculum screenshot.
       const left=kind==='front'?Math.round(w*.26):Math.round(w*.09);
-      const top=kind==='bank'?Math.round(h*.03):0;
+      const top=kind==='bank'?Math.round(h*.08):0;
       const sw=kind==='front'?w-left:Math.round(w*.82);
-      const sh=kind==='bank'?Math.round(h*.80):h;
+      const sh=kind==='bank'?Math.round(h*.72):h;
       if(sw<10||sh<10)return;
       const scale=Math.min(1,2400/Math.max(sw,sh));
       const can=document.createElement('canvas');can.width=Math.max(1,Math.round(sw*scale));can.height=Math.max(1,Math.round(sh*scale));
