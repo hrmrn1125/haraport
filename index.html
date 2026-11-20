@@ -120,7 +120,7 @@
 .shelf-menu{grid-template-columns:minmax(0,1fr);max-width:740px;left:50%;right:auto;width:calc(100% - 32px);transform:translate(-50%,16px);gap:10px}
 .shelf-menu.show{transform:translate(-50%,0)}
 .shelf-kicker{font-size:10px;letter-spacing:.18em;color:#f0dfd2;text-shadow:0 1px 8px #0009}
-.shelf-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.shelf-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
 .shelf-category{border:1px solid #fff3;background:#111b;color:#fff;min-height:41px;padding:10px 5px;border-radius:5px;font-size:12px;letter-spacing:.03em}
 .shelf-category.active{background:#ede3d4;color:#332d27;border-color:#ede3d4}
 .shelf-group{padding:12px 18px}.spine-row{justify-content:flex-start;height:181px;overflow-x:auto;overflow-y:hidden}
@@ -217,7 +217,6 @@
   <div class="shelf-strip" id="shelfCategories">
     <button class="shelf-category active" data-category="web">Webの棚</button>
     <button class="shelf-category" data-category="app">Appの棚</button>
-    <button class="shelf-category" data-category="cx">CXの棚</button>
     <button class="shelf-category" data-category="graphic">グラフィックの棚</button>
     <button class="shelf-category" data-category="career">経歴の棚</button>
   </div>
@@ -254,7 +253,7 @@ const canvas = document.getElementById('scene');
 const gl = canvas.getContext('webgl', {alpha:false, antialias:true, powerPreference:'high-performance'});
 const $ = id => document.getElementById(id);
 const intro = $('intro'), shelfMenu = $('shelfMenu'), detail = $('detail');
-const shelfNames={web:'Webの棚',app:'Appの棚',cx:'CXの棚',graphic:'グラフィックの棚',career:'経歴の棚'};
+const shelfNames={web:'Webの棚',app:'Appの棚',graphic:'グラフィックの棚',career:'経歴の棚'};
 const categories=Object.fromEntries(Object.keys(shelfNames).map(name=>[name,items.filter(item=>item.shelf===name)]));
 let category='web',entranceTimer=0;
 let state = 'entrance', selected = 0, detailTimer = 0;
@@ -278,7 +277,7 @@ function switchShelf(name,skipCamera=false){
  $('shelfTitle').textContent=title;
  renderShelf('activeShelf',categories[name]);
  updateStatus('01','THE SHELVES',title);
- if(!skipCamera){setBodyState('aisle');let view={web:{x:.5,y:1.65,z:3.4,tx:2.8,ty:1.5,tz:.2},app:{x:.45,y:1.65,z:1.5,tx:2.9,ty:1.5,tz:-4.8},cx:{x:0,y:1.65,z:4.5,tx:2.8,ty:1.5,tz:3.6},graphic:{x:-.45,y:1.65,z:4.1,tx:-2.8,ty:1.5,tz:1.8},career:{x:-.45,y:1.65,z:3.5,tx:-2.8,ty:1.5,tz:.5}}[name];go(view,1550);}
+ if(!skipCamera){setBodyState('aisle');let view={web:{x:.5,y:1.65,z:3.4,tx:2.8,ty:1.5,tz:.2},app:{x:.45,y:1.65,z:1.5,tx:2.9,ty:1.5,tz:-4.8},graphic:{x:-.45,y:1.65,z:4.1,tx:-2.8,ty:1.5,tz:1.8},career:{x:-.45,y:1.65,z:3.5,tx:-2.8,ty:1.5,tz:.5}}[name];go(view,1550);}
 }
 document.querySelectorAll('.shelf-category').forEach(button=>button.addEventListener('click',()=>switchShelf(button.dataset.category)));
 let spreads=[], currentSpread=0, turning=false, flipFinishTimer=0;
