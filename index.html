@@ -18,6 +18,99 @@
 .hint{position:fixed;z-index:6;left:50%;bottom:24px;transform:translateX(-50%);padding:9px 14px;border-radius:999px;background:rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.18);font-size:11px;color:rgba(255,255,255,.88);opacity:.9}
 @media (max-width: 860px){.site-header{padding:18px 18px 0}.header-link{display:none}.intro{padding-top:120px}.shelf-menu{grid-template-columns:1fr;left:14px;right:14px;bottom:14px;gap:10px}.shelf-group{padding:14px 14px 12px;border-radius:16px}.spine{min-width:46px;width:46px;font-size:9px}.statusline{left:18px;bottom:206px}.statusline strong{font-size:24px}#detail{padding:10px}.detail-wrap{width:100%}.book-spread{grid-template-columns:1fr}.book-spread:before{display:none}.page{min-height:0;padding:28px 22px 26px}.page-left{border-bottom:1px solid rgba(54,48,42,.12)}.page h2{font-size:28px}.hint{bottom:176px;font-size:10px}}
 @media(prefers-reduced-motion: reduce){*,*:before,*:after{transition-duration:.01ms !important;animation-duration:.01ms !important;scroll-behavior:auto !important}}
+
+/* 2026-11-20 / Bibliographic edition */
+.intro{padding:clamp(84px,12vh,130px) 24px clamp(95px,12vh,140px);overflow:hidden}
+.intro-inner{width:min(620px,100%);margin:auto;position:relative}
+.intro h1{font-size:clamp(39px,8.1vw,90px);line-height:1.25;margin:0 0 24px;text-shadow:0 8px 30px #0006}
+.intro p{font-size:clamp(12px,2.4vw,15px);letter-spacing:.07em;line-height:1.8}
+.enter-btn{margin-top:30px;min-height:48px;background:rgba(11,13,12,.52);padding:14px 28px;white-space:nowrap;box-shadow:0 8px 36px #0004}
+.statusline,.hint,.shelf-help{display:none!important}
+.shelf-menu{bottom:max(18px,env(safe-area-inset-bottom));gap:12px}
+.spine-row{padding:16px 6px 5px;gap:5px}
+.spine{position:relative;writing-mode:initial;text-orientation:initial;display:flex;flex-direction:column;align-items:center;justify-content:space-between;min-width:44px;width:44px;border:0;border-radius:3px 5px 2px 2px;padding:10px 4px 8px;overflow:hidden;color:#f5ece1;
+ background:linear-gradient(90deg,#0004 0%,#fff2 9%,transparent 19%,transparent 82%,#0005 97%),var(--cover)!important;
+ outline:1px solid #fff2;box-shadow:inset 2px 0 0 #fff2,inset -2px 0 0 #0004,4px 4px 1px #0003,6px 10px 15px #0004;
+ transform-origin:bottom center;transition:transform .3s,filter .3s}
+.spine:before,.spine:after{content:"";position:absolute;left:3px;right:3px;height:2px;border-top:1px solid #f0dcb6a8;border-bottom:1px solid #f0dcb6a8}
+.spine:before{top:14px}.spine:after{bottom:15px}
+.spine-band{width:100%;height:7px;border-top:1px solid #e4d8c0a6;opacity:.85;flex-shrink:0}
+.spine-name{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;writing-mode:vertical-rl;text-orientation:mixed;font-size:12px;line-height:1.3;letter-spacing:.08em;text-shadow:0 1px 3px #0005;max-height:108px;overflow:hidden}
+.spine-number{font:10px Georgia,serif;letter-spacing:.04em;color:#f2dfc2e0}
+.spine.active{transform:translateY(-9px) rotate(-1.2deg)}
+.shelf-group{border-radius:7px;background:rgba(16,17,15,.77);box-shadow:0 10px 25px #0003}
+.shelf-label{font-family:"Yu Mincho",serif;font-size:14px;color:#f1ddd0;letter-spacing:.13em}
+#detail{padding:clamp(14px,3vw,36px);background:rgba(11,10,9,.76)}
+.detail-wrap{width:min(1070px,100%);perspective:1800px}
+.detail-close{top:-48px;right:3px;font-size:28px;padding:4px 10px}
+.book-shell{width:100%;transform-origin:center center}
+.book-shell.book-ready{animation:bookRise .55s cubic-bezier(.22,.8,.25,1) both}
+@keyframes bookRise{from{opacity:.3;transform:translateY(24px) scale(.94) rotateX(6deg)}to{opacity:1;transform:translateY(0) scale(1) rotateX(0)}}
+.book-spread{border-radius:4px 12px 12px 4px;box-shadow:0 35px 95px #0007,0 9px 0 -4px #c4b8a6,0 15px 0 -8px #988a78;min-height:0;overflow:visible;isolation:isolate}
+.book-spread:before{width:25px;z-index:2;background:linear-gradient(90deg,#42332432, #fff8e2a6 48%,#3e2b2040 95%);pointer-events:none}
+.book-spread:after{content:"";position:absolute;inset:8px 0 0 0;border-radius:6px;pointer-events:none;box-shadow:inset 0 0 0 1px #957f6433,inset 6px 0 14px #50372829,inset -7px 0 13px #50372830}
+.page{height:min(72vh,660px);min-height:410px;padding:clamp(26px,4.5vw,56px);overflow:hidden}
+.page-left{background:linear-gradient(90deg,#e8dfd0,#f9f4e9 16%,#f6efe2 89%,#eadfce)}
+.page-right{background:linear-gradient(90deg,#e5dac9,#f6efe2 10%,#f6efe2 84%,#e4d8c7)}
+.page-inner{height:100%;overflow:auto;overscroll-behavior:contain}
+.paper-content{min-height:100%;position:relative;padding-bottom:22px}
+.paper-eyebrow{font-size:10px;letter-spacing:.19em;color:#98725f;margin:0 0 22px}
+.paper-title{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-weight:400;font-size:clamp(24px,3.6vw,42px);line-height:1.44;margin:0 0 25px;color:#272925}
+.paper-heading{font-family:"Yu Mincho",serif;font-size:clamp(19px,2.7vw,30px);font-weight:400;line-height:1.5;margin:0 0 21px}
+.paper-rule{width:56px;height:1px;background:#ac785e;margin:0 0 23px}
+.paper-lead,.paper-paragraph{font-size:clamp(11px,1.35vw,14px);line-height:2.15;color:#4c5149}
+.paper-list{padding-left:1.25em;font-size:clamp(11px,1.28vw,13px);line-height:2.05;color:#4c5149}
+.paper-list li{margin-bottom:10px}
+.paper-foot{margin-top:30px;padding-top:8px;border-top:1px solid #564a3b25;letter-spacing:.19em;font-size:9px;color:#998576}
+.paper-endmark{font-size:120px;font-family:serif;color:#c9bfb0;text-align:center;margin:60px auto}
+.facts{grid-template-columns:62px 1fr;font-size:clamp(10px,1.1vw,12px);padding:13px 0;gap:8px}
+.preview{max-height:200px;object-fit:contain;background:#fff9f0;margin-top:12px}
+.tags{margin:14px 0;gap:5px}.tags span{font-size:9px;padding:5px 8px}
+.book-controls{display:flex;align-items:center;justify-content:center;gap:18px;color:#f4eee5;margin:20px auto 0}
+.book-controls button{height:37px;width:42px;border:1px solid #fff5;border-radius:50%;color:#fff;background:#ffffff15;font-size:18px}
+.book-controls button:disabled{opacity:.2;cursor:default}
+.book-controls span{font:12px Georgia,serif;letter-spacing:.14em;min-width:100px;text-align:center}
+.flip-sheet{position:absolute;top:0;bottom:0;width:50%;right:0;z-index:5;transform-origin:left center;transform-style:preserve-3d;display:none;pointer-events:none}
+.flip-sheet.forward{display:block;left:auto;right:0;transform-origin:left center;transform:rotateY(0)}
+.flip-sheet.backward{display:block;left:0;right:auto;transform-origin:right center;transform:rotateY(0)}
+.flip-sheet.forward.turning{transform:rotateY(-180deg)}
+.flip-sheet.backward.turning{transform:rotateY(180deg)}
+.flip-sheet{transition:transform .75s cubic-bezier(.27,.75,.32,.99)}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;padding:clamp(26px,4.5vw,56px);background:linear-gradient(90deg,#e7dccc,#f9f2e5 14%,#f4ebdc)}
+.flip-back{transform:rotateY(180deg);background:linear-gradient(90deg,#f9f2e6,#e8dccc)}
+.flip-face .paper-content{height:100%;overflow:hidden}
+.book-cover-leaf{position:absolute;top:0;right:0;bottom:0;width:50%;z-index:7;background:linear-gradient(90deg,#5c3025,#93513d 14%,#b67153 85%,#74402f);transform-origin:left center;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;align-items:center;justify-content:center;color:#f6e6cf;box-shadow:inset 4px 0 9px #28160e3b;pointer-events:none;transform:rotateY(0)}
+.book-cover-leaf span{font-family:"Yu Mincho",serif;font-size:clamp(19px,3vw,34px);letter-spacing:.12em;text-align:center}
+.book-cover-leaf small{display:block;font:9px system-ui,sans-serif;letter-spacing:.18em;margin-top:14px}
+.book-ready .book-cover-leaf{animation:coverOpen .9s cubic-bezier(.2,.75,.3,1) .12s forwards}
+@keyframes coverOpen{0%{transform:rotateY(0);opacity:1}85%{opacity:1}100%{transform:rotateY(-177deg);opacity:0;visibility:hidden}}
+@media(max-width:860px){
+ .intro{padding:calc(env(safe-area-inset-top) + 86px) 22px calc(env(safe-area-inset-bottom) + 80px)}
+ .intro-inner{margin:auto}.intro h1{font-size:clamp(42px,11vw,62px);margin-bottom:18px}.intro p{font-size:12px}
+ .enter-btn{margin-top:26px}
+ .shelf-menu{bottom:max(12px,env(safe-area-inset-bottom));gap:9px}
+ .shelf-group{padding:10px 14px}.spine-row{gap:5px;padding-top:12px}
+ .spine{min-width:39px;width:39px}.spine-name{font-size:10px}
+ #detail{padding:12px}.detail-wrap{width:100%}.detail-close{top:-43px;right:0}
+ .book-spread{display:grid;grid-template-columns:1fr 1fr;border-radius:4px 8px 8px 4px}
+ .book-spread:before{display:block;width:12px}
+ .page{height:min(70dvh,590px);min-height:330px;padding:24px 12px 18px}
+ .page-left{border:0}
+ .page-inner{overflow:auto}
+ .paper-eyebrow{font-size:8px;letter-spacing:.09em;margin-bottom:13px}
+ .paper-title{font-size:clamp(17px,4.6vw,24px);line-height:1.5}
+ .paper-heading{font-size:clamp(16px,4.5vw,20px);line-height:1.5}
+ .paper-lead,.paper-paragraph,.paper-list{font-size:10.5px;line-height:1.9}
+ .facts{grid-template-columns:1fr;gap:3px;font-size:10px}.facts dt{margin-top:8px}
+ .paper-foot{font-size:8px}
+ .flip-face{padding:24px 12px 18px}
+ .book-cover-leaf span{font-size:20px}.book-cover-leaf small{font-size:7px}
+ .book-controls{margin-top:13px}
+ .book-controls button{height:42px;width:47px}
+}
+@media(max-width:380px){.page{padding:20px 10px 16px}.flip-face{padding:20px 10px 16px}.shelf-label{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.flip-sheet{transition:none}.book-ready .book-cover-leaf{animation:coverOpen .01ms forwards}}
+
 </style>
 </head>
 <body>
@@ -32,9 +125,8 @@
 </header>
 <section class="intro" id="intro">
   <div class="intro-inner">
-    <div class="eyebrow">3D PORTFOLIO / MARINA HARA</div>
-    <h1>作品のあいだを、<br>歩いて、ひらく。</h1>
-    <p>現代美術館のような本屋をめぐりながら、実績と経歴を閲覧するポートフォリオです。気になる本を選ぶと、カメラが棚へ寄り、そのまま本のページが開きます。</p>
+    <h1>作品を、<br>ひらく。</h1>
+    <p>実績と経歴を収めた、3Dの書店。</p>
     <button class="enter-btn" id="enter">書店に入る</button>
   </div>
 </section>
@@ -47,33 +139,28 @@
     <div class="shelf-label">経歴の棚</div>
     <div class="spine-row" id="careerShelf"></div>
   </section>
-  <p class="shelf-help">本を選ぶと、カメラが棚へ移動してそのまま本が開きます。左上のロゴで入口へ戻れます。</p>
+  
 </aside>
-<div class="statusline"><strong id="chapterNumber">00</strong><div id="chapterTitle">ENTRANCE<span>入口 / はじめに</span></div></div>
+<div class="statusline" aria-hidden="true"><strong id="chapterNumber">00</strong><div id="chapterTitle">ENTRANCE<span>入口 / はじめに</span></div></div>
 <div id="detail" aria-hidden="true">
-  <div class="detail-wrap">
-    <button class="detail-close" id="closeDetail" aria-label="閉じる">×</button>
-    <article class="book-spread" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
-      <section class="page page-left">
-        <div class="page-inner">
-          <p class="detail-kicker" id="detailIndex"></p>
-          <h2 id="detailTitle"></h2>
-          <p class="lead" id="detailDesc"></p>
-          <dl class="facts" id="detailFacts"></dl>
-          <div class="tags" id="detailTags"></div>
-          <img class="preview" id="detailPreview" alt="" hidden>
-        </div>
-      </section>
-      <section class="page page-right">
-        <div class="page-inner">
-          <div id="detailPages"></div>
-          <a class="detail-link" id="detailLink" href="#" target="_blank" rel="noopener">元のポートフォリオで詳しく見る ↗</a>
-        </div>
-      </section>
-    </article>
+ <div class="detail-wrap">
+  <button class="detail-close" id="closeDetail" aria-label="本を閉じる">×</button>
+  <div class="book-shell" id="bookShell">
+   <article class="book-spread" id="bookSpread" role="dialog" aria-modal="true" aria-label="作品の本">
+    <section class="page page-left"><div class="page-inner" id="pageLeft"></div></section>
+    <section class="page page-right"><div class="page-inner" id="pageRight"></div></section>
+    <div class="flip-sheet" id="flipSheet" aria-hidden="true"><div class="flip-face flip-front" id="flipFront"></div><div class="flip-face flip-back" id="flipBack"></div></div>
+    <div class="book-cover-leaf" aria-hidden="true"><span>余白書店<small>MARINA HARA · COLLECTION</small></span></div>
+   </article>
+   <nav class="book-controls" aria-label="本のページをめくる">
+    <button id="prevPage" aria-label="前のページへ">←</button>
+    <span id="pageLabel" aria-live="polite">01 — 02</span>
+    <button id="nextPage" aria-label="次のページへ">→</button>
+   </nav>
   </div>
+ </div>
 </div>
-<div class="hint" id="hint">作品と経歴を選んで、そのまま本をひらく</div>
+<div class="hint" id="hint" hidden></div>
 <script>
 (()=>{
 'use strict';
@@ -97,19 +184,124 @@ function reset(){clearTimeout(detailTimer); closeDetail(); setBodyState('entranc
 function clearActive(){document.querySelectorAll('.spine').forEach(el => el.classList.remove('active'));}
 function activateSpine(id){clearActive(); const target = document.querySelector('[data-id="' + id + '"]'); if(target) target.classList.add('active');}
 function selectItem(index){if(state === 'entrance') enter(); selected = index; const item = items[index]; activateSpine(item.id); closeDetail(true); updateStatus(String(index + 2).padStart(2,'0'), item.en, item.title); const x = item.side * 2.52; go({x:x * .32, y:1.64, z:item.z + 1.34, tx:x, ty:1.52, tz:item.z - .1}, 1250); clearTimeout(detailTimer); detailTimer = setTimeout(() => showDetail(index), motion ? 760 : 30);}
-function appendFacts(item){const dl = $('detailFacts'); dl.replaceChildren(); [['分類',item.category],['制作期間',item.period],['担当',item.role],['規模・体制',item.scope]].forEach(pair => { if(!pair[1]) return; const dt = document.createElement('dt'); const dd = document.createElement('dd'); dt.textContent = pair[0]; dd.textContent = pair[1]; dl.append(dt,dd); });}
-function appendSections(item){const wrap = $('detailPages'); wrap.replaceChildren(); item.sections.forEach(section => { const block = document.createElement('section'); block.className = 'section'; const h3 = document.createElement('h3'); h3.textContent = section.title; block.appendChild(h3); if(section.body){ const p = document.createElement('p'); p.textContent = section.body; block.appendChild(p); } if(section.bullets && section.bullets.length){ const ul = document.createElement('ul'); section.bullets.forEach(text => { const li = document.createElement('li'); li.textContent = text; ul.appendChild(li); }); block.appendChild(ul); } wrap.appendChild(block); });}
-function showDetail(index){const item = items[index]; $('detailIndex').textContent = item.en + ' / ' + item.category; $('detailTitle').textContent = item.title; $('detailDesc').textContent = item.desc; appendFacts(item); const tagWrap = $('detailTags'); tagWrap.replaceChildren(); item.tags.forEach(tag => { const span = document.createElement('span'); span.textContent = tag; tagWrap.appendChild(span); }); const preview = $('detailPreview'); if(item.image){ preview.hidden = false; preview.src = item.image; preview.alt = item.title + ' の画像'; } else { preview.hidden = true; preview.removeAttribute('src'); preview.alt = ''; } appendSections(item); $('detailLink').href = item.link; detail.classList.add('show'); detail.setAttribute('aria-hidden','false');}
-function closeDetail(silent){detail.classList.remove('show'); detail.setAttribute('aria-hidden','true'); if(!silent) clearTimeout(detailTimer);}
-function renderShelf(listId, data){const root = $(listId); root.replaceChildren(); data.forEach(item => { const button = document.createElement('button'); button.className = 'spine'; button.type = 'button'; button.dataset.id = item.id; button.style.background = 'linear-gradient(180deg,' + item.color + ',rgba(0,0,0,.2))'; button.style.height = (item.type === 'career' ? 120 : 132) + ((Math.abs(Math.round(item.z*10)) % 4) * 7) + 'px'; button.textContent = item.spine; button.addEventListener('click', () => selectItem(items.findIndex(x => x.id === item.id))); root.appendChild(button); });}
+
+let spreads=[], currentSpread=0, turning=false, flipFinishTimer=0;
+function el(tag,cls,txt){const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=txt;return n;}
+function pageShell(){return el('div','paper-content');}
+function makePages(item){
+ const pages=[];
+ const opening=pageShell();
+ opening.append(el('p','paper-eyebrow',item.en+' / '+item.category));
+ opening.append(el('h2','paper-title',item.title));
+ opening.append(el('div','paper-rule'));
+ opening.append(el('p','paper-lead',item.desc));
+ opening.append(el('div','paper-foot','MARINA HARA  ·  PORTFOLIO'));
+ pages.push(opening);
+ const outline=pageShell();
+ outline.append(el('p','paper-eyebrow','INFORMATION / 概要'));
+ const facts=el('dl','facts');[['制作期間',item.period],['担当',item.role],['体制',item.scope]].forEach(([k,v])=>{if(!v)return;facts.append(el('dt','',k),el('dd','',v));});
+ outline.append(facts);
+ const tags=el('div','tags');item.tags.forEach(t=>tags.append(el('span','',t)));outline.append(tags);
+ if(item.image){const im=el('img','preview');im.src=item.image;im.alt=item.title+'の制作画面';im.loading='lazy';outline.append(im);}
+ pages.push(outline);
+ for(let i=0;i<item.sections.length;i++){
+  const sec=item.sections[i], page=pageShell();
+  page.append(el('p','paper-eyebrow',String(i+1).padStart(2,'0')+' / '+item.en));
+  page.append(el('h3','paper-heading',sec.title));
+  if(sec.body)page.append(el('p','paper-paragraph',sec.body));
+  if(sec.bullets&&sec.bullets.length){const ul=el('ul','paper-list');sec.bullets.forEach(b=>ul.append(el('li','',b)));page.append(ul);}
+  page.append(el('div','paper-foot','CHAPTER '+String(i+1).padStart(2,'0')));
+  pages.push(page);
+ }
+ const end=pageShell();
+ end.append(el('p','paper-eyebrow','ARCHIVE / MORE'));
+ end.append(el('h3','paper-heading','さらに詳しく'));
+ end.append(el('p','paper-paragraph','制作画面やその他の作品は、元のポートフォリオに掲載しています。'));
+ const link=el('a','detail-link','元のポートフォリオを見る ↗');link.href=item.link;link.target='_blank';link.rel='noopener noreferrer';end.append(link);
+ end.append(el('div','paper-foot','END OF VOLUME'));
+ pages.push(end);
+ if(pages.length%2){const blank=pageShell();blank.append(el('p','paper-eyebrow','MARINA HARA'));blank.append(el('div','paper-endmark','余'));pages.push(blank);}
+ return pages;
+}
+function renderSpread(index){
+ const p=spreads[index];if(!p)return;
+ $('pageLeft').replaceChildren(p[0].cloneNode(true));
+ $('pageRight').replaceChildren(p[1].cloneNode(true));
+ $('pageLabel').textContent=String(index*2+1).padStart(2,'0')+' — '+String(index*2+2).padStart(2,'0')+' / '+String(spreads.length*2).padStart(2,'0');
+ $('prevPage').disabled=index===0;
+ $('nextPage').disabled=index>=spreads.length-1;
+ $('pageLeft').scrollTop=0;$('pageRight').scrollTop=0;
+}
+function turnPage(direction){
+ if(turning||!detail.classList.contains('show'))return;
+ const target=currentSpread+direction;
+ if(target<0||target>=spreads.length)return;
+ const sheet=$('flipSheet'),front=$('flipFront'),back=$('flipBack');
+ const current=spreads[currentSpread],next=spreads[target];
+ turning=true;
+ sheet.className='flip-sheet '+(direction>0?'forward':'backward');
+ front.replaceChildren(current[direction>0?1:0].cloneNode(true));
+ back.replaceChildren(next[direction>0?0:1].cloneNode(true));
+ currentSpread=target;
+ renderSpread(target);
+ sheet.offsetWidth;
+ requestAnimationFrame(()=>sheet.classList.add('turning'));
+ clearTimeout(flipFinishTimer);
+ flipFinishTimer=setTimeout(()=>{
+  sheet.className='flip-sheet';front.replaceChildren();back.replaceChildren();turning=false;
+ },motion?780:30);
+}
+function showDetail(index){
+ const item=items[index];
+ const pages=makePages(item);spreads=[];
+ for(let i=0;i<pages.length;i+=2)spreads.push([pages[i],pages[i+1]]);
+ currentSpread=0;turning=false;clearTimeout(flipFinishTimer);
+ $('flipSheet').className='flip-sheet';
+ renderSpread(0);
+ detail.classList.add('show');detail.setAttribute('aria-hidden','false');
+ $('bookShell').classList.remove('book-ready');
+ requestAnimationFrame(()=>$('bookShell').classList.add('book-ready'));
+}
+function closeDetail(silent){
+ detail.classList.remove('show');detail.setAttribute('aria-hidden','true');
+ $('bookShell').classList.remove('book-ready');
+ clearTimeout(flipFinishTimer);turning=false;$('flipSheet').className='flip-sheet';
+ if(!silent)clearTimeout(detailTimer);
+}
+function renderShelf(listId,data){
+ const root=$(listId);root.replaceChildren();
+ data.forEach((item,i)=>{
+  const button=el('button','spine');button.type='button';button.dataset.id=item.id;
+  button.style.setProperty('--cover',item.color);
+  button.style.height=(item.type==='career'?122:137)+(i%3)*10+'px';
+  const band=el('span','spine-band');band.setAttribute('aria-hidden','true');
+  const name=el('span','spine-name',item.spine);
+  const serial=el('span','spine-number',String(i+1).padStart(2,'0'));
+  button.append(band,name,serial);
+  button.setAttribute('aria-label',item.title+'を読む');
+  button.addEventListener('click',()=>selectItem(items.findIndex(x=>x.id===item.id)));
+  root.append(button);
+ });
+}
 renderShelf('workShelf', workItems); renderShelf('careerShelf', careerItems);
 $('enter').addEventListener('click', enter);
 $('homeBrand').addEventListener('click', reset);
 $('closeDetail').addEventListener('click', () => closeDetail());
 detail.addEventListener('click', e => { if(e.target === detail) closeDetail(); });
-window.addEventListener('keydown', e => { if(e.key === 'Escape'){ if(detail.classList.contains('show')) closeDetail(); else reset(); } if((e.key === 'ArrowRight' || e.key === 'ArrowDown') && state !== 'entrance'){ selectItem((selected + 1) % items.length); } if((e.key === 'ArrowLeft' || e.key === 'ArrowUp') && state !== 'entrance'){ selectItem((selected + items.length - 1) % items.length); } });
+$('prevPage').addEventListener('click',()=>turnPage(-1));
+$('nextPage').addEventListener('click',()=>turnPage(1));
+let touchStart=null;
+$('bookSpread').addEventListener('touchstart',e=>{if(e.touches.length===1)touchStart=[e.touches[0].clientX,e.touches[0].clientY];},{passive:true});
+$('bookSpread').addEventListener('touchend',e=>{if(!touchStart||!e.changedTouches.length)return;const dx=e.changedTouches[0].clientX-touchStart[0],dy=e.changedTouches[0].clientY-touchStart[1];touchStart=null;if(Math.abs(dx)>65&&Math.abs(dx)>Math.abs(dy)*1.4)turnPage(dx<0?1:-1);},{passive:true});
+window.addEventListener('keydown',e=>{
+ if(e.key==='Escape'){if(detail.classList.contains('show'))closeDetail();else reset();return;}
+ if(detail.classList.contains('show')){if(e.key==='ArrowRight')turnPage(1);if(e.key==='ArrowLeft')turnPage(-1);return;}
+ if(state==='entrance')return;
+ if(e.key==='ArrowRight'||e.key==='ArrowDown')selectItem((selected+1)%items.length);
+ if(e.key==='ArrowLeft'||e.key==='ArrowUp')selectItem((selected+items.length-1)%items.length);
+});
 window.addEventListener('pointermove', e => { mouseX = (e.clientX / innerWidth - .5) * 2; mouseY = (e.clientY / innerHeight - .5) * 2; });
-let wheelLock = 0; window.addEventListener('wheel', e => { if(Math.abs(e.deltaY) < 20) return; const now = Date.now(); if(now - wheelLock < 900) return; wheelLock = now; if(state === 'entrance' && e.deltaY > 0){ enter(); return; } if(state !== 'entrance'){ selectItem((selected + (e.deltaY > 0 ? 1 : items.length - 1)) % items.length); } }, {passive:true});
+let wheelLock = 0; window.addEventListener('wheel', e => { if(detail.classList.contains('show')||Math.abs(e.deltaY) < 20) return; const now = Date.now(); if(now - wheelLock < 900) return; wheelLock = now; if(state === 'entrance' && e.deltaY > 0){ enter(); return; } if(state !== 'entrance'){ selectItem((selected + (e.deltaY > 0 ? 1 : items.length - 1)) % items.length); } }, {passive:true});
 let dragStart = null; canvas.addEventListener('pointerdown', e => { dragStart = [e.clientX, e.clientY]; }); canvas.addEventListener('pointerup', e => { if(!dragStart) return; const dx = e.clientX - dragStart[0], dy = e.clientY - dragStart[1]; dragStart = null; if(state === 'entrance' && Math.abs(dx) + Math.abs(dy) > 40){ enter(); return; } if(state !== 'entrance' && Math.abs(dx) > 60){ selectItem((selected + (dx < 0 ? 1 : items.length - 1)) % items.length); } });
 if(!gl){ $('hint').textContent = '3Dが使えない環境です。棚から作品を選んで閲覧してください。'; enter(); return; }
 const pos = [], norm = [], color = [];
