@@ -197,6 +197,79 @@
  .book-image a.image-viewer img{max-height:45dvh}
 }
 
+
+/* FINAL POLISH — maintain the quiet gallery aesthetic. */
+
+/* Readability: larger page type with more comfortable line length and breathing room. */
+.book-spread .paper-paragraph,
+.book-spread .paper-lead,
+.book-spread .paper-list{
+  font-size:clamp(13px,1.35vw,15px);
+  line-height:1.94;
+  letter-spacing:.01em;
+  overflow-wrap:anywhere;
+}
+.book-spread .paper-list{padding-inline-start:1.35em}
+.book-spread .paper-list li{margin-block-end:.55em}
+.book-spread .facts{line-height:1.85}
+.book-spread .page-inner{
+  scrollbar-width:thin;
+  scrollbar-color:#b6a794 transparent;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+}
+
+/* Page turning: thin paper edge and restrained shadows, with no additional UI. */
+.book-spread{perspective:1700px}
+.flip-sheet{will-change:transform}
+.flip-face{box-shadow:inset 0 0 0 1px rgba(111,91,71,.075)}
+.flip-sheet.forward .flip-front{
+  box-shadow:inset -12px 0 23px rgba(57,39,24,.13),2px 2px 8px rgba(51,38,25,.12)
+}
+.flip-sheet.backward .flip-front{
+  box-shadow:inset 12px 0 23px rgba(57,39,24,.13),-2px 2px 8px rgba(51,38,25,.12)
+}
+.flip-sheet .flip-back{
+  box-shadow:inset 0 0 24px rgba(70,46,30,.10)
+}
+.flip-sheet.forward.turning{filter:drop-shadow(-7px 3px 9px rgba(27,23,18,.20))}
+.flip-sheet.backward.turning{filter:drop-shadow(7px 3px 9px rgba(27,23,18,.20))}
+.book-spread.page-turning .page-left{box-shadow:inset -10px 0 20px rgba(63,40,26,.12)}
+.book-spread.page-turning .page-right{box-shadow:inset 10px 0 20px rgba(63,40,26,.10)}
+.book-controls button{transition:background .18s,border-color .18s,opacity .18s}
+.book-controls button:not(:disabled):active{background:#ffffff30;border-color:#ffffff90}
+.book-controls button:focus-visible{outline:2px solid #faf0dc;outline-offset:3px}
+
+@media(max-width:860px){
+ #detail{padding:clamp(8px,2.5vw,14px)}
+ .detail-wrap{max-width:min(100%,540px);margin-inline:auto}
+ .page{height:min(71dvh,640px);padding:clamp(22px,6.4vw,34px) clamp(20px,6vw,32px)}
+ .book-spread .paper-paragraph,
+ .book-spread .paper-lead,
+ .book-spread .paper-list{font-size:clamp(13px,3.7vw,15px);line-height:1.94;letter-spacing:.005em}
+ .book-spread .paper-title{font-size:clamp(25px,6.1vw,36px);line-height:1.48}
+ .book-spread .paper-heading{font-size:clamp(21px,5.5vw,27px);line-height:1.5}
+ .book-spread .facts{font-size:clamp(12px,3.4vw,14px)}
+ .book-spread .paper-eyebrow{font-size:10px;line-height:1.65}
+ .book-spread .paper-foot{font-size:9px}
+ .book-spread .flip-face{padding:clamp(22px,6.4vw,34px) clamp(20px,6vw,32px)}
+ .book-controls{gap:12px;margin-top:13px}
+ .book-controls button{min-width:48px;min-height:48px}
+ .book-controls span{font-size:12px}
+ .book-image a.image-viewer{min-height:128px;padding:clamp(12px,3vw,20px)}
+ .book-image a.image-viewer img{max-height:39dvh}
+}
+@media(max-width:370px){
+ .book-spread .paper-paragraph,
+ .book-spread .paper-lead,
+ .book-spread .paper-list{font-size:13px}
+ .book-spread .page,.book-spread .flip-face{padding-left:18px;padding-right:18px}
+}
+@media(prefers-reduced-motion:reduce){
+ .flip-sheet{transition:none!important;will-change:auto!important}
+ .book-shell.book-ready{animation:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -383,18 +456,18 @@ function turnPage(direction){
  if(target<0||target>=countPages())return;
  const sheet=$('flipSheet'),front=$('flipFront'),back=$('flipBack');
  const mobile=isSmallReader(),pages=allPages();
- turning=true;sheet.className='flip-sheet '+(direction>0?'forward':'backward');
+ turning=true;$('bookSpread').classList.add('page-turning');sheet.className='flip-sheet '+(direction>0?'forward':'backward');
  if(mobile){front.replaceChildren(pages[currentSpread].cloneNode(true));back.replaceChildren(pages[target].cloneNode(true));}
  else{const current=spreads[currentSpread],next=spreads[target];front.replaceChildren(current[direction>0?1:0].cloneNode(true));back.replaceChildren(next[direction>0?0:1].cloneNode(true));}
  currentSpread=target;renderSpread(target);sheet.offsetWidth;
  requestAnimationFrame(()=>sheet.classList.add('turning'));
- clearTimeout(flipFinishTimer);flipFinishTimer=setTimeout(()=>{sheet.className='flip-sheet';front.replaceChildren();back.replaceChildren();turning=false;},motion?780:30);
+ clearTimeout(flipFinishTimer);flipFinishTimer=setTimeout(()=>{sheet.className='flip-sheet';$('bookSpread').classList.remove('page-turning');front.replaceChildren();back.replaceChildren();turning=false;},motion?780:30);
 }
 function showDetail(index){
  const item=items[index];
  const pages=makePages(item);spreads=[];
  for(let i=0;i<pages.length;i+=2){const facing=pages[i+1]||pageShell();if(!pages[i+1])facing.dataset.facingBlank='true';spreads.push([pages[i],facing]);}
- currentSpread=0;turning=false;clearTimeout(flipFinishTimer);
+ currentSpread=0;turning=false;clearTimeout(flipFinishTimer);$('bookSpread').classList.remove('page-turning');
  $('flipSheet').className='flip-sheet';
  renderSpread(0);
  detail.classList.add('show');detail.setAttribute('aria-hidden','false');
@@ -404,7 +477,7 @@ function showDetail(index){
 function closeDetail(silent){
  detail.classList.remove('show');detail.setAttribute('aria-hidden','true');
  $('bookShell').classList.remove('book-ready');
- clearTimeout(flipFinishTimer);turning=false;$('flipSheet').className='flip-sheet';
+ clearTimeout(flipFinishTimer);turning=false;$('flipSheet').className='flip-sheet';$('bookSpread').classList.remove('page-turning');
  if(!silent)clearTimeout(detailTimer);
 }
 function renderShelf(listId,data){
@@ -453,7 +526,7 @@ addBox(0,-.085,-1.5,11.8,.17,31,'#bab4a7');
 addBox(0,4.52,-1.5,11.8,.15,31,'#ded9cf');
 addBox(-5.85,2.2,-1.5,.16,4.4,31,'#d4cec1'); addBox(5.85,2.2,-1.5,.16,4.4,31,'#d4cec1'); addBox(0,2.24,-15.2,11.8,4.5,.2,'#c6c1b5');
 for(let z=-12.5; z<13; z+=2.35) addBox(0,.01,z,11.6,.018,.018,'#9b968c');
-for(let z of [-11,-7,-3,1,5,9]){ addBox(0,4.28,z,9.2,.12,.3,'#c6bdb1'); addBox(0,4.17,z,2.9,.03,.24,'#f7edd8'); }
+for(let z of [-11,-7,-3,1,5,9]){ addBox(0,4.28,z,9.2,.12,.3,'#c6bdb1'); addBox(0,4.17,z,2.9,.03,.24,'#f5e7d3'); }
 for(let z of [-8.5,-2.2,4.1]){ addColumn(-4.9,z); addColumn(4.9,z); }
 addBox(-3.3,.16,-1.6,1.12,.32,12.9,'#aaa08e'); addBox(-3.3,3.5,-1.6,1.10,.12,12.9,'#ab947d');
 addBox(3.3,.16,-1.6,1.12,.32,12.9,'#aaa08e'); addBox(3.3,3.5,-1.6,1.10,.12,12.9,'#ab947d');
@@ -466,7 +539,7 @@ addBox(0,-.005,-8.15,1.6,.045,1.6,'#ccc5b8'); addBox(0,.44,-8.15,1.08,.92,1.08,'
 // The black cross-shaped doorway has been removed; the view opens naturally into the gallery.
 function shader(type, source){ const sh = gl.createShader(type); gl.shaderSource(sh, source); gl.compileShader(sh); if(!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw Error(gl.getShaderInfoLog(sh)); return sh; }
 const vs = 'attribute vec3 aPosition;attribute vec3 aNormal;attribute vec3 aColor;uniform mat4 uView;uniform mat4 uProjection;varying vec3 vColor;varying vec3 vNormal;varying float vDepth;void main(){vec4 view=uView*vec4(aPosition,1.0);gl_Position=uProjection*view;vColor=aColor;vNormal=aNormal;vDepth=-view.z;}';
-const fs = 'precision mediump float;varying vec3 vColor;varying vec3 vNormal;varying float vDepth;uniform vec3 uFog;void main(){vec3 n=normalize(vNormal);vec3 l=normalize(vec3(-0.38,0.88,0.48));float diffuse=max(dot(n,l),0.0);float lum=.52+.46*diffuse;float ceiling=max(0.,dot(n,vec3(0.,1.,0.)))*.12;float side=max(0.,dot(n,normalize(vec3(.72,.4,-.45))))*.12;vec3 c=vColor*(lum+ceiling+side);float fog=clamp((vDepth-6.0)/26.0,0.,.67);c=mix(c,uFog,fog);gl_FragColor=vec4(pow(c,vec3(.92)),1.0);}';
+const fs = 'precision mediump float;varying vec3 vColor;varying vec3 vNormal;varying float vDepth;uniform vec3 uFog;void main(){vec3 n=normalize(vNormal);vec3 l=normalize(vec3(-0.38,0.88,0.48));float diffuse=max(dot(n,l),0.0);float lum=.55+.43*diffuse;float ceiling=max(0.,dot(n,vec3(0.,1.,0.)))*.12;float side=max(0.,dot(n,normalize(vec3(.72,.4,-.45))))*.12;vec3 c=vColor*(lum+ceiling+side);float fog=clamp((vDepth-7.0)/27.0,0.,.63);c=mix(c,uFog,fog);gl_FragColor=vec4(pow(c,vec3(.92)),1.0);}';
 const program = gl.createProgram(); gl.attachShader(program, shader(gl.VERTEX_SHADER, vs)); gl.attachShader(program, shader(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(program); if(!gl.getProgramParameter(program, gl.LINK_STATUS)) throw Error(gl.getProgramInfoLog(program)); gl.useProgram(program);
 function bind(data, attr){ const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(data), gl.STATIC_DRAW); const loc = gl.getAttribLocation(program, attr); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 3, gl.FLOAT, false, 0, 0); }
 bind(pos,'aPosition'); bind(norm,'aNormal'); bind(color,'aColor');
