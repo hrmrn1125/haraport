@@ -270,6 +270,16 @@
  .book-shell.book-ready{animation:none!important}
 }
 
+
+/* Qualifications: one dated row per credential; wrap the name at the available width. */
+.qualification-list{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:13px 18px;margin:24px 0 0;align-items:start}
+.qualification-date{white-space:nowrap;color:#916f5a;font-size:13px;line-height:1.85;font-variant-numeric:tabular-nums}
+.qualification-name{min-width:0;margin:0;color:#4c5149;font-size:14px;line-height:1.85;overflow-wrap:anywhere}
+@media(max-width:860px){
+ .qualification-list{gap:14px 12px;margin-top:18px}
+ .qualification-date{font-size:12px;line-height:1.8}
+ .qualification-name{font-size:clamp(13px,3.7vw,15px);line-height:1.85}
+}
 </style>
 </head>
 <body>
@@ -386,7 +396,15 @@ function makePages(item){
   page.append(el('p','paper-eyebrow',String(i+1).padStart(2,'0')+' / '+item.en));
   page.append(el('h3','paper-heading',sec.title));
   if(sec.period)page.append(el('p','paper-eyebrow',sec.period));
-  if(sec.body)for(const paragraph of sec.body.split(/\n\s*\n/))page.append(el('p','paper-paragraph',paragraph));
+  if(item.id==='career-profile'&&sec.title==='資格'&&sec.body){
+   const list=el('dl','qualification-list');
+   for(const line of sec.body.split(/\n/)){
+     const match=line.match(/^(\d{4}\/\d{1,2})[　\s]+(.+)$/);
+     if(!match)continue;
+     list.append(el('dt','qualification-date',match[1]),el('dd','qualification-name',match[2]));
+   }
+   page.append(list);
+  }else if(sec.body)for(const paragraph of sec.body.split(/\n\s*\n/))page.append(el('p','paper-paragraph',paragraph));
   if(sec.bullets&&sec.bullets.length){const ul=el('ul','paper-list');sec.bullets.forEach(b=>ul.append(el('li','',b)));page.append(ul);}
   if(sec.fact)page.append(el('p','paper-paragraph paper-fact',sec.fact));
   if(sec.note)page.append(el('p','paper-paragraph',sec.note));
