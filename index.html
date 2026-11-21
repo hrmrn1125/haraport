@@ -532,8 +532,25 @@ addBox(-3.3,.16,-1.6,1.12,.32,12.9,'#aaa08e'); addBox(-3.3,3.5,-1.6,1.10,.12,12.
 addBox(3.3,.16,-1.6,1.12,.32,12.9,'#aaa08e'); addBox(3.3,3.5,-1.6,1.10,.12,12.9,'#ab947d');
 for(const side of [-1,1]){ const sx = side*3.3; for(const y of [.42,1.18,1.94,2.7,3.46]){ addBox(sx,y,-1.6,1.22,.09,12.8,'#ab947d'); addBox(sx - side*.62, y, -1.6, .035, .105, 12.8, '#806f5c'); } for(let z=-7.7; z<=4.5; z+=3.05){ addBox(sx,1.79,z,1.18,3.48,.08,'#806f5c'); addBox(sx-side*.60,1.79,z,.045,3.42,.075,'#c9b8a0'); } }
 const palette = ['#b45c47','#7f897c','#dfc9aa','#4b625f','#c49c6f','#65758b','#ac866e','#e1d6c2','#76716c','#a2a999'];
-for(const side of [-1,1]){ const sx = side*3.3; let id = 0; for(let shelf=0;shelf<4;shelf++){ let y = .47 + shelf*.76; for(let z=-7.1; z<4.4;){ const wid = .12 + ((id*7)%7)*.014; const bh = .42 + ((id*5)%5)*.038; const cc = palette[(id*13 + shelf*3) % palette.length]; addBox(sx - side*.14, y + bh/2, z, .46, bh, wid, cc); if(id%8 === 0) addBox(sx-side*.405, y+bh/2, z, .013, bh*.8, .025, '#d5c6ae'); z += wid + .023; id++; } } }
-items.forEach(item => { const sx = item.side*3.3; addBox(sx-item.side*.48,1.48,item.z,.115,.72,.41,item.color); addBox(sx-item.side*.565,1.48,item.z,.022,.56,.28,'#d9ccbb'); });
+// Books on every shelf are upright, closely spaced and supported by the shelf below.
+// Variation stays within each shelf so no books project into the aisle or float in front.
+for(const side of [-1,1]){
+ const sx=side*3.3;
+ for(let shelf=0;shelf<4;shelf++){
+  let id=0;
+  const bottom=.47+shelf*.76;
+  for(let z=-7.1;z<4.4;){
+   const wid=.095+((id*5+shelf*3)%9)*.012;
+   const bh=.44+((id*7+shelf*2)%6)*.032;
+   const cc=palette[(id*13+shelf*3)%palette.length];
+   const bx=sx-side*.14;
+   addBox(bx,bottom+bh/2,z,.46,bh,wid,cc);
+   if(id%9===0)addBox(bx-side*.24,bottom+bh/2,z,.012,bh*.78,.018,'#d5c6ae');
+   z+=wid+.018;
+   id++;
+  }
+ }
+}
 for(const side of [-1,1]){ for(const z of [-8,-4,0,4]){ addBox(side*4.12,1.85,z,.07,3.28,.035,'#d6c9b6'); addBox(side*4.10,.20,z,1.4,.035,1.32,'#615d57'); } for(let z=-10; z<=7; z+=2.1){ addBox(side*4.48,3.82,z,.10,.16,.85,'#e7dbbc'); } }
 addBox(0,-.005,-8.15,1.6,.045,1.6,'#ccc5b8'); addBox(0,.44,-8.15,1.08,.92,1.08,'#d8d2c7'); addSphere(0,1.25,-8.12,.46,'#c1a789',24,18); addSphere(.23,1.52,-8.06,.18,'#efe3d1',18,12);
 // The black cross-shaped doorway has been removed; the view opens naturally into the gallery.
