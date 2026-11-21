@@ -541,14 +541,21 @@ for(const side of [-1,1]){
  for(let shelf=0;shelf<4;shelf++){
   let id=0;
   const bottom=.47+shelf*.76;
-  for(let z=-7.1;z<4.4;){
+  const end=4.4;
+  const gap=.016;
+  // Advance by the actual width of each volume, rather than using that
+  // width as a centre-to-centre step (which overlapped alternating spines).
+  for(let edge=-7.1;edge<end;){
    const wid=.095+((id*5+shelf*3)%9)*.012;
+   if(edge+wid>end)break;
+   const z=edge+wid/2;
    const bh=.44+((id*7+shelf*2)%6)*.032;
    const cc=palette[(id*13+shelf*3)%palette.length];
    const bx=sx-side*.14;
    addBox(bx,bottom+bh/2,z,.46,bh,wid,cc);
-   if(id%9===0)addBox(bx-side*.24,bottom+bh/2,z,.012,bh*.78,.018,'#d5c6ae');
-   z+=wid+.018;
+   // A small contrasting spine rule sits clear of its cover surface.
+   if(id%9===0)addBox(bx-side*.245,bottom+bh/2,z,.012,bh*.78,.018,'#d5c6ae');
+   edge+=wid+gap;
    id++;
   }
  }
