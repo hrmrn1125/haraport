@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#181817">
 <meta name="description" content="原茉利奈のUI・UX、Webデザイン、AIチャットボットの実績を、3Dの書店で閲覧できるポートフォリオ。">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=20261124">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261124">
 <title>原書店｜原 茉利奈のポートフォリオ</title>
 <style>
 :root{--paper:#f4f0e8;--ink:#1d1e1b;--muted:#61645e;--line:rgba(255,255,255,.12);--accent:#b66145;--dark:#111311;--panel:rgba(17,19,17,.62);}
@@ -307,6 +309,34 @@
  .editorial-section .paper-heading{font-size:22px}
 }
 
+
+.page-inner{overflow:hidden!important}
+.paper-content{display:flow-root}
+.editorial-opening .paper-eyebrow{margin-bottom:12px}
+.editorial-opening .paper-title{font-size:clamp(24px,2.6vw,32px);margin-bottom:12px}
+.editorial-opening .paper-lead{margin-top:0;margin-bottom:12px}
+.editorial-opening .facts{margin:10px 0 0;padding:8px 0;gap:6px 10px;line-height:1.6}
+
+.paper-content{min-height:0;height:100%;padding-bottom:0}
+.spine-row{height:224px}
+.spine-name{max-height:none;flex-shrink:0;overflow:visible}
+.spine-number{font-weight:400}
+.editorial-visual{display:flex;flex-direction:column;min-height:0}
+.editorial-visual>.paper-eyebrow{flex:none}
+.editorial-visual>.paper-heading{flex:none}
+.editorial-visual>.detail-link{flex:none;align-self:flex-start}
+.visual-grid{flex:1;min-height:0;grid-template-rows:minmax(0,1fr);align-items:stretch;gap:14px;padding:6px 0 10px}
+.visual-figure{min-height:0;display:flex;align-items:center}
+.visual-figure:nth-child(2){padding-top:18px}
+.visual-window{height:100%;width:100%;display:flex;align-items:center;justify-content:center;background:transparent;box-shadow:none}
+.visual-window svg{display:block;width:100%;height:100%;max-height:100%;overflow:hidden}
+.visual-window img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 5px 14px #40332215}
+.visual-figure .book-image{height:100%;width:100%;display:flex}
+.visual-figure .book-image a.image-viewer{margin:0!important;height:100%;min-height:0;padding:0!important;background:transparent!important}
+.visual-figure .book-image a.image-viewer img{max-height:100%;object-fit:contain}
+.editorial-section+.editorial-section{margin-top:16px;padding-top:12px}
+@media(max-width:860px){.spine-row{height:224px}.visual-grid{gap:10px}}
+
 </style>
 </head>
 <body>
@@ -362,7 +392,7 @@
  </div>
 </div>
 <div class="hint" id="hint" hidden></div>
-<script src="books.js?v=editorial-20261124"></script>
+<script src="books.js?v=fitted-20261124"></script>
 <script>
 (()=>{
 'use strict';
@@ -454,7 +484,7 @@ function originalPages(item){
   if(item.id==='work-web6'){image.dataset.crop='front';link.dataset.crop='front';}
   if(item.id==='work-web12'){image.dataset.crop='bank';link.dataset.crop='bank';}
   link.append(image);
-  figure.append(link,el('figcaption','','画像をタップして拡大'));
+  figure.append(link);
   page.append(figure);
   pages.push(page);
  }
@@ -474,11 +504,9 @@ function makePages(item){
  const links=[...(item.siteLinks||[]),...item.sections.filter(sec=>sec.url).map(sec=>({url:sec.url,label:sec.linkLabel}))];
  const shots=[];
  for(const src of item.images||[]){
-  const size=item.imageSizes[src],ratio=size?size.Height/size.Width:1;
   // Existing restricted screenshots retain their established public crop.
   const restricted=item.id==='work-web6'||item.id==='work-web12';
-  const count=!restricted&&ratio>3?Math.ceil(ratio/1.8):1;
-  const boundaries=item.imageSlices?.[src]||Array.from({length:count+1},(_,i)=>i/count);
+  const boundaries=item.imageSlices?.[src]||[0,1];
   for(let part=0;part<boundaries.length-1;part++)shots.push({src,part,count:boundaries.length-1,restricted,start:boundaries[part],end:boundaries[part+1]});
  }
  if(shots.length||links.length){
@@ -486,7 +514,7 @@ function makePages(item){
   for(let offset=0;offset<Math.max(1,shots.length);offset+=perPage){
    const page=pageShell();page.classList.add('editorial-visual');
    page.append(el('p','paper-eyebrow','DESIGN / '+item.category));
-   page.append(el('h3','paper-heading',offset===0?'制作画面':'制作画面のつづき'));
+   page.append(el('h3','paper-heading','制作画面 '+(Math.floor(offset/perPage)+1)+'/'+Math.max(1,Math.ceil(shots.length/perPage))));
    if(offset===0)for(const link of links)page.append(externalLink(link.url,link.label));
    const grid=el('div','visual-grid');
    for(const shot of shots.slice(offset,offset+perPage)){
@@ -497,14 +525,24 @@ function makePages(item){
     }else{
      const link=externalLink(shot.src,'');link.classList.remove('detail-link');link.classList.add('image-viewer','visual-window');
      if(shot.count>1){
-      link.classList.add('visual-slice');
-      link.style.aspectRatio=(item.imageSizes[shot.src].Width/(item.imageSizes[shot.src].Height*(shot.end-shot.start))).toString();
+      const size=item.imageSizes[shot.src];
+      const top=Math.round(size.Height*shot.start),height=Math.round(size.Height*shot.end)-top;
+      const ns='http://www.w3.org/2000/svg';
+      const frame=document.createElementNS(ns,'svg');
+      frame.setAttribute('viewBox','0 0 '+size.Width+' '+height);
+      frame.setAttribute('role','img');frame.setAttribute('aria-label',item.title+'の制作画面');
+      const clipped=document.createElementNS(ns,'svg');
+      clipped.setAttribute('width',size.Width);clipped.setAttribute('height',height);
+      clipped.setAttribute('viewBox','0 '+top+' '+size.Width+' '+height);
+      clipped.style.overflow='hidden';
+      const img=document.createElementNS(ns,'image');
+      img.setAttribute('href',shot.src);img.setAttribute('width',size.Width);img.setAttribute('height',size.Height);
+      clipped.append(img);frame.append(clipped);link.append(frame);
+     }else{
+      const img=el('img');img.src=shot.src;img.alt=item.title+'の制作画面';img.loading='lazy';link.append(img);
      }
-     const img=el('img');img.src=shot.src;img.alt=item.title+'の制作画面';img.loading='lazy';
-     if(shot.count>1){img.style.width='100%';img.style.transform='translateY(-'+(shot.start*100)+'%)';}
-     link.append(img);figure.append(link);
+     figure.append(link);
     }
-    figure.append(el('figcaption','',shot.count>1?'画面の一部 · '+(shot.part+1)+' / '+shot.count:'画像を選択して拡大'));
     grid.append(figure);
    }
    if(grid.childElementCount)page.append(grid);
@@ -526,6 +564,52 @@ function makePages(item){
   combined.append(section);weight+=sectionWeight;
  }
  return pages;
+}
+
+function paginateBook(sourcePages){
+ const viewport=$('pageLeft');
+ const result=[];
+ for(const source of sourcePages){
+  if(source.classList.contains('editorial-visual')){result.push(source);continue;}
+  const blocks=[];
+  function collect(node){
+   if(node.classList.contains('editorial-section')){
+    for(const child of node.children)collect(child);
+   }else if(node.tagName==='UL'){
+    for(const child of node.children){const list=node.cloneNode(false);list.append(child.cloneNode(true));blocks.push(list);}
+   }else if(node.tagName==='P'&&node.textContent.length>140&&!node.querySelector('a')){
+    const sentences=node.textContent.match(/[^。！？]+[。！？]?/gu)||[node.textContent];
+    for(const sentence of sentences){
+     const characters=Array.from(sentence);
+     for(let start=0;start<characters.length;start+=110){
+      const paragraph=node.cloneNode(false);paragraph.textContent=characters.slice(start,start+110).join('');blocks.push(paragraph);
+     }
+    }
+   }else blocks.push(node.cloneNode(true));
+  }
+  for(const node of source.children)collect(node);
+  let page=source.cloneNode(false);
+  viewport.replaceChildren(page);
+  function finish(){
+   if(page.childElementCount)result.push(page);
+   page=source.cloneNode(false);viewport.replaceChildren(page);
+  }
+  for(const block of blocks){
+   page.append(block);
+   if(page.scrollHeight>viewport.clientHeight+1&&page.childElementCount>1){
+    block.remove();
+    const last=page.lastElementChild;
+    const carry=last&&/^H[23]$/.test(last.tagName)?last:null;
+    if(carry)carry.remove();
+    finish();
+    if(carry)page.append(carry);
+    page.append(block);
+   }
+  }
+  finish();
+ }
+ viewport.replaceChildren();
+ return [result[0],...result.filter(page=>page.classList.contains('editorial-visual')),...result.slice(1).filter(page=>!page.classList.contains('editorial-visual'))];
 }
 
 function isSmallReader(){return window.matchMedia('(max-width:860px)').matches;}
@@ -581,17 +665,27 @@ function turnPage(direction){
  requestAnimationFrame(()=>sheet.classList.add('turning'));
  clearTimeout(flipFinishTimer);flipFinishTimer=setTimeout(()=>{sheet.className='flip-sheet';$('bookSpread').classList.remove('page-turning');front.replaceChildren();back.replaceChildren();turning=false;},motion?780:30);
 }
-function showDetail(index){
+function showDetail(index,anchor=''){
  const item=items[index];
- const pages=makePages(item);spreads=[];
+ detail.classList.add('show');detail.setAttribute('aria-hidden','false');
+ const pages=paginateBook(makePages(item));spreads=[];
  for(let i=0;i<pages.length;i+=2){const facing=pages[i+1]||pageShell();if(!pages[i+1])facing.dataset.facingBlank='true';spreads.push([pages[i],facing]);}
  currentSpread=0;turning=false;clearTimeout(flipFinishTimer);$('bookSpread').classList.remove('page-turning');
  $('flipSheet').className='flip-sheet';
- renderSpread(0);
+ if(anchor){const pageIndex=pages.findIndex(page=>page.textContent.includes(anchor));if(pageIndex>=0)currentSpread=isSmallReader()?pageIndex:Math.floor(pageIndex/2);}
+ renderSpread(currentSpread);
  detail.classList.add('show');detail.setAttribute('aria-hidden','false');
  $('bookShell').classList.remove('book-ready');
  requestAnimationFrame(()=>$('bookShell').classList.add('book-ready'));
 }
+let readerResizeTimer=0;
+window.addEventListener('resize',()=>{
+ clearTimeout(readerResizeTimer);
+ if(!detail.classList.contains('show'))return;
+ const heading=$('pageLeft').querySelector('h2,h3');
+ const anchor=heading?.textContent||$('pageLeft').textContent.slice(0,50);
+ readerResizeTimer=setTimeout(()=>{if(detail.classList.contains('show'))showDetail(selected,anchor);},150);
+});
 function closeDetail(silent){
  detail.classList.remove('show');detail.setAttribute('aria-hidden','true');
  $('bookShell').classList.remove('book-ready');
@@ -603,7 +697,8 @@ function renderShelf(listId,data){
  data.forEach((item,i)=>{
   const button=el('button','spine');button.type='button';button.dataset.id=item.id;
   button.style.setProperty('--cover',item.color);
-  button.style.height=(item.type==='career'?122:137)+(i%3)*10+'px';
+  const variation=Array.from(item.id).reduce((sum,char)=>sum+char.charCodeAt(0),0)%24;
+  button.style.height=(149+variation)+'px';
   const band=el('span','spine-band');band.setAttribute('aria-hidden','true');
   const name=el('span','spine-name',item.spine);
   const serial=el('span','spine-number',String(i+1).padStart(2,'0'));
@@ -612,6 +707,7 @@ function renderShelf(listId,data){
   button.setAttribute('aria-label',item.title+'を読む');
   button.addEventListener('click',()=>selectItem(items.findIndex(x=>x.id===item.id)));
   root.append(button);
+  button.style.height=Math.max(149+variation,name.getBoundingClientRect().height+64)+'px';
  });
 }
 switchShelf('web',true);
