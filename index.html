@@ -337,6 +337,23 @@
 .editorial-section+.editorial-section{margin-top:16px;padding-top:12px}
 @media(max-width:860px){.spine-row{height:224px}.visual-grid{gap:10px}}
 
+
+.shelf-kicker,.shelf-label,.shelf-category,.spine,.spine-name,.spine-number{color:#fff}
+.spine:before,.spine:after{border-color:#fff}
+.spine-band{border-color:#fff;opacity:1}
+.shelf-group,.shelf-category{background:#111b}
+.shelf-category.active{background:#111b;color:#fff;border-color:#fff;box-shadow:inset 0 -2px 0 #fff}
+.book-spread .paper-title,.editorial-opening .paper-title{font-size:clamp(23px,2.4vw,29px);line-height:1.5}
+.book-spread .paper-heading,.editorial-section .paper-heading{font-size:clamp(18px,1.8vw,22px);line-height:1.5;margin-bottom:14px;padding:0 0 8px 12px;border-left:3px solid #a87c60;border-bottom:1px solid #a87c6038}
+.book-spread .paper-title{padding-bottom:12px;border-bottom:1px solid #a87c6055}
+.detail-link{display:inline;padding:0;background:transparent;border:0;border-radius:0;color:#3e594d;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;font-size:13px;line-height:1.7;letter-spacing:.02em}
+.detail-link:hover{color:#1f342a}
+.editorial-visual>.detail-link{display:block;margin:0 0 14px}
+@media(max-width:860px){
+ .book-spread .paper-title,.editorial-opening .paper-title{font-size:25px}
+ .book-spread .paper-heading,.editorial-section .paper-heading{font-size:20px}
+}
+
 </style>
 </head>
 <body>
@@ -392,7 +409,7 @@
  </div>
 </div>
 <div class="hint" id="hint" hidden></div>
-<script src="books.js?v=fitted-20261124"></script>
+<script src="books.js?v=balanced-20261124"></script>
 <script>
 (()=>{
 'use strict';
@@ -502,6 +519,7 @@ function makePages(item){
  const detailPages=original.filter(page=>!page.querySelector('.book-image'));
  const pages=[opening];
  const links=[...(item.siteLinks||[]),...item.sections.filter(sec=>sec.url).map(sec=>({url:sec.url,label:sec.linkLabel}))];
+ if(!item.images?.length)for(const link of item.siteLinks||[])opening.append(externalLink(link.url,link.label));
  const shots=[];
  for(const src of item.images||[]){
   // Existing restricted screenshots retain their established public crop.
@@ -509,7 +527,7 @@ function makePages(item){
   const boundaries=item.imageSlices?.[src]||[0,1];
   for(let part=0;part<boundaries.length-1;part++)shots.push({src,part,count:boundaries.length-1,restricted,start:boundaries[part],end:boundaries[part+1]});
  }
- if(shots.length||links.length){
+ if(shots.length){
   const perPage=2;
   for(let offset=0;offset<Math.max(1,shots.length);offset+=perPage){
    const page=pageShell();page.classList.add('editorial-visual');
@@ -697,8 +715,9 @@ function renderShelf(listId,data){
  data.forEach((item,i)=>{
   const button=el('button','spine');button.type='button';button.dataset.id=item.id;
   button.style.setProperty('--cover',item.color);
-  const variation=Array.from(item.id).reduce((sum,char)=>sum+char.charCodeAt(0),0)%24;
-  button.style.height=(149+variation)+'px';
+  const seed=Array.from(item.id).reduce((hash,char)=>Math.imul(hash^char.charCodeAt(0),16777619),2166136261)>>>0;
+  const coverHeight=132+seed%71;
+  button.style.height=coverHeight+'px';
   const band=el('span','spine-band');band.setAttribute('aria-hidden','true');
   const name=el('span','spine-name',item.spine);
   const serial=el('span','spine-number',String(i+1).padStart(2,'0'));
@@ -707,7 +726,7 @@ function renderShelf(listId,data){
   button.setAttribute('aria-label',item.title+'を読む');
   button.addEventListener('click',()=>selectItem(items.findIndex(x=>x.id===item.id)));
   root.append(button);
-  button.style.height=Math.max(149+variation,name.getBoundingClientRect().height+64)+'px';
+  button.style.height=Math.max(coverHeight,name.getBoundingClientRect().height+64)+'px';
  });
 }
 switchShelf('web',true);
