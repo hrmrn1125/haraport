@@ -384,6 +384,9 @@
 .visual-figure,.visual-figure:nth-child(2){aspect-ratio:var(--frame-ratio);height:auto;width:100%;max-height:100%;align-self:center}
 .visual-window,.visual-figure .book-image a.image-viewer{padding:0!important}
 @media(max-width:860px){.visual-window,.visual-figure .book-image a.image-viewer{padding:0!important}}
+.light-cover .spine-name,.light-cover .spine-number{background:#0005;box-shadow:0 0 3px 2px #0002;border-radius:2px}
+.light-cover .spine-name{padding:3px 1px}
+.light-cover .spine-number{padding-inline:3px}
 </style>
 </head>
 <body>
@@ -439,7 +442,7 @@
  </div>
 </div>
 <div class="hint" id="hint" hidden></div>
-<script src="books.js?v=colors-a90e674"></script>
+<script src="books.js?v=palette-a-20261124"></script>
 <script>
 (()=>{
 'use strict';
@@ -758,7 +761,7 @@ function closeDetail(silent){
 function renderShelf(listId,data){
  const root=$(listId);root.replaceChildren();root.scrollLeft=0;
  data.forEach((item,i)=>{
-  const button=el('button','spine');button.type='button';button.dataset.id=item.id;
+  const button=el('button',item.lightCover?'spine light-cover':'spine');button.type='button';button.dataset.id=item.id;
   button.style.setProperty('--cover',item.color);
   const seed=Array.from(item.id).reduce((hash,char)=>Math.imul(hash^char.charCodeAt(0),16777619),2166136261)>>>0;
   const coverHeight=132+seed%71;
