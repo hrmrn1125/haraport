@@ -88,7 +88,8 @@ const items = [
     ],
     "images": [],
     "side": 1,
-    "z": 3.6
+    "z": 3.6,
+    "imageSizes": {}
   },
   {
     "id": "work-mogu-room",
@@ -137,9 +138,37 @@ const items = [
         "note": "データは利用中のブラウザ内に保存されます。"
       }
     ],
-    "images": [],
+    "images": [
+      "assets/works/mogu-8298.jpeg",
+      "assets/works/mogu-8300.jpeg",
+      "assets/works/mogu-8301.jpeg",
+      "assets/works/mogu-8302.jpeg",
+      "assets/works/mogu-8304.jpeg"
+    ],
     "side": 1,
-    "z": 2.36
+    "z": 2.36,
+    "imageSizes": {
+      "assets/works/mogu-8298.jpeg": {
+        "Width": 1179,
+        "Height": 2009
+      },
+      "assets/works/mogu-8300.jpeg": {
+        "Width": 1179,
+        "Height": 2007
+      },
+      "assets/works/mogu-8301.jpeg": {
+        "Width": 1179,
+        "Height": 1999
+      },
+      "assets/works/mogu-8302.jpeg": {
+        "Width": 1179,
+        "Height": 2005
+      },
+      "assets/works/mogu-8304.jpeg": {
+        "Width": 1179,
+        "Height": 2006
+      }
+    }
   },
   {
     "id": "work-app1",
@@ -183,7 +212,31 @@ const items = [
       "assets/works/mob-login-4.jpg"
     ],
     "side": 1,
-    "z": 2.98
+    "z": 2.98,
+    "siteLinks": [
+      {
+        "url": "https://prompt-21032.web.app/",
+        "label": "公開サイトを見る"
+      }
+    ],
+    "imageSizes": {
+      "assets/works/mob-login-1.jpg": {
+        "Width": 750,
+        "Height": 1624
+      },
+      "assets/works/mob-login-2.jpg": {
+        "Width": 750,
+        "Height": 1724
+      },
+      "assets/works/mob-login-3.jpg": {
+        "Width": 750,
+        "Height": 1724
+      },
+      "assets/works/mob-login-4.jpg": {
+        "Width": 750,
+        "Height": 1624
+      }
+    }
   },
   {
     "id": "work-web5",
@@ -196,7 +249,7 @@ const items = [
     "period": "2024.06 — 2024.09",
     "role": "企画/デザイン/コーディング/開発/ライティング",
     "scope": "社内外向け教育サービス／若いデザイン初学者向けLP",
-    "color": "#b89b83",
+    "color": "#765037",
     "desc": "デザイン学習サービス『デザメモ』を紹介するLP。企画からデザイン・実装・文章制作まで担当しました。",
     "sections": [
       {
@@ -226,7 +279,35 @@ const items = [
       "assets/works/dezamemoLP-2.jpg"
     ],
     "side": 1,
-    "z": 2.36
+    "z": 2.36,
+    "siteLinks": [
+      {
+        "url": "https://www.conviction-inc.com/dezamemo/",
+        "label": "公開サイトを見る"
+      }
+    ],
+    "imageSizes": {
+      "assets/works/dezamemoLP-1.jpg": {
+        "Width": 1280,
+        "Height": 6550
+      },
+      "assets/works/dezamemoLP-2.jpg": {
+        "Width": 375,
+        "Height": 9763
+      }
+    },
+    "imageSlices": {
+      "assets/works/dezamemoLP-1.jpg": [
+        0,
+        0.13,
+        0.25,
+        0.36,
+        0.61,
+        0.75,
+        0.89,
+        1
+      ]
+    }
   },
   {
     "id": "work-web3",
@@ -269,7 +350,23 @@ const items = [
       "assets/works/Release-2.jpg"
     ],
     "side": 1,
-    "z": 1.74
+    "z": 1.74,
+    "siteLinks": [
+      {
+        "url": "https://release-kaihoou.com/",
+        "label": "公開サイトを見る"
+      }
+    ],
+    "imageSizes": {
+      "assets/works/Release-1.jpg": {
+        "Width": 1280,
+        "Height": 6470
+      },
+      "assets/works/Release-2.jpg": {
+        "Width": 375,
+        "Height": 6580
+      }
+    }
   },
   {
     "id": "work-web4",
@@ -312,7 +409,23 @@ const items = [
       "assets/works/kaihou-2.jpg"
     ],
     "side": 1,
-    "z": 1.12
+    "z": 1.12,
+    "siteLinks": [
+      {
+        "url": "https://release-kaihoou.com/spot_ride",
+        "label": "公開サイトを見る"
+      }
+    ],
+    "imageSizes": {
+      "assets/works/kaihou-1.jpg": {
+        "Width": 1280,
+        "Height": 2998
+      },
+      "assets/works/kaihou-2.jpg": {
+        "Width": 375,
+        "Height": 3260
+      }
+    }
   },
   {
     "id": "work-others1",
@@ -356,7 +469,21 @@ const items = [
       "assets/works/convi-doda-banner-1.jpg"
     ],
     "side": -1,
-    "z": 3.6
+    "z": 3.6,
+    "imageSizes": {
+      "assets/works/convi-doda-1.jpg": {
+        "Width": 850,
+        "Height": 6705
+      },
+      "assets/works/convi-doda-2.jpg": {
+        "Width": 850,
+        "Height": 3353
+      },
+      "assets/works/convi-doda-banner-1.jpg": {
+        "Width": 790,
+        "Height": 566
+      }
+    }
   },
   {
     "id": "work-web6",
@@ -396,7 +523,19 @@ const items = [
       "assets/works/front-1.jpg"
     ],
     "side": 1,
-    "z": 0.5
+    "z": 0.5,
+    "siteLinks": [
+      {
+        "url": "https://hrmrn1125.github.io/frontend-curriculum/convi-frontend/dist/",
+        "label": "公開サイトを見る"
+      }
+    ],
+    "imageSizes": {
+      "assets/works/front-1.jpg": {
+        "Width": 2628,
+        "Height": 5360
+      }
+    }
   },
   {
     "id": "work-web7",
@@ -440,7 +579,23 @@ const items = [
       "assets/works/dezamemo-2.jpg"
     ],
     "side": 1,
-    "z": -0.12
+    "z": -0.12,
+    "siteLinks": [
+      {
+        "url": "https://design-curri.web.app/",
+        "label": "公開サイトを見る"
+      }
+    ],
+    "imageSizes": {
+      "assets/works/dezamemo-1.jpg": {
+        "Width": 1280,
+        "Height": 800
+      },
+      "assets/works/dezamemo-2.jpg": {
+        "Width": 1280,
+        "Height": 3730
+      }
+    }
   },
   {
     "id": "work-others3",
@@ -484,7 +639,31 @@ const items = [
       "assets/works/dezamemo-banner-3.jpg"
     ],
     "side": -1,
-    "z": 2.98
+    "z": 2.98,
+    "siteLinks": [
+      {
+        "url": "https://x.com/dezamemo?s=21&t=bM9lhoQf3flX7PogsD3XoQ",
+        "label": "公開サイトを見る"
+      }
+    ],
+    "imageSizes": {
+      "assets/works/dezamemo-taiken-1.jpg": {
+        "Width": 800,
+        "Height": 450
+      },
+      "assets/works/dezamemo-banner-1.jpg": {
+        "Width": 800,
+        "Height": 450
+      },
+      "assets/works/dezamemo-banner-2.jpg": {
+        "Width": 3840,
+        "Height": 1200
+      },
+      "assets/works/dezamemo-banner-3.jpg": {
+        "Width": 4800,
+        "Height": 2520
+      }
+    }
   },
   {
     "id": "work-web1",
@@ -538,7 +717,31 @@ const items = [
       "assets/works/caboreco2-4.jpg"
     ],
     "side": 1,
-    "z": -0.74
+    "z": -0.74,
+    "siteLinks": [
+      {
+        "url": "https://caboneurecord.web.docomo.ne.jp/top.html",
+        "label": "公開サイトを見る"
+      }
+    ],
+    "imageSizes": {
+      "assets/works/caboreco2-1.jpg": {
+        "Width": 1280,
+        "Height": 5230
+      },
+      "assets/works/caboreco2-2.jpg": {
+        "Width": 375,
+        "Height": 7016
+      },
+      "assets/works/caboreco2-3.jpg": {
+        "Width": 1500,
+        "Height": 4832
+      },
+      "assets/works/caboreco2-4.jpg": {
+        "Width": 1500,
+        "Height": 5356
+      }
+    }
   },
   {
     "id": "work-web8",
@@ -581,7 +784,23 @@ const items = [
       "assets/works/convicom-2.jpg"
     ],
     "side": 1,
-    "z": -1.36
+    "z": -1.36,
+    "siteLinks": [
+      {
+        "url": "https://convi-com.web.app/",
+        "label": "公開サイトを見る"
+      }
+    ],
+    "imageSizes": {
+      "assets/works/convicom-1.jpg": {
+        "Width": 1280,
+        "Height": 800
+      },
+      "assets/works/convicom-2.jpg": {
+        "Width": 750,
+        "Height": 1624
+      }
+    }
   },
   {
     "id": "work-web9",
@@ -621,7 +840,21 @@ const items = [
       "assets/works/kensetsu-3.jpg"
     ],
     "side": 1,
-    "z": -1.98
+    "z": -1.98,
+    "imageSizes": {
+      "assets/works/kensetsu-1.jpg": {
+        "Width": 1920,
+        "Height": 1402
+      },
+      "assets/works/kensetsu-2.jpg": {
+        "Width": 1920,
+        "Height": 2450
+      },
+      "assets/works/kensetsu-3.jpg": {
+        "Width": 750,
+        "Height": 1334
+      }
+    }
   },
   {
     "id": "work-web10",
@@ -664,7 +897,23 @@ const items = [
       "assets/works/convi-2.jpg"
     ],
     "side": 1,
-    "z": -2.6
+    "z": -2.6,
+    "siteLinks": [
+      {
+        "url": "https://www.conviction-inc.com/",
+        "label": "公開サイトを見る"
+      }
+    ],
+    "imageSizes": {
+      "assets/works/convi-1.jpg": {
+        "Width": 2694,
+        "Height": 9578
+      },
+      "assets/works/convi-2.jpg": {
+        "Width": 1000,
+        "Height": 11884
+      }
+    }
   },
   {
     "id": "work-web11",
@@ -709,7 +958,25 @@ const items = [
       "assets/works/ePro-2.jpg"
     ],
     "side": 1,
-    "z": -3.22
+    "z": -3.22,
+    "imageSizes": {
+      "assets/works/ePro-3.jpg": {
+        "Width": 1920,
+        "Height": 7291
+      },
+      "assets/works/ePro-1.jpg": {
+        "Width": 375,
+        "Height": 5269
+      },
+      "assets/works/ePro-4.jpg": {
+        "Width": 1920,
+        "Height": 7291
+      },
+      "assets/works/ePro-2.jpg": {
+        "Width": 375,
+        "Height": 5269
+      }
+    }
   },
   {
     "id": "work-app2",
@@ -754,7 +1021,31 @@ const items = [
       "assets/works/timer-app-4.jpg"
     ],
     "side": 1,
-    "z": -3.84
+    "z": -3.84,
+    "siteLinks": [
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.sghh.flowtimer",
+        "label": "公開サイトを見る"
+      }
+    ],
+    "imageSizes": {
+      "assets/works/timer-app-1.jpg": {
+        "Width": 750,
+        "Height": 1334
+      },
+      "assets/works/timer-app-2.jpg": {
+        "Width": 750,
+        "Height": 1624
+      },
+      "assets/works/timer-app-3.jpg": {
+        "Width": 563,
+        "Height": 1218
+      },
+      "assets/works/timer-app-4.jpg": {
+        "Width": 750,
+        "Height": 1624
+      }
+    }
   },
   {
     "id": "work-web2",
@@ -808,7 +1099,31 @@ const items = [
       "assets/works/caboreco1-4.jpg"
     ],
     "side": 1,
-    "z": -4.46
+    "z": -4.46,
+    "siteLinks": [
+      {
+        "url": "https://caboneurecord.web.docomo.ne.jp/top.html",
+        "label": "公開サイトを見る"
+      }
+    ],
+    "imageSizes": {
+      "assets/works/caboreco1-1.jpg": {
+        "Width": 664,
+        "Height": 1213
+      },
+      "assets/works/caboreco1-2.jpg": {
+        "Width": 375,
+        "Height": 2220
+      },
+      "assets/works/caboreco1-3.jpg": {
+        "Width": 375,
+        "Height": 812
+      },
+      "assets/works/caboreco1-4.jpg": {
+        "Width": 1500,
+        "Height": 3248
+      }
+    }
   },
   {
     "id": "work-others2",
@@ -852,7 +1167,25 @@ const items = [
       "assets/works/banner-4.jpg"
     ],
     "side": -1,
-    "z": 2.36
+    "z": 2.36,
+    "imageSizes": {
+      "assets/works/banner-1.jpg": {
+        "Width": 1372,
+        "Height": 388
+      },
+      "assets/works/banner-2.jpg": {
+        "Width": 1242,
+        "Height": 2208
+      },
+      "assets/works/banner-3.jpg": {
+        "Width": 492,
+        "Height": 492
+      },
+      "assets/works/banner-4.jpg": {
+        "Width": 1028,
+        "Height": 180
+      }
+    }
   },
   {
     "id": "work-others4",
@@ -905,7 +1238,63 @@ const items = [
       "assets/works/sis-13.jpg"
     ],
     "side": -1,
-    "z": 1.74
+    "z": 1.74,
+    "siteLinks": [
+      {
+        "url": "https://www.instagram.com/soisource_programming?igsh=bHV6OHFqMXA2dnBz",
+        "label": "公開サイトを見る"
+      }
+    ],
+    "imageSizes": {
+      "assets/works/sis-1.jpg": {
+        "Width": 1280,
+        "Height": 1280
+      },
+      "assets/works/sis-2.jpg": {
+        "Width": 1280,
+        "Height": 1280
+      },
+      "assets/works/sis-3.jpg": {
+        "Width": 1280,
+        "Height": 1280
+      },
+      "assets/works/sis-4.jpg": {
+        "Width": 1280,
+        "Height": 1280
+      },
+      "assets/works/sis-5.jpg": {
+        "Width": 1280,
+        "Height": 1280
+      },
+      "assets/works/sis-6.jpg": {
+        "Width": 1280,
+        "Height": 1280
+      },
+      "assets/works/sis-7.jpg": {
+        "Width": 1280,
+        "Height": 1280
+      },
+      "assets/works/sis-8.jpg": {
+        "Width": 1280,
+        "Height": 1280
+      },
+      "assets/works/sis-10.jpg": {
+        "Width": 1000,
+        "Height": 1000
+      },
+      "assets/works/sis-11.jpg": {
+        "Width": 1000,
+        "Height": 1000
+      },
+      "assets/works/sis-12.jpg": {
+        "Width": 1200,
+        "Height": 900
+      },
+      "assets/works/sis-13.jpg": {
+        "Width": 1200,
+        "Height": 900
+      }
+    }
   },
   {
     "id": "work-web12",
@@ -951,7 +1340,19 @@ const items = [
       "assets/works/bank-1.jpg"
     ],
     "side": 1,
-    "z": -5.08
+    "z": -5.08,
+    "siteLinks": [
+      {
+        "url": "https://hrmrn1125.github.io/portfolio_bank/my-bank/docs/",
+        "label": "公開サイトを見る"
+      }
+    ],
+    "imageSizes": {
+      "assets/works/bank-1.jpg": {
+        "Width": 1213,
+        "Height": 1861
+      }
+    }
   },
   {
     "id": "work-others7",
@@ -988,7 +1389,13 @@ const items = [
       "assets/works/banner-bank.jpg"
     ],
     "side": -1,
-    "z": 1.12
+    "z": 1.12,
+    "imageSizes": {
+      "assets/works/banner-bank.jpg": {
+        "Width": 840,
+        "Height": 240
+      }
+    }
   },
   {
     "id": "work-others5",
@@ -1028,7 +1435,25 @@ const items = [
       "assets/works/responsive-site-SP.jpg"
     ],
     "side": -1,
-    "z": 0.5
+    "z": 0.5,
+    "imageSizes": {
+      "assets/works/webpack-kadai-1.jpg": {
+        "Width": 1280,
+        "Height": 1717
+      },
+      "assets/works/webpack-kadai-2.jpg": {
+        "Width": 1280,
+        "Height": 1985
+      },
+      "assets/works/responsive-site-PC.jpg": {
+        "Width": 1280,
+        "Height": 3950
+      },
+      "assets/works/responsive-site-SP.jpg": {
+        "Width": 320,
+        "Height": 5478
+      }
+    }
   },
   {
     "id": "work-others6",
@@ -1069,7 +1494,29 @@ const items = [
       "assets/works/eigyo-5.jpg"
     ],
     "side": -1,
-    "z": -0.12
+    "z": -0.12,
+    "imageSizes": {
+      "assets/works/eigyo-1.jpg": {
+        "Width": 800,
+        "Height": 450
+      },
+      "assets/works/eigyo-2.jpg": {
+        "Width": 800,
+        "Height": 450
+      },
+      "assets/works/eigyo-3.jpg": {
+        "Width": 800,
+        "Height": 450
+      },
+      "assets/works/eigyo-4.jpg": {
+        "Width": 800,
+        "Height": 450
+      },
+      "assets/works/eigyo-5.jpg": {
+        "Width": 1200,
+        "Height": 1200
+      }
+    }
   },
   {
     "id": "career-sales",
@@ -1112,7 +1559,8 @@ const items = [
         "fact": "2021年1月〜5月：5か月連続で予算達成（入社決定者数・面接案件増加数など）"
       }
     ],
-    "shelf": "career"
+    "shelf": "career",
+    "imageSizes": {}
   },
   {
     "id": "career-web",
@@ -1182,7 +1630,8 @@ const items = [
         ]
       }
     ],
-    "shelf": "career"
+    "shelf": "career",
+    "imageSizes": {}
   },
   {
     "id": "career-cx",
@@ -1224,7 +1673,8 @@ const items = [
         "linkLabel": "公式登壇記事を読む"
       }
     ],
-    "shelf": "career"
+    "shelf": "career",
+    "imageSizes": {}
   },
   {
     "id": "career-profile",
@@ -1278,6 +1728,12 @@ const items = [
       "assets/works/profile-original-cutout.png"
     ],
     "side": -1,
-    "z": -2.6
+    "z": -2.6,
+    "imageSizes": {
+      "assets/works/profile-original-cutout.png": {
+        "Width": 1780,
+        "Height": 2450
+      }
+    }
   }
 ];
