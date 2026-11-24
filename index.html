@@ -385,6 +385,54 @@
 .visual-window,.visual-figure .book-image a.image-viewer{padding:0!important}
 @media(max-width:860px){.visual-window,.visual-figure .book-image a.image-viewer{padding:0!important}}
 .title-part{display:inline-block;white-space:nowrap}
+
+/* A shared reading rhythm across both page formats. */
+.book-spread .page{height:min(74dvh,700px)}
+.book-spread .paper-lead,.book-spread .paper-paragraph,.book-spread .paper-list{font-size:14px;line-height:1.85;letter-spacing:.01em}
+.book-spread .paper-paragraph,.book-spread .paper-list{margin:0 0 14px}
+.book-spread .paper-list li{margin-bottom:8px}
+.book-spread .paper-eyebrow{font-size:10px;line-height:1.6;margin:0 0 16px}
+.book-spread .facts,.book-spread .qualification-list{font-size:12px;line-height:1.8}
+.book-spread .paper-heading{font-size:20px;margin-top:22px;margin-bottom:14px}
+.book-spread .paper-heading:first-child{margin-top:0}
+.book-spread .visual-header .paper-heading{margin:0}
+.book-spread .editorial-opening .paper-title{font-size:28px;line-height:1.5}
+.book-spread .editorial-opening .paper-lead{margin-bottom:16px}
+.book-spread .editorial-opening .facts{margin-top:14px}
+.book-spread .visual-figure,.book-spread .visual-figure:nth-child(2){aspect-ratio:auto;height:100%;max-height:100%;min-height:0;align-self:stretch}
+.visual-stacked{grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:14px}
+.visual-tall{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:minmax(0,1fr)}
+.visual-single{grid-template-columns:minmax(0,1fr)}
+.book-spread .visual-window,.book-spread .visual-figure .book-image a.image-viewer{background:transparent!important;box-shadow:none}
+@media(max-width:860px){
+ .book-spread .page{height:min(74dvh,680px)}
+ .book-spread .paper-lead,.book-spread .paper-paragraph,.book-spread .paper-list{font-size:13.5px;line-height:1.85}
+ .book-spread .editorial-opening .paper-title{font-size:25px}
+ .book-spread .paper-heading{font-size:19px}
+ .book-spread .paper-eyebrow{margin-bottom:14px}
+}
+
+
+.book-spread .editorial-opening .paper-rule{margin-bottom:18px}
+.book-spread .editorial-opening .paper-heading{margin-top:16px}
+
+@media(max-width:360px){
+ .book-spread .page{height:min(76dvh,680px)}
+ .book-spread .paper-lead,.book-spread .paper-paragraph,.book-spread .paper-list{font-size:12.5px;line-height:1.75}
+ .book-spread .editorial-opening .paper-title{font-size:22px}
+ .book-spread .paper-heading{font-size:18px;margin-bottom:12px}
+ .book-spread .editorial-opening .paper-heading{margin-top:14px}
+ .book-spread .paper-eyebrow{margin-bottom:12px}
+}
+
+.book-spread .editorial-opening .paper-paragraph:last-of-type{margin-bottom:0}
+
+@media(max-width:360px){
+ .book-spread .editorial-opening .paper-rule{margin-bottom:12px}
+ .book-spread .editorial-opening .paper-lead{margin-bottom:12px}
+ .book-spread .editorial-opening .paper-heading{margin-top:12px}
+}
+
 </style>
 </head>
 <body>
@@ -440,7 +488,7 @@
  </div>
 </div>
 <div class="hint" id="hint" hidden></div>
-<script src="books.js?v=palette-a-20261124"></script>
+<script src="books.js?v=layout-20261124"></script>
 <script>
 (()=>{
 'use strict';
@@ -513,6 +561,10 @@ function originalPages(item){
  opening.append(title);
  opening.append(el('div','paper-rule'));
  opening.append(el('p','paper-lead',item.desc));
+ if(item.openingSection){
+  opening.append(el('h3','paper-heading',item.openingSection.title));
+  opening.append(el('p','paper-paragraph',item.openingSection.body));
+ }
  opening.append(el('div','paper-foot','MARINA HARA  ·  PORTFOLIO'));
  pages.push(opening);
  const outline=pageShell();
@@ -523,6 +575,7 @@ function originalPages(item){
  if(facts.childElementCount||tags.childElementCount)pages.push(outline);
  for(let i=0;i<item.sections.length;i++){
   const sec=item.sections[i], page=pageShell();
+  if(sec.breakBefore)page.dataset.breakBefore='true';
   page.append(el('p','paper-eyebrow',String(i+1).padStart(2,'0')+' / '+item.en));
   page.append(el('h3','paper-heading',sec.title));
   if(sec.period)page.append(el('p','paper-eyebrow',sec.period));
@@ -574,15 +627,22 @@ function makePages(item){
  if(!item.images?.length)for(const link of item.siteLinks||[])opening.append(externalLink(link.url,link.label));
  const shots=[];
  const images=item.images||[];
+ function addShot(src,extended=false){
+  const size=item.imageSizes[src],edges=item.imageSlices?.[src]||[0,1];
+  let end=edges[1];
+  if(extended&&edges.length>2){
+   const suitable=edges.slice(1).filter(edge=>edge*size.Height/size.Width<=2.8);
+   if(suitable.length)end=suitable[suitable.length-1];
+  }
+  shots.push({src,count:end<1?2:1,restricted:item.id==='work-web6'||item.id==='work-web12',start:0,end});
+ }
  if(images.length){
-  const src=images[0],boundaries=item.imageSlices?.[src]||[0,1];
-  const restricted=item.id==='work-web6'||item.id==='work-web12';
-  shots.push({src,count:boundaries.length-1,restricted,start:boundaries[0],end:boundaries[1]});
-  if(boundaries.length>2){
-   shots.push({src,count:boundaries.length-1,restricted,start:boundaries[1],end:boundaries[2]});
-  }else if(images[1]){
-   const second=images[1],edges=item.imageSlices?.[second]||[0,1];
-   shots.push({src:second,count:edges.length-1,restricted,start:edges[0],end:edges[1]});
+  addShot(images[0],item.shelf==='web');
+  if(item.shelf==='web'&&images[1])addShot(images[1],true);
+  else if(images[1])addShot(images[1]);
+  else if(item.imageSlices?.[images[0]]?.length>2){
+   const edges=item.imageSlices[images[0]];
+   shots.push({src:images[0],count:edges.length-1,restricted:false,start:edges[1],end:edges[2]});
   }
  }
  if(shots.length){
@@ -600,8 +660,10 @@ function makePages(item){
    page.append(header);
    const grid=el('div','visual-grid');
    const ratios=shots.map(shot=>{const size=item.imageSizes[shot.src];return size.Width/(size.Height*(shot.end-shot.start));});
-   const frameRatio=ratios.every(ratio=>ratio>=1)?1.5:ratios.every(ratio=>ratio<.85)?.6:.9;
-   grid.style.setProperty('--frame-ratio',frameRatio);
+   const stacked=shots.length===2&&ratios.every(ratio=>ratio>1.15);
+   grid.classList.toggle('visual-stacked',stacked);
+   grid.classList.toggle('visual-tall',!stacked);
+   if(shots.length===1)grid.classList.add('visual-single');
    for(const shot of shots.slice(offset,offset+perPage)){
     const figure=el('figure','visual-figure');
     if(shot.restricted){
@@ -638,7 +700,7 @@ function makePages(item){
  let combined=null,weight=0;
  for(const sectionPage of detailPages){
   const sectionWeight=sectionPage.textContent.length;
-  if(!combined||weight+sectionWeight>650){
+  if(!combined||sectionPage.dataset.breakBefore==='true'||weight+sectionWeight>650){
    combined=pageShell();combined.classList.add('editorial-details');pages.push(combined);weight=0;
   }
   const section=el('section','editorial-section');
@@ -662,7 +724,7 @@ function paginateBook(sourcePages){
     for(const child of node.children)collect(child);
    }else if(node.tagName==='UL'){
     for(const child of node.children){const list=node.cloneNode(false);list.append(child.cloneNode(true));blocks.push(list);}
-   }else if(node.tagName==='P'&&node.textContent.length>140&&!node.querySelector('a')){
+   }else if(node.tagName==='P'&&node.textContent.length>320&&!node.querySelector('a')){
     const sentences=node.textContent.match(/[^。！？]+[。！？]?/gu)||[node.textContent];
     for(const sentence of sentences){
      const characters=Array.from(sentence);
@@ -780,7 +842,7 @@ function closeDetail(silent){
 function renderShelf(listId,data){
  const root=$(listId);root.replaceChildren();root.scrollLeft=0;
  data.forEach((item,i)=>{
-  const button=el('button',item.lightCover?'spine light-cover':'spine');button.type='button';button.dataset.id=item.id;
+  const button=el('button','spine');button.type='button';button.dataset.id=item.id;
   button.style.setProperty('--cover',item.color);
   const seed=Array.from(item.id).reduce((hash,char)=>Math.imul(hash^char.charCodeAt(0),16777619),2166136261)>>>0;
   const coverHeight=132+seed%71;
